@@ -39,7 +39,6 @@ export default function AppDown() {
     ],
     ios: [
       { name: 'App Store 官方下载', version: 'v4.9.53', size: '24.1 MB', type: 'iOS', url: 'https://download.mql5.com/cdn/mobile/mt5/ios?utm_source=www.metatrader5.com' },
-      { name: '扫码进行快捷配置', version: 'v4.9.53', size: '24.1 MB', type: 'iOS', url: 'https://download.mql5.com/cdn/mobile/mt5/ios?utm_source=www.metatrader5.com' },
     ],
     android: [
       { name: '官方 APK 安装包', version: 'v4.9.53', size: '32.8 MB', type: 'Android APK', url: 'https://download.mql5.com/cdn/mobile/mt5/android' },
@@ -105,7 +104,7 @@ export default function AppDown() {
                 依托全球顶级金融技术和极速订单清算引擎，全新上线 MetaTrader 5 (MT5) 客户端。为您提供秒级行情、大师级图表指标及100%银行隔离信托保障。让您不论在PC大屏还是掌上移动端，均能掌握全球交易先机。
               </p>
 
-              {/* 二维码与下载入口 */}
+              {/* 官方极速下载入口 */}
               <div
                 style={{
                   display: 'flex',
@@ -114,43 +113,23 @@ export default function AppDown() {
                   flexWrap: 'wrap',
                   background: 'rgba(255, 255, 255, 0.03)',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
-                  padding: '20px',
+                  padding: '24px',
                   borderRadius: '12px',
                   backdropFilter: 'blur(10px)',
                   maxWidth: '560px',
                 }}
               >
-                <div
-                  style={{
-                    background: '#ffffff',
-                    padding: '8px',
-                    borderRadius: '8px',
-                    width: '100px',
-                    height: '100px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
-                  }}
-                >
-                  {/* 使用通用的二维码扫描视觉占位，内部配小雷达动画 */}
-                  <div style={{ position: 'relative', width: '100%', height: '100%', border: '2px dashed #f39800', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <ScanOutlined style={{ fontSize: '28px', color: '#f39800' }} />
-                    <span style={{ fontSize: '10px', color: '#333', fontWeight: 'bold', marginTop: '4px' }}>扫码极速下载</span>
-                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: '#f39800', animation: 'gridDrift 2s linear infinite' }} />
-                  </div>
-                </div>
                 <div style={{ flex: 1, minWidth: '240px' }}>
-                  <div style={{ color: '#ffffff', fontSize: '15px', fontWeight: '700', marginBottom: '6px' }}>手机端扫码，一秒快速配置</div>
-                  <div style={{ color: '#9ca3af', fontSize: '13px', lineHeight: '1.5', marginBottom: '12px' }}>
-                    支持 iPhone 及 Android 设备，微信或浏览器直接扫码，免去应用商店繁琐查找，即可直接建立安全下载任务。
+                  <div style={{ color: '#ffffff', fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>官方多平台客户端极速下载</div>
+                  <div style={{ color: '#9ca3af', fontSize: '13.5px', lineHeight: '1.6', marginBottom: '16px' }}>
+                    免去应用商店繁琐查找。直接选择您的终端设备，点击下方按钮即可立即建立官方安全、原装的高速下载任务。
                   </div>
-                  <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                    <a href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" target="_blank" rel="noopener noreferrer" className="site-btn-primary" style={{ height: '36px', padding: '0 16px', fontSize: '13px', background: '#f39800', color: '#000', fontWeight: 'bold' }}>
-                      <WindowsOutlined style={{ marginRight: '4px' }} /> PC 电脑端下载
+                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                    <a href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" target="_blank" rel="noopener noreferrer" className="site-btn-primary" style={{ height: '38px', padding: '0 18px', fontSize: '13px', background: '#f39800', color: '#000', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
+                      <WindowsOutlined style={{ marginRight: '6px' }} /> PC 电脑端下载
                     </a>
-                    <a href="#download-tabs" className="site-btn-outline" style={{ height: '36px', padding: '0 16px', fontSize: '13px', border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}>
-                      手机端下载 <ArrowRightOutlined />
+                    <a href="#download-tabs" className="site-btn-outline" style={{ height: '38px', padding: '0 18px', fontSize: '13px', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
+                      移动手机端下载 <ArrowRightOutlined style={{ marginLeft: '6px' }} />
                     </a>
                   </div>
                 </div>
@@ -538,8 +517,8 @@ export default function AppDown() {
 
             {/* 手机端 Tab 内容 */}
             {activeTab === 'mobile' && (
-              <Row gutter={[40, 40]} align="middle">
-                <Col xs={24} md={12}>
+              <Row gutter={[40, 40]} align="middle" justify="center">
+                <Col xs={24} md={16}>
                   <div style={{ padding: '8px' }}>
                     <div style={{ fontSize: '18px', fontWeight: '700', color: '#111827', marginBottom: '16px' }}>德生移动交易 APP 支持</div>
                     <p style={{ fontSize: '14px', color: '#4b5563', lineHeight: '1.6', marginBottom: '24px' }}>
@@ -563,21 +542,6 @@ export default function AppDown() {
                         <Button type="primary" icon={<DownloadOutlined />} href={downloadNodes.android[0].url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>本地下载</Button>
                       </div>
                     </div>
-                  </div>
-                </Col>
-
-                <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ background: '#F8FAFC', border: '1px solid #e2e8f0', padding: '24px', borderRadius: '12px', textAlign: 'center', width: '100%', maxWidth: '320px' }}>
-                    <div style={{ background: '#ffffff', padding: '12px', borderRadius: '8px', display: 'inline-block', boxShadow: '0 8px 24px rgba(0,0,0,0.05)', marginBottom: '12px' }}>
-                      {/* 二维码扫描占位 */}
-                      <div style={{ width: '150px', height: '150px', border: '1px dashed #f39800', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                        <ScanOutlined style={{ fontSize: '40px', color: '#f39800' }} />
-                        <span style={{ fontSize: '12px', color: '#333', fontWeight: 'bold', marginTop: '8px' }}>扫码一键安装</span>
-                        <div style={{ position: 'absolute', bottom: 10, left: 10, right: 10, height: '1px', background: 'rgba(243,152,0,0.4)' }} />
-                      </div>
-                    </div>
-                    <div style={{ fontWeight: 'bold', color: '#111827', fontSize: '15px', marginBottom: '4px' }}>免应用商店安装扫码</div>
-                    <div style={{ fontSize: '12px', color: '#6b7280' }}>请使用手机系统自带摄像头或手机浏览器扫描，直达高速高防服务器</div>
                   </div>
                 </Col>
               </Row>
@@ -643,7 +607,7 @@ export default function AppDown() {
                   <div style={{ textAlign: 'left', background: '#F8FAFC', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
                     <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第一步：下载对应客户端并安装</div>
                     <div style={{ color: '#4b5563', fontSize: '13px', lineHeight: '1.6' }}>
-                      根据您的常用设备（电脑或手机），在上方选择对应的专属下载链接或扫描二维码。下载完成后，点击运行，并根据屏幕弹出的安装向导，一路点击“下一步”并在 15 秒内极速完成程序配置。
+                      根据您的常用设备（电脑或手机），在上方选择对应的专属下载链接进行下载。下载完成后，点击运行，并根据屏幕弹出的安装向导，一路点击“下一步”并在 15 秒内极速完成程序配置。
                     </div>
                   </div>
                 ),

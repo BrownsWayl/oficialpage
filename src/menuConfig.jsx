@@ -1,4 +1,5 @@
 import { Card, Row, Col, Dropdown } from 'antd';
+import { Link } from 'react-router-dom';
 import './menuConfig.css';
 import {
   LaptopOutlined, LineChartOutlined, TabletOutlined,
@@ -29,11 +30,11 @@ const exploreOverlay = (
 );
 
 // =================== 官网前台导航菜单配置 ===================
-export const getMenuItems = (isMobile) => [
-  { key: 'home', label: <span className="menu-label-text">首页</span> },
-  { key: 'about', label: <span className="menu-label-text">关于</span> },
-  { key: 'appdown', label: <span className="menu-label-text">电子交易平台</span> },
-  { key: 'contact', label: <span className="menu-label-text">联系我们</span> },
+export const getMenuItems = (isMobile, onLinkClick) => [
+  { key: 'home', label: <Link to="/" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">首页</span></Link> },
+  { key: 'about', label: <Link to="/about" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">关于</span></Link> },
+  { key: 'appdown', label: <Link to="/appdown" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">电子交易平台</span></Link> },
+  { key: 'contact', label: <Link to="/contact" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">联系我们</span></Link> },
 ];
 
 // =================== 🚀 扁平化重新设计的后台管理菜单（全外层平铺） ===================

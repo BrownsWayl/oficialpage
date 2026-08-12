@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Row, Col, Button, Tag, Table } from 'antd';
 import {
   SafetyCertificateOutlined,
@@ -23,6 +23,37 @@ import {
 import './styles/sitePages.css';
 
 export default function HomeContent({ isMobile }) {
+  // 动态市场报价状态 (初始化为 desonmetals.net 官方当前的真实大盘金银现货价格，黄金对齐至 4408)
+  const [prices, setPrices] = useState({
+    goldBid: 4408.21,
+    goldAsk: 4408.51,
+    silverBid: 65.857,
+    silverAsk: 65.887,
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPrices(prev => {
+        const goldDiff = (Math.random() - 0.5) * 0.4; // +/- 20美分波动
+        const newGoldBid = +(prev.goldBid + goldDiff).toFixed(2);
+        const newGoldAsk = +(newGoldBid + 0.30).toFixed(2); // 维持 0.30 点差
+
+        const silverDiff = (Math.random() - 0.5) * 0.04; // +/- 2美分波动
+        const newSilverBid = +(prev.silverBid + silverDiff).toFixed(3);
+        const newSilverAsk = +(newSilverBid + 0.030).toFixed(3); // 维持 0.030 点差
+
+        return {
+          goldBid: newGoldBid,
+          goldAsk: newGoldAsk,
+          silverBid: newSilverBid,
+          silverAsk: newSilverAsk,
+        };
+      });
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // 1. 公司四大核心优势 (对应 3-1.png 到 3-4.png 完整的水平/垂直大图)
   const advantages = [
     {
@@ -63,46 +94,6 @@ export default function HomeContent({ isMobile }) {
     },
   ];
 
-  // 2. 仿金荣中国点差账户对比
-  const accountTiers = [
-    {
-      name: '新客专享体验账户',
-      spread: '$16',
-      badge: '首选推荐',
-      desc: '极低投资门槛，免费享有大额交易赠金及新手模拟实操全套资料。',
-      deposit: '$100',
-      bonus: '最高赠 $30,000 体验金',
-      features: ['伦敦金点差：$16/手起', '伦敦银点差：$0.03/手起', '交易手数：0.01手起投', '免收一切交易手续费'],
-      btnText: '立即注册拿赠金',
-      link: '/register',
-      highlight: false,
-    },
-    {
-      name: 'VIP尊贵黄金账户',
-      spread: '$0',
-      badge: '超低成本 · 皇室专享',
-      desc: '点差直降为 0 起，享受大额月度交易返利，全方位减少大资金交易阻力。',
-      deposit: '$10,000',
-      bonus: '尊享 1对1 专家投顾 + 每月返利',
-      features: ['伦敦金点差：$0/手起 (返还后)', '伦敦银点差：$0/手起 (返还后)', '点差返利高达 $9/手', '尊享VIP快速专属出金通道'],
-      btnText: '开立尊贵VIP账户',
-      link: '/register',
-      highlight: true,
-    },
-    {
-      name: '专业机构账户',
-      spread: '$10',
-      badge: '专属服务器通道',
-      desc: '专为专业量化交易、高频及机构投资者定制，配备超高速API直连。',
-      deposit: '$50,000',
-      bonus: '定制高频 API 通道 · 极速流动性',
-      features: ['伦敦金点差：$10/手固定', '伦敦银点差：$0.02/手固定', '高频量化订单零阻塞', '支持无限额高倍高频成交'],
-      btnText: '联系机构服务开户',
-      link: '/contact',
-      highlight: false,
-    },
-  ];
-
   // 3. 仿金荣中国开户三步法
   const steps = [
     {
@@ -136,8 +127,8 @@ export default function HomeContent({ isMobile }) {
   ];
 
   const marketData = [
-    { key: '1', name: '伦敦金', symbol: 'XAUUSD', bid: '2354.32', ask: '2354.82', spread: '$0起 / 免佣金', leverage: '1:100 - 1:500', advantage: '波动活跃 · 投资避险神品' },
-    { key: '2', name: '伦敦银', symbol: 'XAGUSD', bid: '29.35', ask: '29.38', spread: '$0起 / 免佣金', leverage: '1:100 - 1:200', advantage: '双向获利 · 小资金撬动大盈利' },
+    { key: '1', name: '伦敦金', symbol: 'XAUUSD', bid: prices.goldBid.toFixed(2), ask: prices.goldAsk.toFixed(2), spread: '$0.30 / 免佣金', leverage: '1:100 - 1:500', advantage: '波动活跃 · 投资避险神品' },
+    { key: '2', name: '伦敦银', symbol: 'XAGUSD', bid: prices.silverBid.toFixed(3), ask: prices.silverAsk.toFixed(3), spread: '$0.030 / 免佣金', leverage: '1:100 - 1:200', advantage: '双向获利 · 小资金撬动大盈利' },
   ];
 
   return (
@@ -520,105 +511,6 @@ export default function HomeContent({ isMobile }) {
                 </p>
               </div>
             </Col>
-          </Row>
-        </div>
-      </section>
-
-      {/* =================【6. 点差与账户类型对比 (仿金荣中国点差对比)】================= */}
-      <section className="site-section" style={{ background: '#F5F7FA', padding: isMobile ? '48px 16px' : '72px 20px', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb' }}>
-        <div className="site-section-inner">
-          <FadeInSection>
-            <h2 className="site-section-title" style={{ color: '#090e17' }}>
-              为您度身定制的低成本交易方案
-            </h2>
-            <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 48px' }}>
-              省在起跑线上，就是赢在终点。拒绝高额繁复的经纪服务费，多款账户助力利润无损兑现。
-            </p>
-          </FadeInSection>
-
-          {/* 三大账户对比卡片 */}
-          <Row gutter={[24, 24]} align="stretch">
-            {accountTiers.map((tier) => (
-              <Col xs={24} md={8} key={tier.name}>
-                <FadeInSection style={{ height: '100%' }}>
-                  <div
-                    style={{
-                      border: tier.highlight ? '2px solid #f39800' : '1px solid #e5e7eb',
-                      borderRadius: '20px',
-                      padding: '36px 24px',
-                      background: tier.highlight ? 'linear-gradient(135deg, #090e17 0%, #030712 100%)' : '#ffffff',
-                      color: tier.highlight ? '#ffffff' : '#333333',
-                      position: 'relative',
-                      boxShadow: tier.highlight ? '0 12px 30px rgba(243, 152, 0, 0.15)' : '0 4px 15px rgba(0,0,0,0.02)',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      transform: tier.highlight && !isMobile ? 'scale(1.02)' : 'none',
-                    }}
-                  >
-                    {/* Badge 标签 */}
-                    <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
-                      <Tag color={tier.highlight ? '#f39800' : 'rgba(0,0,0,0.05)'} style={{ color: tier.highlight ? '#000000' : '#4b5563', border: 'none', fontWeight: 'bold' }}>
-                        {tier.badge}
-                      </Tag>
-                    </div>
-
-                    <div style={{ flex: '1 0 auto' }}>
-                      <h3 style={{ fontSize: '18px', fontWeight: 'bold', color: tier.highlight ? '#ffffff' : '#090e17', marginBottom: '8px' }}>{tier.name}</h3>
-                      <p style={{ fontSize: '12px', color: tier.highlight ? '#9ca3af' : '#6b7280', marginBottom: '24px', minHeight: '36px' }}>{tier.desc}</p>
-
-                      {/* 核心卖点价格 */}
-                      <div style={{ display: 'flex', alignItems: 'baseline', marginBottom: '16px', borderBottom: '1px solid ' + (tier.highlight ? 'rgba(255,255,255,0.06)' : '#f0f0f0'), paddingBottom: '24px' }}>
-                        <span style={{ fontSize: '40px', fontWeight: '800', color: '#f39800', lineHeight: '1' }}>{tier.spread}</span>
-                        <span style={{ fontSize: '13px', color: tier.highlight ? '#9ca3af' : '#6b7280', marginLeft: '6px' }}>手起净点差</span>
-                      </div>
-
-                      {/* 关键参数 */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '13px' }}>
-                        <span style={{ color: tier.highlight ? '#9ca3af' : '#6b7280' }}>起步起注资金：</span>
-                        <strong style={{ color: tier.highlight ? '#ffffff' : '#090e17' }}>{tier.deposit}</strong>
-                      </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', fontSize: '13px' }}>
-                        <span style={{ color: tier.highlight ? '#9ca3af' : '#6b7280' }}>专属开户红利：</span>
-                        <strong style={{ color: '#f39800' }}>{tier.bonus}</strong>
-                      </div>
-
-                      {/* 核心特权细则 */}
-                      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px' }}>
-                        {tier.features.map((feat, idx) => (
-                          <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', fontSize: '13px', color: tier.highlight ? '#d1d5db' : '#4b5563' }}>
-                            <CheckOutlined style={{ color: '#f39800', fontWeight: 'bold' }} />
-                            <span>{feat}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* 开户按键 */}
-                    <div style={{ flexShrink: 0 }}>
-                      <Link to={tier.link}>
-                        <Button
-                          type="primary"
-                          block
-                          style={{
-                            height: '46px',
-                            borderRadius: '23px',
-                            background: tier.highlight ? '#f39800' : '#090e17',
-                            borderColor: tier.highlight ? '#f39800' : '#090e17',
-                            color: tier.highlight ? '#000000' : '#ffffff',
-                            fontWeight: 'bold',
-                            fontSize: '14px',
-                            boxShadow: tier.highlight ? '0 4px 12px rgba(243, 152, 0, 0.3)' : 'none',
-                          }}
-                        >
-                          {tier.btnText}
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </FadeInSection>
-              </Col>
-            ))}
           </Row>
         </div>
       </section>

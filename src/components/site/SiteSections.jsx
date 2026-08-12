@@ -83,13 +83,13 @@ export function AnimatedCounter({ end, suffix = '', prefix = '', duration = 2000
 
 export function MarketTicker() {
   const items = [
-    { symbol: 'XAUUSD', price: '2654.32', change: '+12.45', up: true },
-    { symbol: 'XAGUSD', price: '31.28', change: '-0.18', up: false },
+    { symbol: 'XAUUSD', price: '4408.21', change: '+2.39%', up: true },
+    { symbol: 'XAGUSD', price: '65.85', change: '+5.15%', up: true },
     { symbol: 'EURUSD', price: '1.0842', change: '+0.0023', up: true },
     { symbol: 'GBPUSD', price: '1.2631', change: '-0.0015', up: false },
     { symbol: 'USDJPY', price: '149.82', change: '+0.35', up: true },
-    { symbol: 'XAUUSD', price: '2654.32', change: '+12.45', up: true },
-    { symbol: 'XAGUSD', price: '31.28', change: '-0.18', up: false },
+    { symbol: 'XAUUSD', price: '4408.21', change: '+2.39%', up: true },
+    { symbol: 'XAGUSD', price: '65.85', change: '+5.15%', up: true },
     { symbol: 'EURUSD', price: '1.0842', change: '+0.0023', up: true },
   ];
 
@@ -158,48 +158,20 @@ export function PhoneMockup({ price = '2654.32', isUp = true }) {
 }
 
 export function DesktopMockup() {
-  const candles = [
-    { left: '8%', height: 40, color: '#22c55e', delay: 0 },
-    { left: '16%', height: 55, color: '#ef4444', delay: 0.2 },
-    { left: '24%', height: 35, color: '#22c55e', delay: 0.4 },
-    { left: '32%', height: 60, color: '#22c55e', delay: 0.6 },
-    { left: '40%', height: 45, color: '#ef4444', delay: 0.8 },
-    { left: '48%', height: 70, color: '#22c55e', delay: 1 },
-    { left: '56%', height: 50, color: '#ef4444', delay: 1.2 },
-    { left: '64%', height: 65, color: '#22c55e', delay: 1.4 },
-    { left: '72%', height: 42, color: '#ef4444', delay: 1.6 },
-    { left: '80%', height: 58, color: '#22c55e', delay: 1.8 },
-  ];
-
   return (
-    <div className="site-desktop-mock">
-      <div className="site-desktop-titlebar">
-        <span className="site-desktop-dot" style={{ background: '#ef4444' }} />
-        <span className="site-desktop-dot" style={{ background: '#f59e0b' }} />
-        <span className="site-desktop-dot" style={{ background: '#22c55e' }} />
-        <span style={{ marginLeft: 8, fontSize: 12, color: '#9ca3af' }}>MTL 交易系统</span>
+    <div className="site-desktop-mock" style={{ position: 'relative', width: '100%', maxWidth: '500px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.35)', background: '#111827' }}>
+      <div className="site-desktop-titlebar" style={{ height: '36px', background: '#1f2937', display: 'flex', alignItems: 'center', padding: '0 12px', gap: '6px', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+        <span className="site-desktop-dot" style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }} />
+        <span className="site-desktop-dot" style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b' }} />
+        <span className="site-desktop-dot" style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#22c55e' }} />
+        <span style={{ marginLeft: 8, fontSize: 12, color: '#9ca3af', fontWeight: '500' }}>MetaTrader 5 (MT5) 旗舰交易终端</span>
       </div>
-      <div className="site-desktop-body">
-        <div className="site-desktop-sidebar">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} style={{ animationDelay: `${i * 0.15}s` }} />
-          ))}
-        </div>
-        <div className="site-desktop-chart">
-          <ChartAnimation />
-          {candles.map((c, i) => (
-            <div
-              key={i}
-              className="site-candle"
-              style={{
-                left: c.left,
-                height: c.height,
-                background: c.color,
-                animationDelay: `${c.delay}s`,
-              }}
-            />
-          ))}
-        </div>
+      <div style={{ background: '#111827', width: '100%', height: 'auto', display: 'block', overflow: 'hidden' }}>
+        <img 
+          src="/10.jpg" 
+          alt="MetaTrader 5 (MT5)" 
+          style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} 
+        />
       </div>
     </div>
   );

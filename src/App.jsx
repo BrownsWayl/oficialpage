@@ -105,7 +105,7 @@ export default function App() {
               mode="inline"
               theme="dark"
               defaultSelectedKeys={['home']}
-              items={getMenuItems(isMobile)}
+              items={getMenuItems(isMobile, () => setDrawerVisible(false))}
               style={{ background: 'transparent', borderRight: 0 }}
               className="mobile-dark-menu"
             />

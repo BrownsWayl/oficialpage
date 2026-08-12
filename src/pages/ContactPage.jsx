@@ -7,6 +7,7 @@ import {
   ClockCircleOutlined,
   CopyOutlined,
   SafetyCertificateOutlined,
+  TeamOutlined,
 } from '@ant-design/icons';
 import { FadeInSection, PageDisclaimer } from '../components/site/SiteSections';
 import '../styles/sitePages.css';
@@ -102,7 +103,7 @@ export default function ContactPage() {
       <section className="site-section" style={{ background: '#F5F7FA', padding: '64px 20px 32px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Row gutter={[24, 24]}>
-            {/* 卡片 1: 在线客服 */}
+            {/* 卡片 1: 代理商合作 */}
             <Col xs={24} sm={12} lg={6}>
               <FadeInSection>
                 <Card
@@ -119,12 +120,12 @@ export default function ContactPage() {
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
                       <div style={{ background: 'rgba(243, 152, 0, 0.1)', padding: '10px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <CustomerServiceOutlined style={{ fontSize: '22px', color: '#f39800' }} />
+                        <TeamOutlined style={{ fontSize: '22px', color: '#f39800' }} />
                       </div>
-                      <span style={{ fontSize: '17px', fontWeight: '700', color: '#111827' }}>24/7 在线客服</span>
+                      <span style={{ fontSize: '17px', fontWeight: '700', color: '#111827' }}>全球代理合作</span>
                     </div>
                     <p style={{ fontSize: '13.5px', color: '#4b5563', margin: 0, lineHeight: '1.6' }}>
-                      极速解答您的账户开立、资金存取、以及交易执行中的任何紧急疑问。
+                      德生金業特设丰厚合伙人机制，提供业内极具竞争力的返佣与高速风控管理后台。
                     </p>
                   </div>
                   <Button
@@ -132,15 +133,23 @@ export default function ContactPage() {
                     shape="round"
                     size="middle"
                     style={{
-                      background: '#f39800',
-                      borderColor: '#f39800',
+                      background: '#090e17',
+                      borderColor: '#090e17',
                       fontWeight: '600',
                       width: '100%',
-                      marginTop: '12px'
+                      marginTop: '12px',
+                      color: '#ffffff'
                     }}
-                    onClick={() => message.info('正在为您连接德生专属 24/7 在线客服系统...')}
+                    onClick={() => {
+                      form.setFieldsValue({
+                        subject: '全球 IB 代理合作咨询',
+                        message: '你好，我对德生贵金属的全球 IB 代理合作计划非常感兴趣，希望能了解具体的返佣细则、后台配置支持以及流动性方案。请安排专门的渠道经理与我联系。'
+                      });
+                      message.success('已自动为您在下方填写代理合作留言模板，请完善姓名与邮箱后提交！');
+                      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
-                    开始对话
+                    立即咨询合作
                   </Button>
                 </Card>
               </FadeInSection>
@@ -300,6 +309,7 @@ export default function ContactPage() {
                   </p>
 
                   <Form
+                    id="contact-form"
                     form={form}
                     layout="vertical"
                     onFinish={onFinish}
