@@ -31,24 +31,24 @@ export default function AppDown() {
     minHeight: '100%',
   };
 
-  // 1. 软件下载节点信息
+  // 1. 軟件下載節點信息 (已完全同步至 desonmetals.net 官方最新下載節點)
   const downloadNodes = {
     pc: [
-      { name: '官方安全下载节点 A (高配物理节点)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe' },
-      { name: '高速备份下载节点 B (多线CDN节点)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'https://www.metatrader5.com/zh/download' },
+      { name: '官方安全下載節點 A (高配物理節點)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'https://download.terminal.free/cdn/web/deson.precious.metals/mt5/desonpreciousmetals5setup.exe' },
+      { name: '高速備份下載節點 B (多線CDN節點)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'https://download.terminal.free/cdn/web/deson.precious.metals/mt5/desonpreciousmetals5setup.exe' },
     ],
     ios: [
-      { name: 'App Store 官方下载', version: 'v4.9.53', size: '24.1 MB', type: 'iOS', url: 'https://download.mql5.com/cdn/mobile/mt5/ios?utm_source=www.metatrader5.com' },
+      { name: 'App Store 官方下載', version: 'v4.9.53', size: '24.1 MB', type: 'iOS', url: 'https://download.terminal.free/cdn/mobile/mt5/ios?server=DesonPreciousMetals-Trade' },
     ],
     android: [
-      { name: '官方 APK 安装包', version: 'v4.9.53', size: '32.8 MB', type: 'Android APK', url: 'https://download.mql5.com/cdn/mobile/mt5/android' },
-      { name: 'Google Play 官方下载', version: 'v4.9.53', size: '32.8 MB', type: 'Android', url: 'https://download.mql5.com/cdn/mobile/mt5/android?utm_source=www.metatrader5.com' },
+      { name: '官方 APK 安裝包', version: 'v4.9.53', size: '32.8 MB', type: 'Android APK', url: 'https://www.desonmetals.net/download/metatrader5.apk' },
+      { name: 'Google Play 官方下載', version: 'v4.9.53', size: '32.8 MB', type: 'Android', url: 'https://www.desonmetals.net/download/metatrader5.apk' },
     ]
   };
 
   return (
     <div className="site-page" style={containerStyle}>
-      {/* =================【1. 尊贵深邃暗色 Hero Section】================= */}
+      {/* =================【1. 尊貴深邃暗色 Hero Section】================= */}
       <section
         className="site-hero"
         style={{
@@ -78,7 +78,7 @@ export default function AppDown() {
                   marginBottom: '16px',
                 }}
               >
-                德生贵金属官方多元化交易终端
+                德生貴金屬官方多元化交易終端
               </div>
               <h1
                 style={{
@@ -89,8 +89,8 @@ export default function AppDown() {
                   margin: '0 0 20px',
                 }}
               >
-                德生贵金属 MT5 <br />
-                <span style={{ color: '#f39800' }}>随时随地，极速交易</span>
+                德生貴金屬 MT5 <br />
+                <span style={{ color: '#f39800' }}>隨時隨地，極速交易</span>
               </h1>
               <p
                 style={{
@@ -101,10 +101,10 @@ export default function AppDown() {
                   margin: '0 0 32px',
                 }}
               >
-                依托全球顶级金融技术和极速订单清算引擎，全新上线 MetaTrader 5 (MT5) 客户端。为您提供秒级行情、大师级图表指标及100%银行隔离信托保障。让您不论在PC大屏还是掌上移动端，均能掌握全球交易先机。
+                依托全球頂級金融技術和極速訂單清算引擎，全新上線 MetaTrader 5 (MT5) 客戶端。為您提供秒級行情、大師級圖表指標及100%銀行隔離信托保障。讓您不論在PC大屏還是掌上移動端，均能掌握全球交易先機。
               </p>
 
-              {/* 官方极速下载入口 */}
+              {/* 官方極速下載入口 */}
               <div
                 style={{
                   display: 'flex',
@@ -120,16 +120,16 @@ export default function AppDown() {
                 }}
               >
                 <div style={{ flex: 1, minWidth: '240px' }}>
-                  <div style={{ color: '#ffffff', fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>官方多平台客户端极速下载</div>
+                  <div style={{ color: '#ffffff', fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>官方多平台客戶端極速下載</div>
                   <div style={{ color: '#9ca3af', fontSize: '13.5px', lineHeight: '1.6', marginBottom: '16px' }}>
-                    免去应用商店繁琐查找。直接选择您的终端设备，点击下方按钮即可立即建立官方安全、原装的高速下载任务。
+                    免去應用商店繁瑣查找。直接選擇您的終端設備，點擊下方按鈕即可立即建立官方安全、原裝的高速下載任務。
                   </div>
                   <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                    <a href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" target="_blank" rel="noopener noreferrer" className="site-btn-primary" style={{ height: '38px', padding: '0 18px', fontSize: '13px', background: '#f39800', color: '#000', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
-                      <WindowsOutlined style={{ marginRight: '6px' }} /> PC 电脑端下载
+                    <a href="https://download.terminal.free/cdn/web/deson.precious.metals/mt5/desonpreciousmetals5setup.exe" target="_blank" rel="noopener noreferrer" className="site-btn-primary" style={{ height: '38px', padding: '0 18px', fontSize: '13px', background: '#f39800', color: '#000', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
+                      <WindowsOutlined style={{ marginRight: '6px' }} /> PC 電腦端下載
                     </a>
                     <a href="#download-tabs" className="site-btn-outline" style={{ height: '38px', padding: '0 18px', fontSize: '13px', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
-                      移动手机端下载 <ArrowRightOutlined style={{ marginLeft: '6px' }} />
+                      移動手機端下載 <ArrowRightOutlined style={{ marginLeft: '6px' }} />
                     </a>
                   </div>
                 </div>
@@ -138,10 +138,10 @@ export default function AppDown() {
 
             <Col xs={24} lg={11} style={{ display: 'flex', justifyContent: 'center' }}>
               <FadeInSection>
-                {/* 豪华 Mockup 设备展示 */}
+                {/* 豪華 Mockup 設備展示 */}
                 <div style={{ position: 'relative' }}>
                   <PhoneMockup price="2658.45" isUp={true} />
-                  {/* 漂浮的荣誉或速度标签 */}
+                  {/* 漂浮的榮譽或速度標簽 */}
                   <div
                     style={{
                       position: 'absolute',
@@ -159,7 +159,7 @@ export default function AppDown() {
                       border: '1px solid rgba(255, 255, 255, 0.2)',
                     }}
                   >
-                    🚀 毫秒级订单秒成交
+                    🚀 毫秒級訂單秒成交
                   </div>
                   <div
                     style={{
@@ -178,7 +178,7 @@ export default function AppDown() {
                       border: '1px solid rgba(243, 152, 0, 0.3)',
                     }}
                   >
-                    🔒 100% 资金独立隔离托管
+                    🔒 100% 資金獨立隔離托管
                   </div>
                 </div>
               </FadeInSection>
@@ -187,21 +187,21 @@ export default function AppDown() {
         </div>
       </section>
 
-      {/* =================【2. 仿金荣中国：4大核心特性（配图 9, 10, 11, 7）】================= */}
+      {/* =================【2. 仿金榮中國：4大核心特性（配圖 9, 10, 11, 7）】================= */}
       <section style={{ padding: '80px 20px', background: '#ffffff' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          {/* 栏目头部 */}
+          {/* 欄目頭部 */}
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '32px', fontWeight: '800', color: '#111827', margin: '0 0 12px', letterSpacing: '1px' }}>
-              重塑交易标准 · 掌握全球广度
+              重塑交易標准 · 掌握全球廣度
             </h2>
             <p style={{ fontSize: '16px', color: '#6b7280', margin: 0, maxWidth: '720px', margin: '0 auto', lineHeight: '1.6' }}>
-              德生官方将领先的电子撮合架构、严格的风险控制体系和极致的技术完美结合。以下四大模块充分展示了德生贵金属在移动端和桌面端的顶级专业配置。
+              德生官方將領先的電子撮合架構、嚴格的風險控制體系和極致的技術完美結合。以下四大模塊充分展示了德生貴金屬在移動端和桌面端的頂級專業配置。
             </p>
             <div style={{ width: '60px', height: '4px', background: '#f39800', margin: '16px auto 0', borderRadius: '2px' }} />
           </div>
 
-          {/* 特性 1: 随时随地，掌握极速行情 (使用 9.jpg) - 左右交替 */}
+          {/* 特性 1: 隨時隨地，掌握極速行情 (使用 9.jpg) - 左右交替 */}
           <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
             <Col xs={24} md={12}>
               <FadeInSection>
@@ -216,11 +216,11 @@ export default function AppDown() {
                 >
                   <img
                     src="/9.jpg"
-                    alt="德生贵金属移动APP"
+                    alt="德生貴金屬移動APP"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
                   />
-                  {/* 水印标识 */}
+                  {/* 水印標識 */}
                   <div
                     style={{
                       position: 'absolute',
@@ -245,22 +245,22 @@ export default function AppDown() {
                 <div style={{ paddingLeft: '12px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                     <div style={{ width: '4px', height: '18px', background: '#f39800', borderRadius: '2px' }} />
-                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>急速交易体验</span>
+                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>急速交易體驗</span>
                   </div>
                   <h3 style={{ fontSize: '26px', fontWeight: '700', color: '#111827', margin: '0 0 16px' }}>
-                    全新移动客户端：毫秒级一键秒极速下单
+                    全新移動客戶端：毫秒級一鍵秒極速下單
                   </h3>
                   <div style={{ fontSize: '15px', color: '#4b5563', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <p style={{ margin: 0 }}>
-                      依托顶级流动性中枢与强大的国际服务器网络，<strong>德生自研移动APP（支持iOS与Android）</strong> 实现了全天候毫秒级行情即时同步。
+                      依托頂級流動性中樞與強大的國際服務器網絡，<strong>德生自研移動APP（支持iOS與Android）</strong> 實現了全天候毫秒級行情即時同步。
                     </p>
                     <p style={{ margin: 0 }}>
-                      用户只需轻松一按，即可在剧烈波动的非农、央行利率决议等大行情下完成<strong>秒级开平仓，零延迟，无滑点风险</strong>。内置智能止损、追踪止损，无论您身处何地，均可实现专业高效的现货黄金、现货白银交易。
+                      用戶只需輕松一按，即可在劇烈波動的非農、央行利率決議等大行情下完成<strong>秒級開平倉，零延遲，無滑點風險</strong>。內置智能止損、追蹤止損，無論您身處何地，均可實現專業高效的現貨黃金、現貨白銀交易。
                     </p>
                     <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <li>⚡ 毫秒级订单极速执行，抢占行情价格最前沿</li>
-                      <li>📈 深度直连国际一线清算行，点差透明，交易成本极低</li>
-                      <li>🔔 智能离线价位报警，不遗漏任何重大突破机遇</li>
+                      <li>⚡ 毫秒級訂單極速執行，搶佔行情價格最前沿</li>
+                      <li>📈 深度直連國際一線清算行，點差透明，交易成本極低</li>
+                      <li>🔔 智能離線價位報警，不遺漏任何重大突破機遇</li>
                     </ul>
                   </div>
                 </div>
@@ -268,7 +268,7 @@ export default function AppDown() {
             </Col>
           </Row>
 
-          {/* 特性 2: 电脑端 MT5，专业指标全解析 (使用 10.jpg) - 左右交替 (文字在左，图片在右) */}
+          {/* 特性 2: 電腦端 MT5，專業指標全解析 (使用 10.jpg) - 左右交替 (文字在左，圖片在右) */}
           <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
             <Col xs={24} md={{ span: 12, order: 2 }}>
               <FadeInSection>
@@ -283,7 +283,7 @@ export default function AppDown() {
                 >
                   <img
                     src="/10.jpg"
-                    alt="德生电脑端MT5"
+                    alt="德生電腦端MT5"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
                   />
@@ -311,22 +311,22 @@ export default function AppDown() {
                 <div style={{ paddingRight: '12px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                     <div style={{ width: '4px', height: '18px', background: '#f39800', borderRadius: '2px' }} />
-                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>专业画线分析</span>
+                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>專業畫線分析</span>
                   </div>
                   <h3 style={{ fontSize: '26px', fontWeight: '700', color: '#111827', margin: '0 0 16px' }}>
-                    电脑端 MetaTrader 5：大师级专业技术透视
+                    電腦端 MetaTrader 5：大師級專業技術透視
                   </h3>
                   <div style={{ fontSize: '15px', color: '#4b5563', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <p style={{ margin: 0 }}>
-                      最受全球专业技术流派、机构投资者信赖的经典旗舰终端 —— <strong>德生电脑端 MT5 系统</strong> 经过全面的中文定制与底层速度加速优化。
+                      最受全球專業技術流派、機構投資者信賴的經典旗艦終端 —— <strong>德生電腦端 MT5 系統</strong> 經過全面的中文定制與底層速度加速優化。
                     </p>
                     <p style={{ margin: 0 }}>
-                      终端集成 <strong>30+ 种主流技术分析指标、24 种辅助趋势画线工具、以及多达 21 种 K 线时间分析周期</strong>。支持同屏多屏窗口任意排版、一键多单对锁、市场深度 (DOM) 以及专业的 EA (Expert Advisor) 自动化策略脚本测试，为您开启高维度分析视角。
+                      終端集成 <strong>30+ 種主流技術分析指標、24 種輔助趨勢畫線工具、以及多達 21 種 K 線時間分析周期</strong>。支持同屏多屏窗口任意排版、一鍵多單對鎖、市場深度 (DOM) 以及專業的 EA (Expert Advisor) 自動化策略腳本測試，為您開啟高維度分析視角。
                     </p>
                     <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <li>💻 完美支持 Windows 7/10/11 多分屏与高分辨率画线分析</li>
-                      <li>🎨 高度自由定制指标，极速载入历史分钟级数据</li>
-                      <li>⚙️ 独家支持智能自动化量化交易与量化策略精准历史回测</li>
+                      <li>💻 完美支持 Windows 7/10/11 多分屏與高分辨率畫線分析</li>
+                      <li>🎨 高度自由定制指標，極速載入歷史分鐘級數據</li>
+                      <li>⚙️ 獨家支持智能自動化量化交易與量化策略精准歷史回測</li>
                     </ul>
                   </div>
                 </div>
@@ -334,7 +334,7 @@ export default function AppDown() {
             </Col>
           </Row>
 
-          {/* 特性 3: 权威正规平台，安全放心交易 (使用 7.jpg) - 左右交替 (图片在左，文字在右) */}
+          {/* 特性 3: 權威正規平台，安全放心交易 (使用 7.jpg) - 左右交替 (圖片在左，文字在右) */}
           <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
             <Col xs={24} md={12}>
               <FadeInSection>
@@ -349,7 +349,7 @@ export default function AppDown() {
                 >
                   <img
                     src="/7.jpg"
-                    alt="德生合规资质与安全保障"
+                    alt="德生合規資質與安全保障"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
                   />
@@ -377,22 +377,22 @@ export default function AppDown() {
                 <div style={{ paddingLeft: '12px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                     <div style={{ width: '4px', height: '18px', background: '#f39800', borderRadius: '2px' }} />
-                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>合规资产保障</span>
+                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>合規資產保障</span>
                   </div>
                   <h3 style={{ fontSize: '26px', fontWeight: '700', color: '#111827', margin: '0 0 16px' }}>
-                    权威信誉合规：100% 客户资金独立托管
+                    權威信譽合規：100% 客戶資金獨立托管
                   </h3>
                   <div style={{ fontSize: '15px', color: '#4b5563', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <p style={{ margin: 0 }}>
-                      作为金融合规的坚定拥护者，<strong>德生金業</strong> 秉承严格的行业最高公约标准运作。我们最核心的生命线是保障每一位客户的资金存放安全。
+                      作為金融合規的堅定擁護者，<strong>德生金業</strong> 秉承嚴格的行業最高公約標准運作。我們最核心的生命線是保障每一位客戶的資金存放安全。
                     </p>
                     <p style={{ margin: 0 }}>
-                      平台所有客户资金均存放在<strong>独立的商业信托银行隔离托管账户中</strong>，托管率达到 100%。德生的公司运营资本和客户资产完全隔离，不受任何外部债务影响，提供绝对安全、公平和完备合规的良性投资。
+                      平台所有客戶資金均存放在<strong>獨立的商業信托銀行隔離托管賬戶中</strong>，托管率達到 100%。德生的公司運營資本和客戶資產完全隔離，不受任何外部債務影響，提供絕對安全、公平和完備合規的良性投資。
                     </p>
                     <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <li>🏦 大型信托托管银行清算隔离，资金只可划拨于对应投资者本人</li>
-                      <li>📜 持有海关A类贵金属进出口注册以及完备的香港实体场所</li>
-                      <li>🔍 定期接受多方权威机构独立的合规性年度财务审计</li>
+                      <li>🏦 大型信托托管銀行清算隔離，資金只可劃撥於對應投資者本人</li>
+                      <li>📜 持有海關A類貴金屬進出口註冊以及完備的香港實體場所</li>
+                      <li>🔍 定期接受多方權威機構獨立的合規性年度財務審計</li>
                     </ul>
                   </div>
                 </div>
@@ -400,7 +400,7 @@ export default function AppDown() {
             </Col>
           </Row>
 
-          {/* 特性 4: 7*24小时专属，管家式金融支持 (使用 11.jpg) - 左右交替 (文字在左，图片在右) */}
+          {/* 特性 4: 7*24小時專屬，管家式金融支持 (使用 11.jpg) - 左右交替 (文字在左，圖片在右) */}
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} md={{ span: 12, order: 2 }}>
               <FadeInSection>
@@ -443,22 +443,22 @@ export default function AppDown() {
                 <div style={{ paddingRight: '12px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                     <div style={{ width: '4px', height: '18px', background: '#f39800', borderRadius: '2px' }} />
-                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>顶级温情服务</span>
+                    <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>頂級溫情服務</span>
                   </div>
                   <h3 style={{ fontSize: '26px', fontWeight: '700', color: '#111827', margin: '0 0 16px' }}>
-                    管家式专属服务：7×24 小时一对一专业解答
+                    管家式專屬服務：7×24 小時一對一專業解答
                   </h3>
                   <div style={{ fontSize: '15px', color: '#4b5563', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <p style={{ margin: 0 }}>
-                      我们深知，金融市场瞬息万变，在任何时候获得无缝解答是至关重要的。因此，德生为您配备了<strong>全天候多语言高级实战客服专家</strong>。
+                      我們深知，金融市場瞬息萬變，在任何時候獲得無縫解答是至關重要的。因此，德生為您配備了<strong>全天候多語言高級實戰客服專家</strong>。
                     </p>
                     <p style={{ margin: 0 }}>
-                      无论您是对 MT5 的指标如何调出有疑问，还是面临深夜资金调度及出入金支持，抑或是需要进行大额量化 API 对接，均可以通过电话、邮件及极速在线客服获取<strong>即时、暖心的一对一专业解决方案</strong>。
+                      無論您是對 MT5 的指標如何調出有疑問，還是面臨深夜資金調度及出入金支持，抑或是需要進行大額量化 API 對接，均可以通過電話、郵件及極速在線客服獲取<strong>即時、暖心的一對一專業解決方案</strong>。
                     </p>
                     <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <li>💬 专属投资顾问 24 小时全天候多渠道随时响应</li>
-                      <li>🛠️ 提供详尽的 PC / 手机端安装包配置说明及新手辅导</li>
-                      <li>📈 实时解析关键经济指标释放事件，协助规避交易风险</li>
+                      <li>💬 專屬投資顧問 24 小時全天候多渠道隨時響應</li>
+                      <li>🛠️ 提供詳盡的 PC / 手機端安裝包配置說明及新手輔導</li>
+                      <li>📈 實時解析關鍵經濟指標釋放事件，協助規避交易風險</li>
                     </ul>
                   </div>
                 </div>
@@ -468,12 +468,12 @@ export default function AppDown() {
         </div>
       </section>
 
-      {/* =================【3. 分端下载专区与节点选择 (Tabs 切换)】================= */}
+      {/* =================【3. 分端下載專區與節點選擇 (Tabs 切換)】================= */}
       <section id="download-tabs" style={{ padding: '80px 20px', background: '#f0f3f6', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ fontSize: '28px', fontWeight: '800', color: '#111827', margin: '0 0 8px' }}>获取官方原装正品安装包</h2>
-            <p style={{ fontSize: '15px', color: '#4b5563', margin: 0 }}>为了保障您的交易密码及资金安全，请务必在下方德生官方节点下载正规程序</p>
+            <h2 style={{ fontSize: '28px', fontWeight: '800', color: '#111827', margin: '0 0 8px' }}>獲取官方原裝正品安裝包</h2>
+            <p style={{ fontSize: '15px', color: '#4b5563', margin: 0 }}>為了保障您的交易密碼及資金安全，請務必在下方德生官方節點下載正規程序</p>
           </div>
 
           <div
@@ -487,8 +487,8 @@ export default function AppDown() {
           >
             <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '32px' }}>
               {[
-                { key: 'mobile', label: '手机客户端 (iOS & Android)', icon: <AndroidOutlined /> },
-                { key: 'pc', label: '电脑客户端 (Windows 7/10/11)', icon: <WindowsOutlined /> },
+                { key: 'mobile', label: '手機客戶端 (iOS & Android)', icon: <AndroidOutlined /> },
+                { key: 'pc', label: '電腦客戶端 (Windows 7/10/11)', icon: <WindowsOutlined /> },
               ].map((tab) => (
                 <button
                   key={tab.key}
@@ -515,31 +515,97 @@ export default function AppDown() {
               ))}
             </div>
 
-            {/* 手机端 Tab 内容 */}
+            {/* 手機端 Tab 內容 */}
             {activeTab === 'mobile' && (
               <Row gutter={[40, 40]} align="middle" justify="center">
                 <Col xs={24} md={16}>
                   <div style={{ padding: '8px' }}>
-                    <div style={{ fontSize: '18px', fontWeight: '700', color: '#111827', marginBottom: '16px' }}>德生移动交易 APP 支持</div>
+                    <div style={{ fontSize: '18px', fontWeight: '700', color: '#111827', marginBottom: '16px' }}>德生移動交易 APP 支持</div>
                     <p style={{ fontSize: '14px', color: '#4b5563', lineHeight: '1.6', marginBottom: '24px' }}>
-                      支持 iPhone iOS 12+ 及各大主流安卓手机。集行情、交易、止损于一身。移动端能完全自动同步 PC 账户的一切持仓和挂单信息，是您掌上的黄金交易枢纽。
+                      支持 iPhone iOS 12+ 及各大主流安卓手機。集行情、交易、止損於一身。移動端能完全自動同步 PC 賬戶的一切持倉和掛單信息，是您掌上的黃金交易樞紐。
                     </p>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                      <div style={{ display: 'flex', justify: 'space-between', padding: '12px 16px', background: '#F8FAFC', borderRadius: '8px', borderLeft: '3px solid #f39800' }}>
+                      <div style={{ display: 'flex', justify: 'space-between', alignItems: 'center', padding: '12px 16px', background: '#F8FAFC', borderRadius: '8px', borderLeft: '3px solid #f39800' }}>
                         <div>
-                          <div style={{ fontWeight: 'bold', color: '#111827', fontSize: '14px' }}>iOS 苹果直达包</div>
+                          <div style={{ fontWeight: 'bold', color: '#111827', fontSize: '14px' }}>iOS 蘋果直達包</div>
                           <div style={{ fontSize: '12px', color: '#6b7280' }}>版本: {downloadNodes.ios[0].version} | 大小: {downloadNodes.ios[0].size}</div>
                         </div>
-                        <Button type="primary" icon={<DownloadOutlined />} href={downloadNodes.ios[0].url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>官方下载</Button>
+                        <div style={{ position: 'relative' }} className="qr-hover-container">
+                          <Button type="primary" icon={<DownloadOutlined />} href={downloadNodes.ios[0].url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>官方下載</Button>
+                          
+                          {/* QR Code Popover */}
+                          <div className="qr-popover" style={{
+                            position: 'absolute',
+                            bottom: '100%',
+                            right: '0',
+                            transform: 'translateY(-12px)',
+                            background: '#ffffff',
+                            border: '1px solid #cbd5e1',
+                            borderRadius: '12px',
+                            padding: '10px',
+                            boxShadow: '0 12px 30px rgba(0,0,0,0.15)',
+                            display: 'none',
+                            zIndex: 100,
+                            width: '140px',
+                            height: '140px',
+                            boxSizing: 'border-box'
+                          }}>
+                            <img src="https://desonmetals.net/images/IOS.png" alt="iOS QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                            {/* Popover Arrow */}
+                            <div style={{
+                              position: 'absolute',
+                              top: '100%',
+                              right: '30px',
+                              width: '0',
+                              height: '0',
+                              borderLeft: '6px solid transparent',
+                              borderRight: '6px solid transparent',
+                              borderTop: '6px solid #ffffff'
+                            }} />
+                          </div>
+                        </div>
                       </div>
 
-                      <div style={{ display: 'flex', justify: 'space-between', padding: '12px 16px', background: '#F8FAFC', borderRadius: '8px', borderLeft: '3px solid #f39800' }}>
+                      <div style={{ display: 'flex', justify: 'space-between', alignItems: 'center', padding: '12px 16px', background: '#F8FAFC', borderRadius: '8px', borderLeft: '3px solid #f39800' }}>
                         <div>
-                          <div style={{ fontWeight: 'bold', color: '#111827', fontSize: '14px' }}>Android 官方 APK 安装包 (强烈推荐)</div>
+                          <div style={{ fontWeight: 'bold', color: '#111827', fontSize: '14px' }}>Android 官方 APK 安裝包 (強烈推薦)</div>
                           <div style={{ fontSize: '12px', color: '#6b7280' }}>版本: {downloadNodes.android[0].version} | 大小: {downloadNodes.android[0].size}</div>
                         </div>
-                        <Button type="primary" icon={<DownloadOutlined />} href={downloadNodes.android[0].url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>本地下载</Button>
+                        <div style={{ position: 'relative' }} className="qr-hover-container">
+                          <Button type="primary" icon={<DownloadOutlined />} href={downloadNodes.android[0].url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>本地下載</Button>
+                          
+                          {/* QR Code Popover */}
+                          <div className="qr-popover" style={{
+                            position: 'absolute',
+                            bottom: '100%',
+                            right: '0',
+                            transform: 'translateY(-12px)',
+                            background: '#ffffff',
+                            border: '1px solid #cbd5e1',
+                            borderRadius: '12px',
+                            padding: '10px',
+                            boxShadow: '0 12px 30px rgba(0,0,0,0.15)',
+                            display: 'none',
+                            zIndex: 100,
+                            width: '140px',
+                            height: '140px',
+                            boxSizing: 'border-box'
+                          }}>
+                            <img src="https://desonmetals.net/images/Android.png" alt="Android QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                            {/* Popover Arrow */}
+                            <div style={{
+                              position: 'absolute',
+                              top: '100%',
+                              right: '30px',
+                              width: '0',
+                              height: '0',
+                              borderLeft: '6px solid transparent',
+                              borderRight: '6px solid transparent',
+                              borderTop: '6px solid #ffffff'
+                            }} />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -547,14 +613,14 @@ export default function AppDown() {
               </Row>
             )}
 
-            {/* 电脑端 Tab 内容 */}
+            {/* 電腦端 Tab 內容 */}
             {activeTab === 'pc' && (
               <Row gutter={[40, 40]} align="middle">
                 <Col xs={24} md={14}>
                   <div style={{ padding: '8px' }}>
-                    <div style={{ fontSize: '18px', fontWeight: '700', color: '#111827', marginBottom: '16px' }}>德生电脑端 MT5 特色</div>
+                    <div style={{ fontSize: '18px', fontWeight: '700', color: '#111827', marginBottom: '16px' }}>德生電腦端 MT5 特色</div>
                     <p style={{ fontSize: '14px', color: '#4b5563', lineHeight: '1.6', marginBottom: '24px' }}>
-                      完美契合 Windows 7/8/10/11 操作系统，全中文化深度定制。完美配置顶级网关。推荐使用 4K 分辨率或多监视器系统运行，从而获得顶级高净值用户黄金技术分析体验。
+                      完美契合 Windows 7/8/10/11 操作系統，全中文化深度定制。完美配置頂級網關。推薦使用 4K 分辨率或多監視器系統運行，從而獲得頂級高淨值用戶黃金技術分析體驗。
                     </p>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -564,7 +630,7 @@ export default function AppDown() {
                             <div style={{ fontWeight: 'bold', color: '#111827', fontSize: '14px' }}>{node.name}</div>
                             <div style={{ fontSize: '12px', color: '#6b7280' }}>版本: {node.version} | 大小: {node.size} | 支持: {node.type}</div>
                           </div>
-                          <Button type="primary" icon={<WindowsOutlined />} href={node.url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>立即下载</Button>
+                          <Button type="primary" icon={<WindowsOutlined />} href={node.url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>立即下載</Button>
                         </div>
                       ))}
                     </div>
@@ -574,12 +640,12 @@ export default function AppDown() {
                 <Col xs={24} md={10}>
                   <FadeInSection>
                     <div style={{ background: '#F8FAFC', border: '1px solid #e2e8f0', padding: '24px', borderRadius: '12px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#111827' }}><CheckCircleOutlined style={{ color: '#22c55e', marginRight: '6px' }} /> 系统安装要求：</div>
+                      <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#111827' }}><CheckCircleOutlined style={{ color: '#22c55e', marginRight: '6px' }} /> 系統安裝要求：</div>
                       <div style={{ fontSize: '13px', color: '#4b5563', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                        <div>• 操作系统: Windows 10/11 (64位)</div>
-                        <div>• 处理器: 双核 Intel/AMD 2.0 GHz 以上</div>
-                        <div>• 内存需求: 最低 4 GB RAM</div>
-                        <div>• 剩余空间: 至少保留 500 MB 空间</div>
+                        <div>• 操作系統: Windows 10/11 (64位)</div>
+                        <div>• 處理器: 雙核 Intel/AMD 2.0 GHz 以上</div>
+                        <div>• 內存需求: 最低 4 GB RAM</div>
+                        <div>• 剩余空間: 至少保留 500 MB 空間</div>
                       </div>
                     </div>
                   </FadeInSection>
@@ -590,12 +656,12 @@ export default function AppDown() {
         </div>
       </section>
 
-      {/* =================【4. 高效安装与登录指引 (时间线Timeline方式)】================= */}
+      {/* =================【4. 高效安裝與登入指引 (時間線Timeline方式)】================= */}
       <section style={{ padding: '80px 20px', background: '#ffffff' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: '28px', fontWeight: '800', color: '#111827', margin: '0 0 8px' }}>新手极速开始交易指引</h2>
-            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>只需三步，即可顺利登录您的德生贵金属真实或模拟账户并开始理财</p>
+            <h2 style={{ fontSize: '28px', fontWeight: '800', color: '#111827', margin: '0 0 8px' }}>新手極速開始交易指引</h2>
+            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>只需三步，即可順利登入您的德生貴金屬真實或模擬賬戶並開始理財</p>
             <div style={{ width: '40px', height: '3px', background: '#f39800', margin: '12px auto 0', borderRadius: '1.5px' }} />
           </div>
 
@@ -605,9 +671,9 @@ export default function AppDown() {
               {
                 children: (
                   <div style={{ textAlign: 'left', background: '#F8FAFC', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
-                    <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第一步：下载对应客户端并安装</div>
+                    <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第一步：下載對應客戶端並安裝</div>
                     <div style={{ color: '#4b5563', fontSize: '13px', lineHeight: '1.6' }}>
-                      根据您的常用设备（电脑或手机），在上方选择对应的专属下载链接进行下载。下载完成后，点击运行，并根据屏幕弹出的安装向导，一路点击“下一步”并在 15 秒内极速完成程序配置。
+                      根據您的常用設備（電腦或手機），在上方選擇對應的專屬下載鏈接進行下載。下載完成後，點擊運行，並根據屏幕彈出的安裝向導，一路點擊「下一步」並在 15 秒內極速完成程序配置。
                     </div>
                   </div>
                 ),
@@ -615,9 +681,9 @@ export default function AppDown() {
               {
                 children: (
                   <div style={{ textAlign: 'left', background: '#F8FAFC', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
-                    <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第二步：搜索选择德生服务器</div>
+                    <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第二步：搜索選擇德生服務器</div>
                     <div style={{ color: '#4b5563', fontSize: '13px', lineHeight: '1.6' }}>
-                      打开刚安装好的 MT5 客户端软件。在登录账户或添加交易商窗口的输入框中，输入服务器全名 “<strong>Deson Metals</strong>” 或输入中文 “<strong>德生金業</strong>” 或 “<strong>德生贵金属</strong>”，点击搜索，并选中我们的对应服务器。
+                      打開剛安裝好的 MT5 客戶端軟件。在登入賬戶或添加交易商窗口的輸入框中，輸入服務器全名 「<strong>Deson Metals</strong>」 或輸入中文 「<strong>德生金業</strong>」 或 「<strong>德生貴金屬</strong>」，點擊搜索，並選中我們的對應服務器。
                     </div>
                   </div>
                 ),
@@ -625,9 +691,9 @@ export default function AppDown() {
               {
                 children: (
                   <div style={{ textAlign: 'left', background: '#F8FAFC', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
-                    <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第三步：选择输入账号密码登录</div>
+                    <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第三步：選擇輸入賬號密碼登入</div>
                     <div style={{ color: '#4b5563', fontSize: '13px', lineHeight: '1.6' }}>
-                      服务器选定后，在下方输入您的德生专用 6 位数至尊交易账号、密码（区分大小写），服务器类型选择：真实账号选择 <strong>DesonMetals-Live</strong>，模拟训练选择 <strong>DesonMetals-Demo</strong>，点击确定即可无缝连入顶级国际贵金属交易海洋！
+                      服務器選定後，在下方輸入您的德生專用 6 位數至尊交易賬號、密碼（區分大小寫），服務器類型選擇：真實賬號選擇 <strong>DesonMetals-Live</strong>，模擬訓練選擇 <strong>DesonMetals-Demo</strong>，點擊確定即可無縫連入頂級國際貴金屬交易海洋！
                     </div>
                   </div>
                 ),
@@ -637,12 +703,34 @@ export default function AppDown() {
         </div>
       </section>
 
-      {/* =================【5. 底部严谨金融合规免责声明】================= */}
+      {/* =================【5. 底部嚴謹金融合規免責聲明】================= */}
       <section style={{ padding: '40px 20px', background: '#0a0f19', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <PageDisclaimer />
         </div>
       </section>
+
+      {/* 注入二維碼浮動顯示的 CSS 樣式 */}
+      <style>{`
+        .qr-hover-container {
+          position: relative;
+          display: inline-block;
+        }
+        .qr-hover-container:hover .qr-popover {
+          display: block !important;
+          animation: qrFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes qrFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-4px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(-12px) scale(1);
+          }
+        }
+      `}</style>
     </div>
   );
 }

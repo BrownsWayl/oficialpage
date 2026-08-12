@@ -23,7 +23,7 @@ import {
 import './styles/sitePages.css';
 
 export default function HomeContent({ isMobile }) {
-  // 动态市场报价状态 (初始化为 desonmetals.net 官方当前的真实大盘金银现货价格，黄金对齐至 4408)
+  // 動態市場報價狀態 (初始化為 desonmetals.net 官方當前的真實大盤金銀現貨價格，黃金對齊至 4408)
   const [prices, setPrices] = useState({
     goldBid: 4408.21,
     goldAsk: 4408.51,
@@ -34,13 +34,13 @@ export default function HomeContent({ isMobile }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setPrices(prev => {
-        const goldDiff = (Math.random() - 0.5) * 0.4; // +/- 20美分波动
+        const goldDiff = (Math.random() - 0.5) * 0.4; // +/- 20美分波動
         const newGoldBid = +(prev.goldBid + goldDiff).toFixed(2);
-        const newGoldAsk = +(newGoldBid + 0.30).toFixed(2); // 维持 0.30 点差
+        const newGoldAsk = +(newGoldBid + 0.30).toFixed(2); // 維持 0.30 點差
 
-        const silverDiff = (Math.random() - 0.5) * 0.04; // +/- 2美分波动
+        const silverDiff = (Math.random() - 0.5) * 0.04; // +/- 2美分波動
         const newSilverBid = +(prev.silverBid + silverDiff).toFixed(3);
-        const newSilverAsk = +(newSilverBid + 0.030).toFixed(3); // 维持 0.030 点差
+        const newSilverAsk = +(newSilverBid + 0.030).toFixed(3); // 維持 0.030 點差
 
         return {
           goldBid: newGoldBid,
@@ -54,86 +54,86 @@ export default function HomeContent({ isMobile }) {
     return () => clearInterval(interval);
   }, []);
 
-  // 1. 公司四大核心优势 (对应 3-1.png 到 3-4.png 完整的水平/垂直大图)
+  // 1. 公司四大核心優勢 (對應 3-1.png 到 3-4.png 完整的水平/垂直大圖)
   const advantages = [
     {
       id: 1,
       image: '/3-1.png',
       icon: <SafetyCertificateOutlined style={{ color: '#f39800' }} />,
-      title: '合规牌照与资金隔离安全',
-      subtitle: '权威监管 · 100% 银行独立托管',
-      desc: '严格遵守国际金融行业监管公约。德生贵金属客户所有注入资金全面存放于独立信托银行的隔离账户中，与平台运营资金完全剥离，出入金极速高效，保障每一分资金的安全与纯粹。',
-      highlights: ['独立银行信托隔离托管', '国际权威标准规范运营', '资金秒级存取安全有据'],
+      title: '合規牌照與資金隔離安全',
+      subtitle: '權威監管 · 100% 銀行獨立托管',
+      desc: '嚴格遵守國際金融行業監管公約。德生貴金屬客戶所有注入資金全面存放於獨立信托銀行的隔離賬戶中，與平台運營資金完全剝離，出入金極速高效，保障每一分資金的安全與純粹。',
+      highlights: ['獨立銀行信托隔離托管', '國際權威標准規范運營', '資金秒級存取安全有據'],
     },
     {
       id: 2,
       image: '/3-2.png',
       icon: <ThunderboltOutlined style={{ color: '#f39800' }} />,
-      title: '高精尖 MTL 智能交易系统',
-      subtitle: '深厚流动性 · 毫秒级极速成交',
-      desc: '自研高精尖风控引擎全面对接国际主流 MetaTrader 5 (MT5) 交易系统。提供 0.05 秒极速成交性能，彻底告别滑点与卡盘延迟，在急剧波动的行情中依然精准锁价。',
-      highlights: ['0.05秒极速智能风控撮合', '直连国际顶级流动性供应商', '支持量化高频 EA 智能交易'],
+      title: '高精尖 MTL 智能交易系統',
+      subtitle: '深厚流動性 · 毫秒級極速成交',
+      desc: '自研高精尖風控引擎全面對接國際主流 MetaTrader 5 (MT5) 交易系統。提供 0.05 秒極速成交性能，徹底告別滑點與卡盤延遲，在急劇波動的行情中依然精准鎖價。',
+      highlights: ['0.05秒極速智能風控撮合', '直連國際頂級流動性供應商', '支持量化高頻 EA 智能交易'],
     },
     {
       id: 3,
       image: '/3-3.png',
       icon: <PercentageOutlined style={{ color: '#f39800' }} />,
-      title: '点差直降与零隐藏佣金成本',
-      subtitle: '点差极低 · 投资利润摩擦大幅缩减',
-      desc: '直接从多方流动性提供商获取即时最深报价，点差低至 0 起。德生不设任何隐藏收费或额外交易佣金，真正将高转化、低交易成本让利于每一位投资者。',
-      highlights: ['伦敦金点差低至 0 起手', '零附加手续费与出入款费用', '提供丰厚新客赠金交易支持'],
+      title: '點差直降與零隱藏傭金成本',
+      subtitle: '點差極低 · 投資利潤摩擦大幅縮減',
+      desc: '直接從多方流動性提供商獲取即時最深報價，點差低至 0 起。德生不設任何隱藏收費或額外交易傭金，真正將高轉化、低交易成本讓利於每一位投資者。',
+      highlights: ['倫敦金點差低至 0 起手', '零附加手續費與出入款費用', '提供豐厚新客贈金交易支持'],
     },
     {
       id: 4,
       image: '/3-4.png',
       icon: <TeamOutlined style={{ color: '#f39800' }} />,
-      title: '一对一 24/7 专业顾问支持',
-      subtitle: '多语言极速解答 · 全天候交易保障',
-      desc: '汇聚多年贵金属国际风控与实战经验的专家级客服团队。为您提供 24 小时在线解答、交易技术协助、开户流程辅助等，让您的交易旅程始终稳健前行。',
-      highlights: ['多语言客服团队全天在线', '专家风控指导与投顾支持', '一对一专属大客户VIP服务'],
+      title: '一對一 24/7 專業顧問支持',
+      subtitle: '多語言極速解答 · 全天候交易保障',
+      desc: '匯聚多年貴金屬國際風控與實戰經驗的專家級客服團隊。為您提供 24 小時在線解答、交易技術協助、開戶流程輔助等，讓您的交易旅程始終穩健前行。',
+      highlights: ['多語言客服團隊全天在線', '專家風控指導與投顧支持', '一對一專屬大客戶VIP服務'],
     },
   ];
 
-  // 3. 仿金荣中国开户三步法
+  // 3. 仿金榮中國開戶三步法
   const steps = [
     {
-      title: '1. 提交资料极速注册',
-      desc: '在线输入您的手机号码、邮箱，1分钟内即可自动生成专属实盘或模拟账号。',
-      action: '立即注册',
+      title: '1. 提交資料極速註冊',
+      desc: '在線輸入您的手機號碼、郵箱，1分鐘內即可自動生成專屬實盤或模擬賬號。',
+      action: '立即註冊',
       link: '/register',
     },
     {
-      title: '2. 安全注资免手续费',
-      desc: '支持网银、快捷钱包等多种合规安全通道，100%银行托管隔离，秒级到账。',
-      action: '前往注资',
+      title: '2. 安全注資免手續費',
+      desc: '支持網銀、快捷錢包等多種合規安全通道，100%銀行托管隔離，秒級到賬。',
+      action: '前往注資',
       link: '/login',
     },
     {
-      title: '3. 连入MT5开启盈利',
-      desc: '免费下载安装 MetaTrader 5，输入德生专用服务器，开启伦敦金/银智投之旅。',
-      action: '下载平台',
+      title: '3. 連入MT5開啟盈利',
+      desc: '免費下載安裝 MetaTrader 5，輸入德生專用服務器，開啟倫敦金/銀智投之旅。',
+      action: '下載平台',
       link: '/appdown',
     },
   ];
 
-  // 行情报价表数据 (伦敦金、伦敦银)
+  // 行情報價表數據 (倫敦金、倫敦銀)
   const columns = [
-    { title: '交易品种', dataIndex: 'name', key: 'name', render: (text, record) => <span><strong>{text}</strong> <small style={{ color: '#8c8c8c' }}>({record.symbol})</small></span> },
-    { title: '最新买价 (Bid)', dataIndex: 'bid', key: 'bid', render: (text) => <span style={{ color: '#22c55e', fontWeight: 'bold' }}>{text}</span> },
-    { title: '最新卖价 (Ask)', dataIndex: 'ask', key: 'ask', render: (text) => <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{text}</span> },
-    { title: '最低点差 (Spread)', dataIndex: 'spread', key: 'spread', render: (text) => <span style={{ color: '#f39800', fontWeight: 'bold' }}>{text}</span> },
-    { title: '最高杠杆', dataIndex: 'leverage', key: 'leverage' },
-    { title: '产品优势', dataIndex: 'advantage', key: 'advantage' },
+    { title: '交易品種', dataIndex: 'name', key: 'name', render: (text, record) => <span><strong>{text}</strong> <small style={{ color: '#8c8c8c' }}>({record.symbol})</small></span> },
+    { title: '最新買價 (Bid)', dataIndex: 'bid', key: 'bid', render: (text) => <span style={{ color: '#22c55e', fontWeight: 'bold' }}>{text}</span> },
+    { title: '最新賣價 (Ask)', dataIndex: 'ask', key: 'ask', render: (text) => <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{text}</span> },
+    { title: '最低點差 (Spread)', dataIndex: 'spread', key: 'spread', render: (text) => <span style={{ color: '#f39800', fontWeight: 'bold' }}>{text}</span> },
+    { title: '最高槓桿', dataIndex: 'leverage', key: 'leverage' },
+    { title: '產品優勢', dataIndex: 'advantage', key: 'advantage' },
   ];
 
   const marketData = [
-    { key: '1', name: '伦敦金', symbol: 'XAUUSD', bid: prices.goldBid.toFixed(2), ask: prices.goldAsk.toFixed(2), spread: '$0.30 / 免佣金', leverage: '1:100 - 1:500', advantage: '波动活跃 · 投资避险神品' },
-    { key: '2', name: '伦敦银', symbol: 'XAGUSD', bid: prices.silverBid.toFixed(3), ask: prices.silverAsk.toFixed(3), spread: '$0.030 / 免佣金', leverage: '1:100 - 1:200', advantage: '双向获利 · 小资金撬动大盈利' },
+    { key: '1', name: '倫敦金', symbol: 'XAUUSD', bid: prices.goldBid.toFixed(2), ask: prices.goldAsk.toFixed(2), spread: '$0.30 / 免傭金', leverage: '1:100 - 1:500', advantage: '波動活躍 · 投資避險神品' },
+    { key: '2', name: '倫敦銀', symbol: 'XAGUSD', bid: prices.silverBid.toFixed(3), ask: prices.silverAsk.toFixed(3), spread: '$0.030 / 免傭金', leverage: '1:100 - 1:200', advantage: '雙向獲利 · 小資金撬動大盈利' },
   ];
 
   return (
     <div className="site-page" style={{ background: '#F5F7FA', color: '#333333' }}>
-      {/* =================【1. 尊邃黑金奢华首屏 Hero Section】================= */}
+      {/* =================【1. 尊邃黑金奢華首屏 Hero Section】================= */}
       <section
         className="site-hero"
         style={{
@@ -164,7 +164,7 @@ export default function HomeContent({ isMobile }) {
                 display: 'inline-block',
               }}
             >
-              🏆 香港金银业贸易场权威规范标准运营品牌
+              🏆 香港金銀業貿易場權威規范標准運營品牌
             </Tag>
             <h1
               className="site-hero-title"
@@ -176,8 +176,8 @@ export default function HomeContent({ isMobile }) {
                 margin: '0 0 20px',
               }}
             >
-              德生贵金属 <span style={{ color: '#f39800' }}>伦敦金 / 伦敦银</span> <br />
-              全球权威一站式电子交易平台
+              德生貴金屬 <span style={{ color: '#f39800' }}>倫敦金 / 倫敦銀</span> <br />
+              全球權威一站式電子交易平台
             </h1>
             <p
               className="site-hero-desc"
@@ -189,10 +189,10 @@ export default function HomeContent({ isMobile }) {
                 margin: '0 auto 36px',
               }}
             >
-              直连国际顶级 MetaTrader 5 交易系统，提供极速 0.05 秒订单成交体验与 100% 银行独立信托账户隔离托管，以极低点差成本与全天候贴心咨询，倾力打造无可匹敌的安全投资环境。
+              直連國際頂級 MetaTrader 5 交易系統，提供極速 0.05 秒訂單成交體驗與 100% 銀行獨立信托賬戶隔離托管，以極低點差成本與全天候貼心咨詢，傾力打造無可匹敵的安全投資環境。
             </p>
 
-            {/* 首屏行动按键 */}
+            {/* 首屏行動按鍵 */}
             <div
               style={{
                 display: 'flex',
@@ -218,7 +218,7 @@ export default function HomeContent({ isMobile }) {
                     boxShadow: '0 8px 24px rgba(243, 152, 0, 0.35)',
                   }}
                 >
-                  立即开立交易账号 <ArrowRightOutlined />
+                  立即開立交易賬號 <ArrowRightOutlined />
                 </Button>
               </Link>
               <Link to="/appdown">
@@ -236,18 +236,18 @@ export default function HomeContent({ isMobile }) {
                     background: 'rgba(255,255,255,0.06)',
                   }}
                 >
-                  免费下载交易终端
+                  免費下載交易終端
                 </Button>
               </Link>
             </div>
 
-            {/* 首屏四大计数器 (仿金荣数据面板) */}
+            {/* 首屏四大計數器 (仿金榮數據面板) */}
             <Row gutter={[16, 16]} style={{ maxWidth: '720px', margin: '0 auto' }}>
               {[
-                { label: '服务全球客户数', end: 1000000, suffix: '人+', prefix: '' },
-                { label: '平均订单延迟', end: 0, suffix: '秒', prefix: '0.05' },
-                { label: '平台隐藏交易费', end: 0, suffix: '元', prefix: '0' },
-                { label: '客户资金托管率', end: 100, suffix: '%', prefix: '' },
+                { label: '服務全球客戶數', end: 1000000, suffix: '人+', prefix: '' },
+                { label: '平均訂單延遲', end: 0, suffix: '秒', prefix: '0.05' },
+                { label: '平台隱藏交易費', end: 0, suffix: '元', prefix: '0' },
+                { label: '客戶資金托管率', end: 100, suffix: '%', prefix: '' },
               ].map((s, idx) => (
                 <Col xs={12} sm={6} key={idx}>
                   <div
@@ -273,28 +273,28 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【2. 实时行情滚动条 Market Ticker】================= */}
+      {/* =================【2. 實時行情滾動條 Market Ticker】================= */}
       <MarketTicker />
 
-      {/* =================【3. 独立大图版块：伦敦金与伦敦银产品指南 (插入 1.png 完整原图，带纯白背景色)】================= */}
+      {/* =================【3. 獨立大圖版塊：倫敦金與倫敦銀產品指南 (插入 1.png 完整原圖，帶純白背景色)】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
             <h2 className="site-section-title" style={{ color: '#090e17' }}>
-              国际主流交易产品：伦敦金 & 伦敦银
+              國際主流交易產品：倫敦金 & 倫敦銀
             </h2>
             <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 40px' }}>
-              伦敦金、伦敦银为全球投资者首选的双向杠杆避险工具。德生贵金属提供全天候公正行情，直连国际一级柜台成交。
+              倫敦金、倫敦銀為全球投資者首選的雙向槓桿避險工具。德生貴金屬提供全天候公正行情，直連國際一級櫃台成交。
             </p>
           </FadeInSection>
 
           <Row gutter={[32, 32]} align="middle">
-            {/* 左侧：PNG产品大图，带专门的白色背景色并保持 height: 'auto' 避免文字和内容被裁剪 */}
+            {/* 左側：PNG產品大圖，帶專門的白色背景色並保持 height: 'auto' 避免文字和內容被裁剪 */}
             <Col xs={24} lg={14}>
               <FadeInSection>
                 <div
                   style={{
-                    background: '#ffffff', // 关键点：给 PNG 图片一个纯白底色
+                    background: '#ffffff', // 關鍵點：給 PNG 圖片一個純白底色
                     border: '1px solid #e5e7eb',
                     borderRadius: '16px',
                     padding: isMobile ? '12px' : '24px',
@@ -308,10 +308,10 @@ export default function HomeContent({ isMobile }) {
                 >
                   <img
                     src="/1.png"
-                    alt="伦敦金 / 伦敦银 交易特点"
+                    alt="倫敦金 / 倫敦銀 交易特點"
                     style={{
                       width: '100%',
-                      height: 'auto', // 关键点：自适应比例，无任何高宽限制，确保图片内的文字和图表绝对完整不裁剪
+                      height: 'auto', // 關鍵點：自適應比例，無任何高寬限制，確保圖片內的文字和圖表絕對完整不裁剪
                       display: 'block',
                       objectFit: 'contain',
                     }}
@@ -320,7 +320,7 @@ export default function HomeContent({ isMobile }) {
               </FadeInSection>
             </Col>
 
-            {/* 右侧：产品解析文案 */}
+            {/* 右側：產品解析文案 */}
             <Col xs={24} lg={10}>
               <FadeInSection>
                 <div style={{ padding: isMobile ? '0' : '0 12px' }}>
@@ -328,28 +328,28 @@ export default function HomeContent({ isMobile }) {
                     SPOT CONTRACT DETAILS
                   </Tag>
                   <h3 style={{ fontSize: '24px', fontWeight: 'bold', color: '#090e17', marginBottom: '16px' }}>
-                    极简智能机制，双向博弈商机
+                    極簡智能機制，雙向博弈商機
                   </h3>
                   <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: '1.7', marginBottom: '20px' }}>
-                    如上图所示，伦敦金与伦敦银采用双向保证金T+0机制。无论行情上涨或是走低，只要方向研判正确，即有盈利商机。在德生，一笔交易最低只需 0.01 手即可建仓，让您以轻量级资金稳妥把握全球大宗商品风口。
+                    如上圖所示，倫敦金與倫敦銀采用雙向保證金T+0機制。無論行情上漲或是走低，只要方向研判正確，即有盈利商機。在德生，一筆交易最低只需 0.01 手即可建倉，讓您以輕量級資金穩妥把握全球大宗商品風口。
                   </p>
 
                   <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', borderLeft: '4px solid #f39800', marginBottom: '24px' }}>
-                    <h4 style={{ fontSize: '15px', fontWeight: 'bold', color: '#090e17', margin: '0 0 6px' }}>💡 德生零息持仓政策：</h4>
+                    <h4 style={{ fontSize: '15px', fontWeight: 'bold', color: '#090e17', margin: '0 0 6px' }}>💡 德生零息持倉政策：</h4>
                     <p style={{ fontSize: '12px', color: '#6b7280', margin: 0, lineHeight: '1.5' }}>
-                      对比其他收取高额过夜息的交易所，德生提供灵活低息持仓待遇，全方位呵护您的中长线波段套利单。
+                      對比其他收取高額過夜息的交易所，德生提供靈活低息持倉待遇，全方位呵護您的中長線波段套利單。
                     </p>
                   </div>
 
                   <div style={{ display: 'flex', gap: '16px' }}>
                     <Link to="/register">
                       <Button type="primary" size="large" style={{ background: '#090e17', borderColor: '#090e17', borderRadius: '8px', fontWeight: 'bold', fontSize: '14px' }}>
-                        立即开户体验
+                        立即開戶體驗
                       </Button>
                     </Link>
                     <Link to="/about">
                       <Button size="large" style={{ borderRadius: '8px', fontWeight: 'bold', fontSize: '14px' }}>
-                        产品机制详释
+                        產品機制詳釋
                       </Button>
                     </Link>
                   </div>
@@ -360,19 +360,19 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【4. 德生四大优势重新设计 (2列卡片布局，带纯白背景色PNG，宽展视野文字不裁剪)】================= */}
+      {/* =================【4. 德生四大優勢重新設計 (2列卡片布局，帶純白背景色PNG，寬展視野文字不裁剪)】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: isMobile ? '48px 16px' : '72px 20px', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb' }}>
         <div className="site-section-inner">
           <FadeInSection>
             <h2 className="site-section-title" style={{ color: '#090e17' }}>
-              德生贵金属 4 大中枢价值
+              德生貴金屬 4 大中樞價值
             </h2>
             <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 48px' }}>
-              我们重新规划了优势卡片的设计。采用高清晰度的 **双列大宽度布局** 且完全取消高度裁剪，配合 **纯白 PNG 背景色**，确保图片内的所有关键文字在任何终端都清晰呈现。
+              我們重新規劃了優勢卡片的設計。采用高清晰度的 **雙列大寬度布局** 且完全取消高度裁剪，配合 **純白 PNG 背景色**，確保圖片內的所有關鍵文字在任何終端都清晰呈現。
             </p>
           </FadeInSection>
 
-          {/* 优势列表：重新设计为 电脑端 2 列、手机端 1 列，大幅扩增宽度让 banner 文字显示更饱满 */}
+          {/* 優勢列表：重新設計為 電腦端 2 列、手機端 1 列，大幅擴增寬度讓 banner 文字顯示更飽滿 */}
           <Row gutter={[32, 32]}>
             {advantages.map((adv) => (
               <Col xs={24} lg={12} key={adv.id}>
@@ -390,11 +390,11 @@ export default function HomeContent({ isMobile }) {
                     }}
                   >
                     <Row gutter={[0, 0]} align="stretch">
-                      {/* 上半部分：完整的优势 PNG 架构图片，设置 pure white 背景色、100% 宽度和 height: 'auto' */}
+                      {/* 上半部分：完整的優勢 PNG 架構圖片，設置 pure white 背景色、100% 寬度和 height: 'auto' */}
                       <Col xs={24}>
                         <div
                           style={{
-                            background: '#ffffff', // 关键点 1：给 PNG 精美原图一个白色背景色
+                            background: '#ffffff', // 關鍵點 1：給 PNG 精美原圖一個白色背景色
                             padding: isMobile ? '12px' : '20px',
                             borderBottom: '1px solid #f0f0f0',
                             display: 'flex',
@@ -407,7 +407,7 @@ export default function HomeContent({ isMobile }) {
                             alt={adv.title}
                             style={{
                               width: '100%',
-                              height: 'auto', // 关键点 2：高度完全自适应，无裁剪，确保图片包含的文字和架构图原汁原味显示
+                              height: 'auto', // 關鍵點 2：高度完全自適應，無裁剪，確保圖片包含的文字和架構圖原汁原味顯示
                               display: 'block',
                               objectFit: 'contain',
                               borderRadius: '8px',
@@ -416,7 +416,7 @@ export default function HomeContent({ isMobile }) {
                         </div>
                       </Col>
 
-                      {/* 下半部分：文本说明区 */}
+                      {/* 下半部分：文本說明區 */}
                       <Col xs={24}>
                         <div style={{ padding: isMobile ? '20px' : '28px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
@@ -444,7 +444,7 @@ export default function HomeContent({ isMobile }) {
                             {adv.desc}
                           </p>
 
-                          {/* 核心特点精梳 */}
+                          {/* 核心特點精梳 */}
                           <div style={{ borderTop: '1px dashed #e5e7eb', paddingTop: '16px' }}>
                             <Row gutter={[16, 8]}>
                               {adv.highlights.map((hl, idx) => (
@@ -468,19 +468,19 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【5. 实时报价参数与交易要素表】================= */}
+      {/* =================【5. 實時報價參數與交易要素表】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
             <h2 className="site-section-title" style={{ color: '#090e17' }}>
-              规范透明的实时交易行情
+              規范透明的實時交易行情
             </h2>
             <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 40px' }}>
-              拒绝后台黑箱，直通国际最权威的金银报价大盘，买卖点差全面公开。
+              拒絕後台黑箱，直通國際最權威的金銀報價大盤，買賣點差全面公開。
             </p>
           </FadeInSection>
 
-          {/* 报价表格展示 */}
+          {/* 報價表格展示 */}
           <FadeInSection>
             <div style={{ background: '#ffffff', borderRadius: '16px', padding: isMobile ? '12px' : '24px', boxShadow: '0 4px 24px rgba(0,0,0,0.03)', overflowX: 'auto', border: '1px solid #e5e7eb' }}>
               <Table
@@ -496,18 +496,18 @@ export default function HomeContent({ isMobile }) {
             <Col xs={24} md={12}>
               <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '24px' }}>
                 <span style={{ color: '#f39800', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>Gold Advantage</span>
-                <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '8px 0 12px', color: '#090e17' }}>伦敦金（Spot Gold）投资契机</h3>
+                <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '8px 0 12px', color: '#090e17' }}>倫敦金（Spot Gold）投資契機</h3>
                 <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
-                  伦敦金作为全球交易最广的硬通货衍生品，在规避通胀、平息局势风险上具有独特的战略价值。德生提供 1:100 起的浮动交易杠杆，仅需 100 美元即可参与波动、随时兑换利润。
+                  倫敦金作為全球交易最廣的硬通貨衍生品，在規避通脹、平息局勢風險上具有獨特的戰略價值。德生提供 1:100 起的浮動交易槓桿，僅需 100 美元即可參與波動、隨時兌換利潤。
                 </p>
               </div>
             </Col>
             <Col xs={24} md={12}>
               <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '24px' }}>
                 <span style={{ color: '#f39800', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>Silver Advantage</span>
-                <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '8px 0 12px', color: '#090e17' }}>伦敦银（Spot Silver）投资契机</h3>
+                <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '8px 0 12px', color: '#090e17' }}>倫敦銀（Spot Silver）投資契機</h3>
                 <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
-                  白银波动单价更亲民，但日振幅百分比大，具有极好的短线波段爆发力。德生无附加点差加佣政策，极大程度呵护量化交易和多空交叉平仓。
+                  白銀波動單價更親民，但日振幅百分比大，具有極好的短線波段爆發力。德生無附加點差加傭政策，極大程度呵護量化交易和多空交叉平倉。
                 </p>
               </div>
             </Col>
@@ -515,7 +515,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【7. 极致交易引擎与软件下载 MetaTrader 5】================= */}
+      {/* =================【7. 極致交易引擎與軟件下載 MetaTrader 5】================= */}
       <section
         className="site-section"
         style={{
@@ -528,55 +528,55 @@ export default function HomeContent({ isMobile }) {
         <div className="site-hero-grid" style={{ opacity: 0.1 }} />
         <div className="site-section-inner" style={{ zIndex: 10, position: 'relative' }}>
           <Row gutter={[40, 40]} align="middle">
-            {/* 左边：下载介绍与按键 */}
+            {/* 左邊：下載介紹與按鍵 */}
             <Col xs={24} md={12}>
               <div>
                 <Tag color="rgba(243, 152, 0, 0.15)" style={{ color: '#f39800', border: 'none', fontWeight: 'bold', marginBottom: '16px' }}>
                   ⚡ INTERNATIONAL TRADING TERMINAL
                 </Tag>
                 <h2 style={{ fontSize: isMobile ? '28px' : '36px', fontWeight: 'bold', color: '#ffffff', margin: '0 0 16px' }}>
-                  配备国际主流交易终端 <br />
+                  配備國際主流交易終端 <br />
                   <span style={{ color: '#f39800' }}>MetaTrader 5 (MT5)</span>
                 </h2>
                 <p style={{ color: '#9ca3af', fontSize: '14px', lineHeight: '1.6', marginBottom: '32px' }}>
-                  德生贵金属全面深度接入全球公认顶级的电子交易商平台 MT5。该平台以深厚的图表分析指标、极速的限价单成交模式和出色的高频量化 EA 自动投资支持而享誉世界。不管是电脑端专业多屏交互、还是移动端随时随地跟单，德生服务器皆可做到完美直连。
+                  德生貴金屬全面深度接入全球公認頂級的電子交易商平台 MT5。該平台以深厚的圖表分析指標、極速的限價單成交模式和出色的高頻量化 EA 自動投資支持而享譽世界。不管是電腦端專業多屏交互、還是移動端隨時隨地跟單，德生服務器皆可做到完美直連。
                 </p>
 
-                {/* 各终端下载按钮群 */}
+                {/* 各終端下載按鈕群 */}
                 <Row gutter={[12, 12]} style={{ marginBottom: '24px' }}>
                   <Col xs={12} sm={8}>
                     <a href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" target="_blank" rel="noopener noreferrer">
                       <Button block icon={<WindowsOutlined />} style={{ height: '46px', background: 'rgba(255,255,255,0.05)', color: '#fff', borderColor: 'rgba(255,255,255,0.15)', borderRadius: '6px' }}>
-                        Windows 客户端
+                        Windows 客戶端
                       </Button>
                     </a>
                   </Col>
                   <Col xs={12} sm={8}>
                     <Link to="/appdown">
                       <Button block icon={<AndroidOutlined />} style={{ height: '46px', background: 'rgba(255,255,255,0.05)', color: '#fff', borderColor: 'rgba(255,255,255,0.15)', borderRadius: '6px' }}>
-                        Android 下载
+                        Android 下載
                       </Button>
                     </Link>
                   </Col>
                   <Col xs={24} sm={8}>
                     <Link to="/appdown">
                       <Button block icon={<AppleOutlined />} style={{ height: '46px', background: 'rgba(255,255,255,0.05)', color: '#fff', borderColor: 'rgba(255,255,255,0.15)', borderRadius: '6px' }}>
-                        iOS 专属版
+                        iOS 專屬版
                       </Button>
                     </Link>
                   </Col>
                 </Row>
 
                 <div style={{ background: 'rgba(243, 152, 0, 0.05)', borderLeft: '3px solid #f39800', padding: '12px 16px', borderRadius: '4px' }}>
-                  <div style={{ fontSize: '13px', color: '#f39800', fontWeight: 'bold' }}>🔍 连入德生专用服务器：</div>
+                  <div style={{ fontSize: '13px', color: '#f39800', fontWeight: 'bold' }}>🔍 連入德生專用服務器：</div>
                   <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '4px' }}>
-                    在 MT5 中添加交易商搜索：<strong style={{ color: '#fff' }}>Deson Metals</strong>。真实账户选择服务器 <strong style={{ color: '#fff' }}>DesonMetals-Live</strong>。
+                    在 MT5 中添加交易商搜索：<strong style={{ color: '#fff' }}>Deson Metals</strong>。真實賬戶選擇服務器 <strong style={{ color: '#fff' }}>DesonMetals-Live</strong>。
                   </div>
                 </div>
               </div>
             </Col>
 
-            {/* 右边：MT5 电脑大屏交互 3D Mockup 动画 */}
+            {/* 右邊：MT5 電腦大屏交互 3D Mockup 動畫 */}
             <Col xs={24} md={12}>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <DesktopMockup />
@@ -586,15 +586,15 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【8. 三步开户指引 —— 仿金荣中国开户中枢】================= */}
+      {/* =================【8. 三步開戶指引 —— 仿金榮中國開戶中樞】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
             <h2 className="site-section-title" style={{ color: '#090e17' }}>
-              只需 3 步 · 即刻开启尊贵智投之旅
+              只需 3 步 · 即刻開啟尊貴智投之旅
             </h2>
             <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 48px' }}>
-              开户简单、注资高效、秒速交易，为投资者打通极简出金和高效入金的尊贵坦途。
+              開戶簡單、注資高效、秒速交易，為投資者打通極簡出金和高效入金的尊貴坦途。
             </p>
           </FadeInSection>
 
@@ -615,7 +615,7 @@ export default function HomeContent({ isMobile }) {
                     }}
                     className="site-step-card-custom"
                   >
-                    {/* 数字圆圈 */}
+                    {/* 數字圓圈 */}
                     <div
                       style={{
                         width: '44px',
@@ -662,7 +662,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【9. 安全资质监管与承诺】================= */}
+      {/* =================【9. 安全資質監管與承諾】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: isMobile ? '48px 16px' : '72px 20px', borderTop: '1px solid #e5e7eb' }}>
         <div className="site-section-inner">
           <Row gutter={[40, 40]} align="middle">
@@ -672,18 +672,18 @@ export default function HomeContent({ isMobile }) {
                   🛡️ FUND SAFETY AND COMPLIANCE
                 </Tag>
                 <h2 style={{ fontSize: '28px', fontWeight: 'bold', color: '#090e17', margin: '0 0 16px' }}>
-                  资金隔离与金融风控安全
+                  資金隔離與金融風控安全
                 </h2>
                 <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px' }}>
-                  在德生，合规安全与透明公开始终被摆在首要位置。平台不触碰客户投资本金。所有客户出入资金独立隔离存放在大型托管商业银行信托独立账户中。德生接受行业权威自律与合规内审，全方位确保大资金交易和日常小资金存取款在秒级安全通道内畅通流转。
+                  在德生，合規安全與透明公開始終被擺在首要位置。平台不觸碰客戶投資本金。所有客戶出入資金獨立隔離存放在大型托管商業銀行信托獨立賬戶中。德生接受行業權威自律與合規內審，全方位確保大資金交易和日常小資金存取款在秒級安全通道內暢通流轉。
                 </p>
 
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {[
-                    '独立托管：客户本金与交易商运营流水100%隔离',
-                    '合规经营：秉持最严格的国际与香港行业内控规约',
-                    '极速存取：多通道快速存取款方案，日内出款秒级核算',
-                    '银行级加密：网站数据及传输渠道皆由 SSL 256位高级加密保护',
+                    '獨立托管：客戶本金與交易商運營流水100%隔離',
+                    '合規經營：秉持最嚴格的國際與香港行業內控規約',
+                    '極速存取：多通道快速存取款方案，日內出款秒級核算',
+                    '銀行級加密：網站數據及傳輸渠道皆由 SSL 256位高級加密保護',
                   ].map((item, idx) => (
                     <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '13px', color: '#4b5563' }}>
                       <CheckCircleOutlined style={{ color: '#22c55e', fontSize: '14px' }} />
@@ -695,7 +695,7 @@ export default function HomeContent({ isMobile }) {
             </Col>
             <Col xs={24} md={12}>
               <FadeInSection>
-                {/* 盾牌动态图形展示 */}
+                {/* 盾牌動態圖形展示 */}
                 <div
                   style={{
                     display: 'flex',
@@ -717,7 +717,7 @@ export default function HomeContent({ isMobile }) {
                       position: 'relative',
                     }}
                   >
-                    {/* 同心旋转光环 */}
+                    {/* 同心旋轉光環 */}
                     <div
                       style={{
                         position: 'absolute',
@@ -747,14 +747,14 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【10. 页尾统一免责申明】================= */}
+      {/* =================【10. 頁尾統一免責申明】================= */}
       <section style={{ background: '#111111', padding: '40px 20px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="site-section-inner">
           <PageDisclaimer />
         </div>
       </section>
 
-      {/* 内联注入全局微动效样式，无需额外修改CSS文件即可实现悬浮和旋转效果 */}
+      {/* 內聯注入全局微動效樣式，無需額外修改CSS文件即可實現懸浮和旋轉效果 */}
       <style>{`
         @keyframes float {
           0% { transform: translateY(0px); }

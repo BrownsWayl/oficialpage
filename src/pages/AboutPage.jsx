@@ -24,60 +24,60 @@ export default function AboutPage() {
     minHeight: '100%',
   };
 
-  // 1. 公司核心数据
+  // 1. 公司核心數據
   const stats = [
-    { label: '累计服务全球客户', value: '1,000,000', suffix: '+' },
-    { label: '订单极速执行时间', value: '0.05', suffix: '秒' },
-    { label: '全天候专业客服支持', value: '24/7', suffix: '' },
-    { label: '资金安全隔离存放', value: '100', suffix: '%' },
+    { label: '累計服務全球客戶', value: '1,000,000', suffix: '+' },
+    { label: '訂單極速執行時間', value: '0.05', suffix: '秒' },
+    { label: '全天候專業客服支持', value: '24/7', suffix: '' },
+    { label: '資金安全隔離存放', value: '100', suffix: '%' },
   ];
 
-  // 2. 德生核心优势 (Why Choose Us)
+  // 2. 德生核心優勢 (Why Choose Us)
   const advantages = [
     {
       icon: <SafetyCertificateOutlined style={{ color: '#f39800' }} />,
-      title: '权威牌照与合规监管',
-      desc: '我们严格遵守国际金融行业监管体系，在相关法律框架和行业公约指导下合法经营，确保平台的合规性与权威信誉。',
+      title: '權威牌照與合規監管',
+      desc: '我們嚴格遵守國際金融行業監管體系，在相關法律框架和行業公約指導下合法經營，確保平台的合規性與權威信譽。',
     },
     {
       icon: <ThunderboltOutlined style={{ color: '#f39800' }} />,
-      title: '极速交易引擎 (MT5)',
-      desc: '采用全球领先的 MetaTrader 5 (MT5) 交易系统，极速成交，零延迟、零滑点，全方位保障每一笔投资订单。',
+      title: '極速交易引擎 (MT5)',
+      desc: '采用全球領先的 MetaTrader 5 (MT5) 交易系統，極速成交，零延遲、零滑點，全方位保障每一筆投資訂單。',
     },
     {
       icon: <GlobalOutlined style={{ color: '#f39800' }} />,
-      title: '海量流动性与极低价差',
-      desc: '直接对接国际一线流提供商，提供深厚的市场深度、超低点差以及透明的价格环境，大幅降低用户的交易成本。',
+      title: '海量流動性與極低價差',
+      desc: '直接對接國際一線流提供商，提供深厚的市場深度、超低點差以及透明的價格環境，大幅降低用戶的交易成本。',
     },
     {
       icon: <TeamOutlined style={{ color: '#f39800' }} />,
-      title: '一对一 24/7 专属服务',
-      desc: '具备多年金融实战经验的顾问和多语言客服团队，24小时在线提供无死角的技术支持和一对一投资咨询。',
+      title: '一對一 24/7 專屬服務',
+      desc: '具備多年金融實戰經驗的顧問和多語言客服團隊，24小時在線提供無死角的技術支持和一對一投資咨詢。',
     },
   ];
 
-  // 3. 企业里程碑
+  // 3. 企業裡程碑
   const milestones = [
     {
       year: '2025',
-      title: '品牌成立 & 技术腾飞',
-      desc: '德生金業有限公司德生贵金属 / Deson Metals）正式在香港成立。推出自研智能风控管理系统，全面对接国际顶级 MetaTrader 5 (MT5) 交易系统。',
+      title: '品牌成立 & 技術騰飛',
+      desc: '德生金業有限公司德生貴金屬 / Deson Metals）正式在香港成立。推出自研智能風控管理系統，全面對接國際頂級 MetaTrader 5 (MT5) 交易系統。',
     },
     {
       year: '2025',
-      title: '深耕亚太 & 会员资质',
-      desc: '合规化运营体系日臻健全，秉持香港金银业贸易场等权威标准，客户资金全面实现独立银行托管，托管率达 100%。',
+      title: '深耕亞太 & 會員資質',
+      desc: '合規化運營體系日臻健全，秉持香港金銀業貿易場等權威標准，客戶資金全面實現獨立銀行托管，托管率達 100%。',
     },
     {
       year: '2026',
-      title: '迈向全球 & 卓越之选',
-      desc: '业务向全球多地辐射，累计为超百万用户提供全天候贵金属（伦敦金、伦敦银）电子化差价合约交易服务，致力于成为行业信誉典范。',
+      title: '邁向全球 & 卓越之選',
+      desc: '業務向全球多地輻射，累計為超百萬用戶提供全天候貴金屬（倫敦金、倫敦銀）電子化差價合約交易服務，致力於成為行業信譽典范。',
     },
   ];
 
   return (
     <div className="site-page" style={containerStyle}>
-      {/* =================【1. 尊贵深邃暗色 Hero Section】================= */}
+      {/* =================【1. 尊貴深邃暗色 Hero Section】================= */}
       <section
         className="site-hero"
         style={{
@@ -104,7 +104,7 @@ export default function AboutPage() {
               marginBottom: '16px',
             }}
           >
-            关于德生贵金属
+            關於德生貴金屬
           </div>
           <h1
             className="site-hero-title"
@@ -116,7 +116,7 @@ export default function AboutPage() {
               margin: '0 0 16px',
             }}
           >
-            德生贵金属 <span style={{ color: '#f39800', background: 'none', WebkitTextFillColor: 'initial', textFillColor: 'initial' }}>Deson Metals</span>
+            德生貴金屬 <span style={{ color: '#f39800', background: 'none', WebkitTextFillColor: 'initial', textFillColor: 'initial' }}>Deson Metals</span>
           </h1>
           <p
             className="site-hero-desc"
@@ -128,12 +128,12 @@ export default function AboutPage() {
               lineHeight: '1.6',
             }}
           >
-            全球数百万投资者信赖的贵金属交易平台。依托香港作为世界金融枢纽的法律和行业合规规范，为全球投资者提供公开透明、安全隔离存放的现货黄金、现货白银线上极速投资环境。
+            全球數百萬投資者信賴的貴金屬交易平台。依托香港作為世界金融樞紐的法律和行業合規規范，為全球投資者提供公開透明、安全隔離存放的現貨黃金、現貨白銀線上極速投資環境。
           </p>
         </div>
       </section>
 
-      {/* =================【2. 公司简介（双列布局仿 jrjr）】================= */}
+      {/* =================【2. 公司簡介（雙列布局仿 jrjr）】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Row gutter={[40, 40]} align="middle">
@@ -142,11 +142,11 @@ export default function AboutPage() {
                 <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(0, 0, 0, 0.08)' }}>
                   <img
                     src="/12.jpg"
-                    alt="德生贵金属黄金交易环境"
+                    alt="德生貴金屬黃金交易環境"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
                   />
-                  {/* 图片上的尊贵水印卡片 */}
+                  {/* 圖片上的尊貴水印卡片 */}
                   <div
                     style={{
                       position: 'absolute',
@@ -164,7 +164,7 @@ export default function AboutPage() {
                       德生金業有限公司
                     </div>
                     <div style={{ color: '#ffffff', fontSize: '12px', opacity: 0.8, lineHeight: '1.4' }}>
-                      注册编号: 77592183 | 香港实体办公场所保障客户每一笔资金的安全与公正。
+                      註冊編號: 77592183 | 香港實體辦公場所保障客戶每一筆資金的安全與公正。
                     </div>
                   </div>
                 </div>
@@ -179,17 +179,17 @@ export default function AboutPage() {
                     <span style={{ color: '#f39800', fontSize: '15px', fontWeight: '700', letterSpacing: '1px' }}>COMPANY PROFILE</span>
                   </div>
                   <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 20px', lineHeight: '1.3' }}>
-                    德生贵金属 —— 全球高标准贵金属交易机构
+                    德生貴金屬 —— 全球高標准貴金屬交易機構
                   </h2>
                   <div style={{ fontSize: '15px', color: '#4b5563', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <p style={{ margin: 0 }}>
-                      德生金業有限公司（简称“<strong>德生贵金属</strong>” / “<strong>Deson Metals</strong>”）总部位于国际三大金融中心之一的香港。我们是一家由资深金融风控、国际极速订单结算技术及贵金属现货交收专家联合打造的顶级电子交易商。
+                      德生金業有限公司（簡稱「<strong>德生貴金屬</strong>」 / 「<strong>Deson Metals</strong>」）總部位於國際三大金融中心之一的香港。我們是一家由資深金融風控、國際極速訂單結算技術及貴金屬現貨交收專家聯合打造的頂級電子交易商。
                     </p>
                     <p style={{ margin: 0 }}>
-                      自成立起，公司始终秉持“<strong>至诚经营、合规风控、安全合规</strong>”的发展方针。平台重点提供现货黄金（伦敦金）、现货白银（伦敦银）电子化合约交易，严格根据香港完善的金融法律规范及相关行业贸易场公约运作。我们以极度透明的实时报价和全方位的杠杆交易工具，助力全球零售投资者与专业机构灵活管理资产。
+                      自成立起，公司始終秉持「<strong>至誠經營、合規風控、安全合規</strong>」的發展方針。平台重點提供現貨黃金（倫敦金）、現貨白銀（倫敦銀）電子化合約交易，嚴格根據香港完善的金融法律規范及相關行業貿易場公約運作。我們以極度透明的實時報價和全方位的槓桿交易工具，助力全球零售投資者與專業機構靈活管理資產。
                     </p>
                     <p style={{ margin: 0 }}>
-                      我们全天候采用备受好评的 <strong>MetaTrader 5 (MT5)</strong> 旗舰系统。通过强大的硬件数据中心和低延时网关，直连国际一线清算行，大幅压缩点差，确保在行情波动剧烈的非农等重要财经时间，客户订单均能实现极速稳定成交。
+                      我們全天候采用備受好評的 <strong>MetaTrader 5 (MT5)</strong> 旗艦系統。通過強大的硬件數據中心和低延時網關，直連國際一線清算行，大幅壓縮點差，確保在行情波動劇烈的非農等重要財經時間，客戶訂單均能實現極速穩定成交。
                     </p>
                   </div>
                 </div>
@@ -199,12 +199,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【3. 权威证书与行业资质（荣誉资质 + 海关证明）】================= */}
+      {/* =================【3. 權威證書與行業資質（榮譽資質 + 海關證明）】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '64px 20px', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-            <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>合规资质与行业证书</h2>
-            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>迪生贵金属经过多重合规审计，持有官方认证牌照，为客户提供100%合规与稳健的交易保障</p>
+            <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>合規資質與行業證書</h2>
+            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>迪生貴金屬經過多重合規審計，持有官方認證牌照，為客戶提供100%合規與穩健的交易保障</p>
             <div style={{ width: '50px', height: '3px', background: '#f39800', margin: '12px auto 0' }} />
           </div>
 
@@ -228,15 +228,15 @@ export default function AboutPage() {
                   <div style={{ overflow: 'hidden', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f0f0f0' }}>
                     <img
                       src="/cgse.jpg"
-                      alt="荣誉资质"
+                      alt="榮譽資質"
                       style={{ width: '100%', height: 'auto', display: 'block' }}
                       className="hover-scale-img"
                     />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>荣誉资质证书</h3>
+                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>榮譽資質證書</h3>
                     <p style={{ fontSize: '14px', color: '#6b7280', margin: 0, lineHeight: '1.6' }}>
-                      迪生贵金属荣获行业颁发的“卓越贵金属交易商”及“诚信金融服务商”等合规资质和荣誉，代表了业界对我们服务、风控及信誉的广泛认可。
+                      迪生貴金屬榮獲行業頒發的「卓越貴金屬交易商」及「誠信金融服務商」等合規資質和榮譽，代表了業界對我們服務、風控及信譽的廣泛認可。
                     </p>
                   </div>
                 </div>
@@ -262,15 +262,15 @@ export default function AboutPage() {
                   <div style={{ overflow: 'hidden', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f0f0f0' }}>
                     <img
                       src="/customs.png"
-                      alt="海关A类贵金属注册证明"
+                      alt="海關A類貴金屬註冊證明"
                       style={{ width: '100%', height: 'auto', display: 'block' }}
                       className="hover-scale-img"
                     />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>海关A类贵金属注册证明</h3>
+                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>海關A類貴金屬註冊證明</h3>
                     <p style={{ fontSize: '14px', color: '#6b7280', margin: 0, lineHeight: '1.6' }}>
-                      迪生贵金属持有海关A类贵金属及金银进出口注册登记证明，保障线下现货交割、进出口实物黄金交收以及线上电子合约交易在法律公理框架下的合法完备。
+                      迪生貴金屬持有海關A類貴金屬及金銀進出口註冊登記證明，保障線下現貨交割、進出口實物黃金交收以及線上電子合約交易在法律公理框架下的合法完備。
                     </p>
                   </div>
                 </div>
@@ -280,11 +280,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【4. 品牌使命与愿景（仿 jrjr 卡片化）】================= */}
+      {/* =================【4. 品牌使命與願景（仿 jrjr 卡片化）】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-            <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>企业理念与品牌精神</h2>
+            <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>企業理念與品牌精神</h2>
             <div style={{ width: '50px', height: '3px', background: '#f39800', margin: '0 auto' }} />
           </div>
 
@@ -310,7 +310,7 @@ export default function AboutPage() {
                   </div>
                   <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 12px' }}>品牌使命</h3>
                   <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
-                    为全球贵金属投资者提供最公平透明、超低门槛、极速撮合的电子交易平台。通过技术迭代，让每个人都能安全、自主地参与国际金融市场交易。
+                    為全球貴金屬投資者提供最公平透明、超低門檻、極速撮合的電子交易平台。通過技術迭代，讓每個人都能安全、自主地參與國際金融市場交易。
                   </p>
                 </div>
               </FadeInSection>
@@ -335,9 +335,9 @@ export default function AboutPage() {
                   <div style={{ width: '56px', height: '56px', background: 'rgba(243, 152, 0, 0.1)', color: '#f39800', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', marginBottom: '20px' }}>
                     <EyeOutlined />
                   </div>
-                  <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 12px' }}>品牌愿景</h3>
+                  <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 12px' }}>品牌願景</h3>
                   <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
-                    深耕现货黄金交易服务领域，不断探索金融科技前沿，将安全系数、交易流动性与服务满意度做到行业第一，打造最具影响力的国际贵金属经纪商。
+                    深耕現貨黃金交易服務領域，不斷探索金融科技前沿，將安全系數、交易流動性與服務滿意度做到行業第一，打造最具影響力的國際貴金屬經紀商。
                   </p>
                 </div>
               </FadeInSection>
@@ -362,11 +362,11 @@ export default function AboutPage() {
                   <div style={{ width: '56px', height: '56px', background: 'rgba(243, 152, 0, 0.1)', color: '#f39800', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', marginBottom: '20px' }}>
                     <HeartOutlined />
                   </div>
-                  <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 12px' }}>核心价值观</h3>
+                  <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 12px' }}>核心價值觀</h3>
                   <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
-                    <strong>至诚守信</strong>：绝无虚假报价，无隐性费用。<br />
-                    <strong>合规自律</strong>：自愿接受超高标准监管，客户资金独立托管。<br />
-                    <strong>客户至上</strong>：全天候专人一对一高效解答。
+                    <strong>至誠守信</strong>：絕無虛假報價，無隱性費用。<br />
+                    <strong>合規自律</strong>：自願接受超高標准監管，客戶資金獨立托管。<br />
+                    <strong>客戶至上</strong>：全天候專人一對一高效解答。
                   </p>
                 </div>
               </FadeInSection>
@@ -375,7 +375,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【4. 数据看板】================= */}
+      {/* =================【4. 數據看板】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: '56px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Row gutter={[24, 24]}>
@@ -394,12 +394,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【5. 四大优势（仿 jrjr 优势排版）】================= */}
+      {/* =================【5. 四大優勢（仿 jrjr 優勢排版）】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
             <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>四大核心交易保障</h2>
-            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>专业级的交易要素配置，助力您稳健捕捉全球黄金市场行情</p>
+            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>專業級的交易要素配置，助力您穩健捕捉全球黃金市場行情</p>
             <div style={{ width: '50px', height: '3px', background: '#f39800', margin: '12px auto 0' }} />
           </div>
 
@@ -434,11 +434,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【6. 发展里程碑时间轴（仿 jrjr 精美轴线）】================= */}
+      {/* =================【6. 發展裡程碑時間軸（仿 jrjr 精美軸線）】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>品牌发展历程</h2>
+            <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>品牌發展歷程</h2>
             <div style={{ width: '50px', height: '3px', background: '#f39800', margin: '0 auto' }} />
           </div>
 
@@ -464,23 +464,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【7. 联系方式卡片】================= */}
+      {/* =================【7. 聯系方式卡片】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '60px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <Row gutter={[24, 24]}>
             <Col xs={24} md={8}>
               <div style={{ background: '#ffffff', padding: '24px', borderRadius: '10px', border: '1px solid #e5e7eb', textAlign: 'center', height: '100%' }}>
                 <EnvironmentOutlined style={{ fontSize: '28px', color: '#f39800', marginBottom: '12px' }} />
-                <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>总部办公场所</div>
+                <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>總部辦公場所</div>
                 <div style={{ fontSize: '14px', fontWeight: '600', color: '#111827', lineHeight: '1.4' }}>
-                  香港九龙尖沙咀么地道62号永安广场12楼1205B室
+                  香港九龍尖沙咀麼地道62號永安廣場12樓1205B室
                 </div>
               </div>
             </Col>
             <Col xs={24} md={8}>
               <div style={{ background: '#ffffff', padding: '24px', borderRadius: '10px', border: '1px solid #e5e7eb', textAlign: 'center', height: '100%' }}>
                 <PhoneOutlined style={{ fontSize: '28px', color: '#f39800', marginBottom: '12px' }} />
-                <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>官方联系热线</div>
+                <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>官方聯系熱線</div>
                 <div style={{ fontSize: '16px', fontWeight: '700', color: '#111827' }}>
                   +852 2882 9868
                 </div>
@@ -489,7 +489,7 @@ export default function AboutPage() {
             <Col xs={24} md={8}>
               <div style={{ background: '#ffffff', padding: '24px', borderRadius: '10px', border: '1px solid #e5e7eb', textAlign: 'center', height: '100%' }}>
                 <MailOutlined style={{ fontSize: '28px', color: '#f39800', marginBottom: '12px' }} />
-                <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>企业客服邮箱</div>
+                <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>企業客服郵箱</div>
                 <div style={{ fontSize: '15px', fontWeight: '600', color: '#111827' }}>
                   cs@desonmetals.com
                 </div>
@@ -499,7 +499,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【8. 风险披露条款】================= */}
+      {/* =================【8. 風險披露條款】================= */}
       <PageDisclaimer />
     </div>
   );

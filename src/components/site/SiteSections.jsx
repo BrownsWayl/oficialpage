@@ -140,7 +140,7 @@ export function PhoneMockup({ price = '2654.32', isUp = true }) {
       <div className="site-phone-screen">
         <div className="site-phone-header">
           <span>XAUUSD</span>
-          <span>实时</span>
+          <span>實時</span>
         </div>
         <div className={`site-phone-price ${isUp ? '' : 'down'}`}>
           {price}
@@ -148,7 +148,7 @@ export function PhoneMockup({ price = '2654.32', isUp = true }) {
         </div>
         <ChartAnimation color={isUp ? '#22c55e' : '#ef4444'} />
         <div className="site-ticker-row">
-          {['买', '卖', '持仓', '历史'].map((t) => (
+          {['買', '賣', '持倉', '歷史'].map((t) => (
             <span key={t} className="site-ticker-item">{t}</span>
           ))}
         </div>
@@ -164,7 +164,7 @@ export function DesktopMockup() {
         <span className="site-desktop-dot" style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }} />
         <span className="site-desktop-dot" style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b' }} />
         <span className="site-desktop-dot" style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#22c55e' }} />
-        <span style={{ marginLeft: 8, fontSize: 12, color: '#9ca3af', fontWeight: '500' }}>MetaTrader 5 (MT5) 旗舰交易终端</span>
+        <span style={{ marginLeft: 8, fontSize: 12, color: '#9ca3af', fontWeight: '500' }}>MetaTrader 5 (MT5) 旗艦交易終端</span>
       </div>
       <div style={{ background: '#111827', width: '100%', height: 'auto', display: 'block', overflow: 'hidden' }}>
         <img 
@@ -177,7 +177,7 @@ export function DesktopMockup() {
   );
 }
 
-export function HeroSection({ title, highlight, subtitle, badge, primaryLink = '/register', primaryText = '立即注册', secondaryLink = '/platform', secondaryText = '了解平台' }) {
+export function HeroSection({ title, highlight, subtitle, badge, primaryLink = '/register', primaryText = '立即註冊', secondaryLink = '/platform', secondaryText = '了解平台' }) {
   return (
     <section className="site-hero">
       <div className="site-hero-glow" />
@@ -249,9 +249,9 @@ export function PricingGrid({ tiers }) {
 export function PlatformShowcase() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { name: 'DS APP', icon: MobileOutlined, features: ['一键操作', '账户分析', '追踪止损', '技术分析'] },
-    { name: 'DS HD', icon: TabletOutlined, features: ['交易提醒', '价格预警', '快捷平仓', '实时资讯'] },
-    { name: '桌面端', icon: DesktopOutlined, features: ['技术指标', '一键平仓', '价格预警', '多屏互动'] },
+    { name: 'DS APP', icon: MobileOutlined, features: ['一鍵操作', '賬戶分析', '追蹤止損', '技術分析'] },
+    { name: 'DS HD', icon: TabletOutlined, features: ['交易提醒', '價格預警', '快捷平倉', '實時資訊'] },
+    { name: '桌面端', icon: DesktopOutlined, features: ['技術指標', '一鍵平倉', '價格預警', '多屏互動'] },
   ];
 
   return (
@@ -276,7 +276,7 @@ export function PlatformShowcase() {
             ))}
           </ul>
           <div style={{ marginTop: 24 }}>
-            <Link to="/register" className="site-btn-primary">下载 {tabs[activeTab].name}</Link>
+            <Link to="/register" className="site-btn-primary">下載 {tabs[activeTab].name}</Link>
           </div>
         </div>
         <PhoneMockup price={activeTab === 0 ? '2654.32' : activeTab === 1 ? '31.28' : '1.0842'} isUp={activeTab !== 1} />
@@ -323,7 +323,7 @@ export function SecuritySection({ items }) {
 export function PageDisclaimer() {
   return (
     <div className="site-disclaimer">
-      风险披露：在德生进行保证金交易涉及高风险，可能并不适合所有投资者。在进行任何融资融券交易前，您应仔细考虑您的投资目标、财务状况、要求和经验水平，并在必要时咨询独立的专业顾问。贵金属是杠杆产品，利润和损失都会被放大。本网站所提供的资料属一般性质，不包含任何个人财务建议。
+      風險披露：在德生進行保證金交易涉及高風險，可能並不適合所有投資者。在進行任何融資融券交易前，您應仔細考慮您的投資目標、財務狀況、要求和經驗水平，並在必要時咨詢獨立的專業顧問。貴金屬是槓桿產品，利潤和損失都會被放大。本網站所提供的資料屬一般性質，不包含任何個人財務建議。
     </div>
   );
 }
