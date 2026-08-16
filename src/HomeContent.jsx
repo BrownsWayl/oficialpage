@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from 'react';
 import { Card, Row, Col, Button, Tag } from 'antd';
 import {
   SafetyCertificateOutlined,
@@ -19,28 +20,66 @@ import {
 } from './components/site/SiteSections';
 import './styles/sitePages.css';
 
-// MQL5 實時金銀報價與圖表組件 (使用純 Iframe 嵌入，保證 100% 穩定和即時加載)
-function Mql5Widget({ type = 'overview', symbol = ['XAUUSD', 'XAGUSD', 'EURUSD', 'GBPUSD', 'USDJPY'], height = 420 }) {
-  const symbolStr = Array.isArray(symbol) ? symbol.join(',') : symbol;
-  const host = typeof window !== 'undefined' ? window.location.hostname : '';
-  const iframeSrc = `https://www.mql5.com/quotes/widget?type=${type}&style=table&filter=${symbolStr}&period=D1&fw=html&lang=zh&theme=dark&width=100%&height=${height}&utm_source=${encodeURIComponent(host)}`;
+// 官方 TradingView 全球權威實時行情報價組件 (100% 穩定、無跨域/私有網絡安全攔截問題)
+function MarketOverviewWidget({ height = 440 }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // 清空歷史節點，避免 React 重新渲染時重複生成多個組件
+    containerRef.current.innerHTML = '';
+
+    const widgetContainer = document.createElement('div');
+    widgetContainer.className = 'tradingview-widget-container__widget';
+    containerRef.current.appendChild(widgetContainer);
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      colorTheme: 'dark',
+      dateRange: '1D',
+      showChart: true,
+      locale: 'zh_TW',
+      largeChartUrl: '',
+      isTransparent: true,
+      showSymbolLogo: true,
+      showFloatingTooltip: false,
+      width: '100%',
+      height: height,
+      plotLineColorGrowing: 'rgba(34, 197, 94, 1)',
+      plotLineColorFalling: 'rgba(239, 68, 68, 1)',
+      gridLineColor: 'rgba(240, 243, 246, 0.06)',
+      scaleFontColor: 'rgba(156, 163, 175, 1)',
+      belowLineFillColorGrowing: 'rgba(34, 197, 94, 0.12)',
+      belowLineFillColorFalling: 'rgba(239, 68, 68, 0.12)',
+      symbolActiveColor: 'rgba(243, 152, 0, 0.15)',
+      tabs: [
+        {
+          title: '貴金屬 & 主流外匯',
+          symbols: [
+            { s: 'OANDA:XAUUSD', d: '現貨黃金 (倫敦金)' },
+            { s: 'OANDA:XAGUSD', d: '現貨白銀 (倫敦銀)' },
+            { s: 'FX:EURUSD', d: '歐元 / 美元' },
+            { s: 'FX:GBPUSD', d: '英鎊 / 美元' },
+            { s: 'FX:USDJPY', d: '美元 / 日圓' },
+            { s: 'TVC:DXY', d: '美元指數' },
+          ],
+          originalTitle: 'Forex',
+        },
+      ],
+    });
+
+    containerRef.current.appendChild(script);
+  }, [height]);
 
   return (
-    <iframe
-      src={iframeSrc}
-      frameBorder="0"
-      width="100%"
-      height={`${height}px`}
-      scrolling="no"
-      style={{
-        border: 'none',
-        display: 'block',
-        width: '100%',
-        height: `${height}px`,
-        background: 'transparent',
-        overflow: 'hidden'
-      }}
-      title="MQL5 Real-time Quotes"
+    <div
+      className="tradingview-widget-container"
+      ref={containerRef}
+      style={{ width: '100%', height: `${height}px` }}
     />
   );
 }
@@ -218,7 +257,7 @@ export default function HomeContent({ isMobile }) {
               </Link>
             </div>
 
-            {/* 首屏四大計數器 (仿金榮數據面板) */}
+            {/* 首屏四大計數器 */}
             <Row gutter={[16, 16]} style={{ maxWidth: '720px', margin: '0 auto' }}>
               {[
                 { label: '服務全球用戶', end: 100000, suffix: '人+', prefix: '' },
@@ -250,7 +289,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【3. 獨立大圖版塊：倫敦金與倫敦銀產品指南 (插入 1.png 完整原圖，帶純白背景色)】================= */}
+      {/* =================【3. 獨立大圖版塊：倫敦金與倫敦銀產品指南】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
@@ -263,12 +302,11 @@ export default function HomeContent({ isMobile }) {
           </FadeInSection>
 
           <Row gutter={[32, 32]} align="middle">
-            {/* 左側：PNG產品大圖，帶專門的白色背景色並保持 height: 'auto' 避免文字和內容被裁剪 */}
             <Col xs={24} lg={14}>
               <FadeInSection>
                 <div
                   style={{
-                    background: '#ffffff', // 關鍵點：給 PNG 圖片一個純白底色
+                    background: '#ffffff',
                     border: '1px solid #e5e7eb',
                     borderRadius: '16px',
                     padding: isMobile ? '12px' : '24px',
@@ -285,7 +323,7 @@ export default function HomeContent({ isMobile }) {
                     alt="倫敦金 / 倫敦銀 交易特點"
                     style={{
                       width: '100%',
-                      height: 'auto', // 關鍵點：自適應比例，無任何高寬限制，確保圖片內的文字和圖表絕對完整不裁剪
+                      height: 'auto',
                       display: 'block',
                       objectFit: 'contain',
                     }}
@@ -294,7 +332,6 @@ export default function HomeContent({ isMobile }) {
               </FadeInSection>
             </Col>
 
-            {/* 右側：產品解析文案 */}
             <Col xs={24} lg={10}>
               <FadeInSection>
                 <div style={{ padding: isMobile ? '0' : '0 12px' }}>
@@ -334,7 +371,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【4. 德生四大優勢重新設計 (2列卡片布局，帶純白背景色PNG，寬展視野文字不裁剪)】================= */}
+      {/* =================【4. 德生四大優勢重新設計】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: isMobile ? '48px 16px' : '72px 20px', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb' }}>
         <div className="site-section-inner">
           <FadeInSection>
@@ -346,7 +383,6 @@ export default function HomeContent({ isMobile }) {
             </p>
           </FadeInSection>
 
-          {/* 優勢列表：重新設計為 電腦端 2 列、手機端 1 列，大幅擴增寬度讓 banner 文字顯示更飽滿 */}
           <Row gutter={[32, 32]}>
             {advantages.map((adv) => (
               <Col xs={24} lg={12} key={adv.id}>
@@ -364,11 +400,10 @@ export default function HomeContent({ isMobile }) {
                     }}
                   >
                     <Row gutter={[0, 0]} align="stretch">
-                      {/* 上半部分：完整的優勢 PNG 架構圖片，設置 pure white 背景色、100% 寬度和 height: 'auto' */}
                       <Col xs={24}>
                         <div
                           style={{
-                            background: '#ffffff', // 關鍵點 1：給 PNG 精美原圖一個白色背景色
+                            background: '#ffffff',
                             padding: isMobile ? '12px' : '20px',
                             borderBottom: '1px solid #f0f0f0',
                             display: 'flex',
@@ -381,7 +416,7 @@ export default function HomeContent({ isMobile }) {
                             alt={adv.title}
                             style={{
                               width: '100%',
-                              height: 'auto', // 關鍵點 2：高度完全自適應，無裁剪，確保圖片包含的文字和架構圖原汁原味顯示
+                              height: 'auto',
                               display: 'block',
                               objectFit: 'contain',
                               borderRadius: '8px',
@@ -390,7 +425,6 @@ export default function HomeContent({ isMobile }) {
                         </div>
                       </Col>
 
-                      {/* 下半部分：文本說明區 */}
                       <Col xs={24}>
                         <div style={{ padding: isMobile ? '20px' : '28px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
@@ -418,7 +452,6 @@ export default function HomeContent({ isMobile }) {
                             {adv.desc}
                           </p>
 
-                          {/* 核心特點精梳 */}
                           <div style={{ borderTop: '1px dashed #e5e7eb', paddingTop: '16px' }}>
                             <Row gutter={[16, 8]}>
                               {adv.highlights.map((hl, idx) => (
@@ -454,7 +487,7 @@ export default function HomeContent({ isMobile }) {
             </p>
           </FadeInSection>
 
-          {/* MQL5 實時行情報價組件 */}
+          {/* TradingView 實時行情報價組件 */}
           <FadeInSection>
             <div
               style={{
@@ -464,12 +497,12 @@ export default function HomeContent({ isMobile }) {
                 boxShadow: '0 12px 40px rgba(0, 0, 0, 0.45)',
                 border: '1px solid rgba(243, 152, 0, 0.25)',
                 margin: '0 auto',
-                maxWidth: '960px'
+                maxWidth: '960px',
               }}
             >
               {/* 直接展示多品種行情表格 */}
               <div style={{ background: '#0a0f19', borderRadius: '12px', overflow: 'hidden', padding: '12px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <Mql5Widget type="overview" symbol={['XAUUSD', 'XAGUSD', 'EURUSD', 'GBPUSD', 'USDJPY']} height={400} />
+                <MarketOverviewWidget height={440} />
               </div>
             </div>
           </FadeInSection>
@@ -510,7 +543,6 @@ export default function HomeContent({ isMobile }) {
         <div className="site-hero-grid" style={{ opacity: 0.1 }} />
         <div className="site-section-inner" style={{ zIndex: 10, position: 'relative' }}>
           <Row gutter={[40, 40]} align="middle">
-            {/* 左邊：下載介紹與按鍵 */}
             <Col xs={24} md={12}>
               <div>
                 <Tag color="rgba(243, 152, 0, 0.15)" style={{ color: '#f39800', border: 'none', fontWeight: 'bold', marginBottom: '16px' }}>
@@ -524,7 +556,6 @@ export default function HomeContent({ isMobile }) {
                   德生貴金屬全面深度接入全球公認頂級的電子交易商平台 MT5。該平台以深厚的圖表分析指標、極速的限價單成交模式和出色的高頻量化 EA 自動投資支持而享譽世界。不管是電腦端專業多屏交互、還是移動端隨時隨地跟單，德生服務器皆可做到完美直連。
                 </p>
 
-                {/* 各終端下載按鈕群 */}
                 <Row gutter={[12, 12]} style={{ marginBottom: '24px' }}>
                   <Col xs={12} sm={8}>
                     <a href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" target="_blank" rel="noopener noreferrer">
@@ -558,7 +589,6 @@ export default function HomeContent({ isMobile }) {
               </div>
             </Col>
 
-            {/* 右邊：MT5 電腦大屏交互 3D Mockup 動畫 */}
             <Col xs={24} md={12}>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <DesktopMockup />
@@ -568,7 +598,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【8. 三步開戶指引 —— 仿金榮中國開戶中樞】================= */}
+      {/* =================【8. 三步開戶指引】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
@@ -580,7 +610,6 @@ export default function HomeContent({ isMobile }) {
             </p>
           </FadeInSection>
 
-          {/* 三步走卡片 */}
           <Row gutter={[24, 24]}>
             {steps.map((s, i) => (
               <Col xs={24} md={8} key={s.title}>
@@ -597,7 +626,6 @@ export default function HomeContent({ isMobile }) {
                     }}
                     className="site-step-card-custom"
                   >
-                    {/* 數字圓圈 */}
                     <div
                       style={{
                         width: '44px',
@@ -677,7 +705,6 @@ export default function HomeContent({ isMobile }) {
             </Col>
             <Col xs={24} md={12}>
               <FadeInSection>
-                {/* 盾牌動態圖形展示 */}
                 <div
                   style={{
                     display: 'flex',
@@ -699,7 +726,6 @@ export default function HomeContent({ isMobile }) {
                       position: 'relative',
                     }}
                   >
-                    {/* 同心旋轉光環 */}
                     <div
                       style={{
                         position: 'absolute',
@@ -736,7 +762,6 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* 內聯注入全局微動效樣式，無需額外修改CSS文件即可實現懸浮和旋轉效果 */}
       <style>{`
         @keyframes float {
           0% { transform: translateY(0px); }
@@ -758,9 +783,6 @@ export default function HomeContent({ isMobile }) {
           transform: translateY(-8px);
           border-color: rgba(243, 152, 0, 0.4) !important;
           box-shadow: 0 10px 25px rgba(243, 152, 0, 0.08) !important;
-        }
-        .site-advantage-card-hover:hover .advantage-image {
-          transform: scale(1.03);
         }
         .site-step-card-custom {
           transition: all 0.3s ease !important;
