@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Card, Row, Col, Button, Tag } from 'antd';
 import {
   SafetyCertificateOutlined,
@@ -20,72 +20,67 @@ import {
 } from './components/site/SiteSections';
 import './styles/sitePages.css';
 
-// 官方 TradingView 全球權威實時行情報價組件 (100% 穩定、無跨域/私有網絡安全攔截問題)
-function MarketOverviewWidget({ height = 440 }) {
-  const containerRef = useRef(null);
+// 官方 TradingView 實時多品種報價大盤 (純 iframe 封裝，保證在任何伺服器/生產環境下秒級渲染且不黑屏)
+function MarketOverviewWidget({ height = 460 }) {
+  const widgetConfig = {
+    colorTheme: 'dark',
+    dateRange: '1D',
+    showChart: true,
+    locale: 'zh_TW',
+    isTransparent: true,
+    showSymbolLogo: true,
+    showFloatingTooltip: false,
+    width: '100%',
+    height: '100%',
+    plotLineColorGrowing: 'rgba(34, 197, 94, 1)',
+    plotLineColorFalling: 'rgba(239, 68, 68, 1)',
+    gridLineColor: 'rgba(240, 243, 246, 0.06)',
+    scaleFontColor: 'rgba(156, 163, 175, 1)',
+    belowLineFillColorGrowing: 'rgba(34, 197, 94, 0.12)',
+    belowLineFillColorFalling: 'rgba(239, 68, 68, 0.12)',
+    symbolActiveColor: 'rgba(243, 152, 0, 0.15)',
+    tabs: [
+      {
+        title: '貴金屬 & 主流外匯',
+        symbols: [
+          { s: 'OANDA:XAUUSD', d: '現貨黃金 (倫敦金)' },
+          { s: 'OANDA:XAGUSD', d: '現貨白銀 (倫敦銀)' },
+          { s: 'FX:EURUSD', d: '歐元 / 美元' },
+          { s: 'FX:GBPUSD', d: '英鎊 / 美元' },
+          { s: 'FX:USDJPY', d: '美元 / 日圓' },
+          { s: 'TVC:DXY', d: '美元指數' },
+        ],
+        originalTitle: 'Forex',
+      },
+    ],
+  };
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    // 清空歷史節點，避免 React 重新渲染時重複生成多個組件
-    containerRef.current.innerHTML = '';
-
-    const widgetContainer = document.createElement('div');
-    widgetContainer.className = 'tradingview-widget-container__widget';
-    containerRef.current.appendChild(widgetContainer);
-
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
-    script.async = true;
-    script.innerHTML = JSON.stringify({
-      colorTheme: 'dark',
-      dateRange: '1D',
-      showChart: true,
-      locale: 'zh_TW',
-      largeChartUrl: '',
-      isTransparent: true,
-      showSymbolLogo: true,
-      showFloatingTooltip: false,
-      width: '100%',
-      height: height,
-      plotLineColorGrowing: 'rgba(34, 197, 94, 1)',
-      plotLineColorFalling: 'rgba(239, 68, 68, 1)',
-      gridLineColor: 'rgba(240, 243, 246, 0.06)',
-      scaleFontColor: 'rgba(156, 163, 175, 1)',
-      belowLineFillColorGrowing: 'rgba(34, 197, 94, 0.12)',
-      belowLineFillColorFalling: 'rgba(239, 68, 68, 0.12)',
-      symbolActiveColor: 'rgba(243, 152, 0, 0.15)',
-      tabs: [
-        {
-          title: '貴金屬 & 主流外匯',
-          symbols: [
-            { s: 'OANDA:XAUUSD', d: '現貨黃金 (倫敦金)' },
-            { s: 'OANDA:XAGUSD', d: '現貨白銀 (倫敦銀)' },
-            { s: 'FX:EURUSD', d: '歐元 / 美元' },
-            { s: 'FX:GBPUSD', d: '英鎊 / 美元' },
-            { s: 'FX:USDJPY', d: '美元 / 日圓' },
-            { s: 'TVC:DXY', d: '美元指數' },
-          ],
-          originalTitle: 'Forex',
-        },
-      ],
-    });
-
-    containerRef.current.appendChild(script);
-  }, [height]);
+  const iframeSrc = `https://www.tradingview-widget.com/embed-widget/market-overview/?locale=zh_TW#${encodeURIComponent(
+    JSON.stringify(widgetConfig)
+  )}`;
 
   return (
-    <div
-      className="tradingview-widget-container"
-      ref={containerRef}
-      style={{ width: '100%', height: `${height}px` }}
-    />
+    <div style={{ width: '100%', height: `${height}px`, overflow: 'hidden' }}>
+      <iframe
+        src={iframeSrc}
+        title="TradingView Real-time Quotes"
+        style={{
+          width: '100%',
+          height: `${height}px`,
+          border: 'none',
+          display: 'block',
+          background: 'transparent',
+        }}
+        loading="lazy"
+        frameBorder="0"
+        scrolling="no"
+      />
+    </div>
   );
 }
 
 export default function HomeContent({ isMobile }) {
-  // 1. 公司四大核心優勢 (對應 3-1.png 到 3-4.png 完整的水平/垂直大圖)
+  // 1. 公司四大核心優勢
   const advantages = [
     {
       id: 1,
@@ -475,7 +470,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【5. 實時報價參數與交易要素表】================= */}
+      {/* =================【5. 實時報價參數與交易要素表 (TradingView 官方標準純 iframe 封裝)】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
@@ -487,7 +482,7 @@ export default function HomeContent({ isMobile }) {
             </p>
           </FadeInSection>
 
-          {/* TradingView 實時行情報價組件 */}
+          {/* TradingView 實時行情報價大盤 */}
           <FadeInSection>
             <div
               style={{
@@ -500,9 +495,8 @@ export default function HomeContent({ isMobile }) {
                 maxWidth: '960px',
               }}
             >
-              {/* 直接展示多品種行情表格 */}
-              <div style={{ background: '#0a0f19', borderRadius: '12px', overflow: 'hidden', padding: '12px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <MarketOverviewWidget height={440} />
+              <div style={{ background: '#0a0f19', borderRadius: '12px', overflow: 'hidden', padding: '8px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <MarketOverviewWidget height={460} />
               </div>
             </div>
           </FadeInSection>
