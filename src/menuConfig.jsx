@@ -33,6 +33,7 @@ const exploreOverlay = (
 export const getMenuItems = (isMobile, onLinkClick) => [
   { key: 'home', label: <Link to="/" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">首頁</span></Link> },
   { key: 'about', label: <Link to="/about" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">關於</span></Link> },
+  { key: 'tradingrule', label: <Link to="/tradingrule" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">貴金屬合約交易</span></Link> },
   { key: 'appdown', label: <Link to="/appdown" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">電子交易平台</span></Link> },
   { key: 'contact', label: <Link to="/contact" onClick={onLinkClick} style={{ color: 'inherit', textDecoration: 'none', display: 'block', width: '100%' }}><span className="menu-label-text">聯系我們</span></Link> },
 ];

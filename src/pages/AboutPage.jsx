@@ -59,14 +59,14 @@ export default function AboutPage() {
   // 3. 企業裡程碑
   const milestones = [
     {
-      year: '2025',
+      year: '2024',
       title: '品牌成立 & 技術騰飛',
       desc: '德生金業有限公司德生貴金屬 / Deson Metals）正式在香港成立。推出自研智能風控管理系統，全面對接國際頂級 MetaTrader 5 (MT5) 交易系統。',
     },
     {
       year: '2025',
       title: '深耕亞太 & 會員資質',
-      desc: '合規化運營體系日臻健全，秉持香港金銀業貿易場等權威標准，客戶資金全面實現獨立銀行托管，托管率達 100%。',
+      desc: '合規化運營體系日臻健全，秉持香港黃金交易所(HKGX)等權威標准，客戶資金全面實現獨立安全隔離，安全保障率達 100%。',
     },
     {
       year: '2026',
@@ -365,8 +365,7 @@ export default function AboutPage() {
                   <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 12px' }}>核心價值觀</h3>
                   <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
                     <strong>至誠守信</strong>：絕無虛假報價，無隱性費用。<br />
-                    <strong>合規自律</strong>：自願接受超高標准監管，客戶資金獨立托管。<br />
-                    <strong>客戶至上</strong>：全天候專人一對一高效解答。
+                    <strong>合規自律</strong>：自願接受超高標准監管，客戶資金獨立安全隔離。<br />
                   </p>
                 </div>
               </FadeInSection>

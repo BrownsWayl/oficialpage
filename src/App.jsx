@@ -9,6 +9,7 @@ import { GlobalHeader } from './components/Header';
 import AboutPage from './pages/AboutPage';
 import AppDown from './pages/AppDown';
 import ContactPage from './pages/ContactPage';
+import TradingRule from './pages/TradingRule';
 
 const { Header: AntdHeader, Content, Footer } = Layout;
 const { useBreakpoint } = Grid;
@@ -126,6 +127,7 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<HomeContent isMobile={isMobile} />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/tradingrule" element={<TradingRule />} />
                 <Route path='/appdown' element={<AppDown />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<div>登入</div>} />
@@ -136,7 +138,7 @@ export default function App() {
 
           {/* =================【4. 統一底部】================= */}
           <Footer style={{ textAlign: 'center', background: '#1A1A1A', color: '#cccccc', height: '48px', padding: 0, lineHeight: '48px', flexShrink: 0 }}>
-            DS Upway China ©2026
+            DS  ©2026
           </Footer>
 
         </Layout>

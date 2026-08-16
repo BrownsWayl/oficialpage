@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Button, Tag, Table } from 'antd';
+import { Card, Row, Col, Button, Tag } from 'antd';
 import {
   SafetyCertificateOutlined,
   ThunderboltOutlined,
@@ -10,60 +9,53 @@ import {
   WindowsOutlined,
   AndroidOutlined,
   AppleOutlined,
-  CheckOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import {
   FadeInSection,
-  MarketTicker,
   AnimatedCounter,
   PageDisclaimer,
   DesktopMockup,
 } from './components/site/SiteSections';
 import './styles/sitePages.css';
 
+// MQL5 實時金銀報價與圖表組件 (使用純 Iframe 嵌入，保證 100% 穩定和即時加載)
+function Mql5Widget({ type = 'overview', symbol = ['XAUUSD', 'XAGUSD', 'EURUSD', 'GBPUSD', 'USDJPY'], height = 420 }) {
+  const symbolStr = Array.isArray(symbol) ? symbol.join(',') : symbol;
+  const host = typeof window !== 'undefined' ? window.location.hostname : '';
+  const iframeSrc = `https://www.mql5.com/quotes/widget?type=${type}&style=table&filter=${symbolStr}&period=D1&fw=html&lang=zh&theme=dark&width=100%&height=${height}&utm_source=${encodeURIComponent(host)}`;
+
+  return (
+    <iframe
+      src={iframeSrc}
+      frameBorder="0"
+      width="100%"
+      height={`${height}px`}
+      scrolling="no"
+      style={{
+        border: 'none',
+        display: 'block',
+        width: '100%',
+        height: `${height}px`,
+        background: 'transparent',
+        overflow: 'hidden'
+      }}
+      title="MQL5 Real-time Quotes"
+    />
+  );
+}
+
 export default function HomeContent({ isMobile }) {
-  // 動態市場報價狀態 (初始化為 desonmetals.net 官方當前的真實大盤金銀現貨價格，黃金對齊至 4408)
-  const [prices, setPrices] = useState({
-    goldBid: 4408.21,
-    goldAsk: 4408.51,
-    silverBid: 65.857,
-    silverAsk: 65.887,
-  });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPrices(prev => {
-        const goldDiff = (Math.random() - 0.5) * 0.4; // +/- 20美分波動
-        const newGoldBid = +(prev.goldBid + goldDiff).toFixed(2);
-        const newGoldAsk = +(newGoldBid + 0.30).toFixed(2); // 維持 0.30 點差
-
-        const silverDiff = (Math.random() - 0.5) * 0.04; // +/- 2美分波動
-        const newSilverBid = +(prev.silverBid + silverDiff).toFixed(3);
-        const newSilverAsk = +(newSilverBid + 0.030).toFixed(3); // 維持 0.030 點差
-
-        return {
-          goldBid: newGoldBid,
-          goldAsk: newGoldAsk,
-          silverBid: newSilverBid,
-          silverAsk: newSilverAsk,
-        };
-      });
-    }, 1500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   // 1. 公司四大核心優勢 (對應 3-1.png 到 3-4.png 完整的水平/垂直大圖)
   const advantages = [
     {
       id: 1,
       image: '/3-1.png',
       icon: <SafetyCertificateOutlined style={{ color: '#f39800' }} />,
-      title: '合規牌照與資金隔離安全',
-      subtitle: '權威監管 · 100% 銀行獨立托管',
-      desc: '嚴格遵守國際金融行業監管公約。德生貴金屬客戶所有注入資金全面存放於獨立信托銀行的隔離賬戶中，與平台運營資金完全剝離，出入金極速高效，保障每一分資金的安全與純粹。',
-      highlights: ['獨立銀行信托隔離托管', '國際權威標准規范運營', '資金秒級存取安全有據'],
+      title: '合規牌照與資金安全',
+      subtitle: '權威監管 · 100% 獨立安全隔離',
+      desc: '嚴格遵守國際金融行業監管公約。德生貴金屬客戶所有注入資金全面存放於獨立賬戶中，與平台運營資金完全剝離，出入金極速高效，保障每一分資金的安全與純粹。',
+      highlights: ['獨立安全隔離', '國際權威標准規范運營', '資金秒級存取安全有據'],
     },
     {
       id: 2,
@@ -80,8 +72,8 @@ export default function HomeContent({ isMobile }) {
       icon: <PercentageOutlined style={{ color: '#f39800' }} />,
       title: '點差直降與零隱藏傭金成本',
       subtitle: '點差極低 · 投資利潤摩擦大幅縮減',
-      desc: '直接從多方流動性提供商獲取即時最深報價，點差低至 0 起。德生不設任何隱藏收費或額外交易傭金，真正將高轉化、低交易成本讓利於每一位投資者。',
-      highlights: ['倫敦金點差低至 0 起手', '零附加手續費與出入款費用', '提供豐厚新客贈金交易支持'],
+      desc: '直接從多方流動性提供商獲取即時最深報價，黃金最低點差 0.24 起，白銀最低 0.04 起。德生不設任何隱藏收費或額外交易傭金，真正將高轉化、低交易成本讓利於每一位投資者。',
+      highlights: ['零附加手續費與出入款費用', '提供豐厚新客贈金交易支持'],
     },
     {
       id: 4,
@@ -104,7 +96,7 @@ export default function HomeContent({ isMobile }) {
     },
     {
       title: '2. 安全注資免手續費',
-      desc: '支持網銀、快捷錢包等多種合規安全通道，100%銀行托管隔離，秒級到賬。',
+      desc: '支持網銀、快捷錢包等多種合規安全通道，100%資金安全隔離，秒級到賬。',
       action: '前往注資',
       link: '/login',
     },
@@ -114,21 +106,6 @@ export default function HomeContent({ isMobile }) {
       action: '下載平台',
       link: '/appdown',
     },
-  ];
-
-  // 行情報價表數據 (倫敦金、倫敦銀)
-  const columns = [
-    { title: '交易品種', dataIndex: 'name', key: 'name', render: (text, record) => <span><strong>{text}</strong> <small style={{ color: '#8c8c8c' }}>({record.symbol})</small></span> },
-    { title: '最新買價 (Bid)', dataIndex: 'bid', key: 'bid', render: (text) => <span style={{ color: '#22c55e', fontWeight: 'bold' }}>{text}</span> },
-    { title: '最新賣價 (Ask)', dataIndex: 'ask', key: 'ask', render: (text) => <span style={{ color: '#ef4444', fontWeight: 'bold' }}>{text}</span> },
-    { title: '最低點差 (Spread)', dataIndex: 'spread', key: 'spread', render: (text) => <span style={{ color: '#f39800', fontWeight: 'bold' }}>{text}</span> },
-    { title: '最高槓桿', dataIndex: 'leverage', key: 'leverage' },
-    { title: '產品優勢', dataIndex: 'advantage', key: 'advantage' },
-  ];
-
-  const marketData = [
-    { key: '1', name: '倫敦金', symbol: 'XAUUSD', bid: prices.goldBid.toFixed(2), ask: prices.goldAsk.toFixed(2), spread: '$0.30 / 免傭金', leverage: '1:100 - 1:500', advantage: '波動活躍 · 投資避險神品' },
-    { key: '2', name: '倫敦銀', symbol: 'XAGUSD', bid: prices.silverBid.toFixed(3), ask: prices.silverAsk.toFixed(3), spread: '$0.030 / 免傭金', leverage: '1:100 - 1:200', advantage: '雙向獲利 · 小資金撬動大盈利' },
   ];
 
   return (
@@ -164,7 +141,7 @@ export default function HomeContent({ isMobile }) {
                 display: 'inline-block',
               }}
             >
-              🏆 香港金銀業貿易場權威規范標准運營品牌
+              🏆 香港黃金交易所(HKGX)
             </Tag>
             <h1
               className="site-hero-title"
@@ -189,7 +166,7 @@ export default function HomeContent({ isMobile }) {
                 margin: '0 auto 36px',
               }}
             >
-              直連國際頂級 MetaTrader 5 交易系統，提供極速 0.05 秒訂單成交體驗與 100% 銀行獨立信托賬戶隔離托管，以極低點差成本與全天候貼心咨詢，傾力打造無可匹敵的安全投資環境。
+              直連國際頂級 MetaTrader 5 交易系統，提供極速 0.05 秒訂單成交體驗與 100% 獨立安全隔離，以極低點差成本與全天候貼心咨詢，傾力打造無可匹敵的安全投資環境。
             </p>
 
             {/* 首屏行動按鍵 */}
@@ -244,10 +221,10 @@ export default function HomeContent({ isMobile }) {
             {/* 首屏四大計數器 (仿金榮數據面板) */}
             <Row gutter={[16, 16]} style={{ maxWidth: '720px', margin: '0 auto' }}>
               {[
-                { label: '服務全球客戶數', end: 1000000, suffix: '人+', prefix: '' },
+                { label: '服務全球用戶', end: 100000, suffix: '人+', prefix: '' },
                 { label: '平均訂單延遲', end: 0, suffix: '秒', prefix: '0.05' },
                 { label: '平台隱藏交易費', end: 0, suffix: '元', prefix: '0' },
-                { label: '客戶資金托管率', end: 100, suffix: '%', prefix: '' },
+                { label: '專業風控團隊', end: 100, suffix: '%', prefix: '' },
               ].map((s, idx) => (
                 <Col xs={12} sm={6} key={idx}>
                   <div
@@ -272,9 +249,6 @@ export default function HomeContent({ isMobile }) {
           </div>
         </div>
       </section>
-
-      {/* =================【2. 實時行情滾動條 Market Ticker】================= */}
-      <MarketTicker />
 
       {/* =================【3. 獨立大圖版塊：倫敦金與倫敦銀產品指南 (插入 1.png 完整原圖，帶純白背景色)】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
@@ -335,7 +309,7 @@ export default function HomeContent({ isMobile }) {
                   </p>
 
                   <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', borderLeft: '4px solid #f39800', marginBottom: '24px' }}>
-                    <h4 style={{ fontSize: '15px', fontWeight: 'bold', color: '#090e17', margin: '0 0 6px' }}>💡 德生零息持倉政策：</h4>
+                    <h4 style={{ fontSize: '15px', fontWeight: 'bold', color: '#090e17', margin: '0 0 6px' }}>💡 德生低息持倉政策：</h4>
                     <p style={{ fontSize: '12px', color: '#6b7280', margin: 0, lineHeight: '1.5' }}>
                       對比其他收取高額過夜息的交易所，德生提供靈活低息持倉待遇，全方位呵護您的中長線波段套利單。
                     </p>
@@ -368,7 +342,7 @@ export default function HomeContent({ isMobile }) {
               德生貴金屬 4 大中樞價值
             </h2>
             <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 48px' }}>
-              我們重新規劃了優勢卡片的設計。采用高清晰度的 **雙列大寬度布局** 且完全取消高度裁剪，配合 **純白 PNG 背景色**，確保圖片內的所有關鍵文字在任何終端都清晰呈現。
+              堅持合規透明與安全保障，以卓越技術及專業服務，為您的每一筆貴金屬投資保駕護航。
             </p>
           </FadeInSection>
 
@@ -480,15 +454,23 @@ export default function HomeContent({ isMobile }) {
             </p>
           </FadeInSection>
 
-          {/* 報價表格展示 */}
+          {/* MQL5 實時行情報價組件 */}
           <FadeInSection>
-            <div style={{ background: '#ffffff', borderRadius: '16px', padding: isMobile ? '12px' : '24px', boxShadow: '0 4px 24px rgba(0,0,0,0.03)', overflowX: 'auto', border: '1px solid #e5e7eb' }}>
-              <Table
-                dataSource={marketData}
-                columns={columns}
-                pagination={false}
-                className="market-quote-table"
-              />
+            <div
+              style={{
+                background: '#090e17',
+                borderRadius: '16px',
+                padding: isMobile ? '12px' : '24px 32px 32px',
+                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.45)',
+                border: '1px solid rgba(243, 152, 0, 0.25)',
+                margin: '0 auto',
+                maxWidth: '960px'
+              }}
+            >
+              {/* 直接展示多品種行情表格 */}
+              <div style={{ background: '#0a0f19', borderRadius: '12px', overflow: 'hidden', padding: '12px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <Mql5Widget type="overview" symbol={['XAUUSD', 'XAGUSD', 'EURUSD', 'GBPUSD', 'USDJPY']} height={400} />
+              </div>
             </div>
           </FadeInSection>
 
@@ -570,7 +552,7 @@ export default function HomeContent({ isMobile }) {
                 <div style={{ background: 'rgba(243, 152, 0, 0.05)', borderLeft: '3px solid #f39800', padding: '12px 16px', borderRadius: '4px' }}>
                   <div style={{ fontSize: '13px', color: '#f39800', fontWeight: 'bold' }}>🔍 連入德生專用服務器：</div>
                   <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '4px' }}>
-                    在 MT5 中添加交易商搜索：<strong style={{ color: '#fff' }}>Deson Metals</strong>。真實賬戶選擇服務器 <strong style={{ color: '#fff' }}>DesonMetals-Live</strong>。
+                    在 MT5 中添加交易商搜索：<strong style={{ color: '#fff' }}>deson</strong>。真實賬戶選擇服務器 <strong style={{ color: '#fff' }}>deson precious metals</strong>。
                   </div>
                 </div>
               </div>
@@ -675,15 +657,15 @@ export default function HomeContent({ isMobile }) {
                   資金隔離與金融風控安全
                 </h2>
                 <p style={{ color: '#6b7280', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px' }}>
-                  在德生，合規安全與透明公開始終被擺在首要位置。平台不觸碰客戶投資本金。所有客戶出入資金獨立隔離存放在大型托管商業銀行信托獨立賬戶中。德生接受行業權威自律與合規內審，全方位確保大資金交易和日常小資金存取款在秒級安全通道內暢通流轉。
+                  在德生，合規安全與透明公開始終被擺在首要位置。平台不觸碰客戶投資本金。所有客戶出入資金獨立安全隔離存放於信托獨立賬戶中。德生接受行業權威自律與合規內審，全方位確保大資金交易和日常小資金存取款在秒級安全通道內暢通流轉。
                 </p>
 
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {[
-                    '獨立托管：客戶本金與交易商運營流水100%隔離',
+                    '獨立安全隔離：客戶本金與交易商運營流水100%隔離',
                     '合規經營：秉持最嚴格的國際與香港行業內控規約',
                     '極速存取：多通道快速存取款方案，日內出款秒級核算',
-                    '銀行級加密：網站數據及傳輸渠道皆由 SSL 256位高級加密保護',
+                    '金融級加密：網站數據及傳輸渠道皆由 SSL 256位高級加密保護',
                   ].map((item, idx) => (
                     <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '13px', color: '#4b5563' }}>
                       <CheckCircleOutlined style={{ color: '#22c55e', fontSize: '14px' }} />

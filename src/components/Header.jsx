@@ -88,27 +88,45 @@ export const GlobalHeader = ({ isMobile, setDrawerVisible }) => {
       {/* 1. 左側：高品質金黃色徽章 Logo 區域 */}
       <Link to="/" style={{ display: 'flex', alignItems: 'center', height: '100%', textDecoration: 'none' }}>
         <div style={{
-          width: '32px',
-          height: '32px',
+          width: '34px',
+          height: '34px',
           borderRadius: '8px',
-          background: 'linear-gradient(135deg, #f39800 0%, #ffc34d 100%)',
+          background: 'linear-gradient(135deg, #111b2d 0%, #050811 100%)',
           marginRight: '12px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 0 14px rgba(243, 152, 0, 0.45)',
-          fontWeight: '900',
-          color: '#000000',
-          fontSize: '15px',
-          letterSpacing: '0.5px'
+          border: '1px solid rgba(243, 152, 0, 0.65)',
+          boxShadow: '0 0 12px rgba(243, 152, 0, 0.3)',
+          fontWeight: '800',
+          color: '#f39800',
+          fontSize: '14px',
+          letterSpacing: '1px',
+          fontFamily: "'Montserrat', sans-serif"
         }}>
           DS
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
-          <span style={{ color: '#ffffff', fontSize: '15px', fontWeight: '800', letterSpacing: '1px', fontFamily: 'system-ui, sans-serif' }}>
-            DESON METALS
+        <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.15' }}>
+          <span style={{
+            color: '#ffffff',
+            fontSize: '15.5px',
+            fontWeight: '600',
+            letterSpacing: '2.5px',
+            fontFamily: "'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            DESON&nbsp;<span style={{ color: '#f39800', fontWeight: '800' }}>METALS</span>
           </span>
-          <span style={{ color: '#f39800', fontSize: '10px', fontWeight: '600', letterSpacing: '1.5px', marginTop: '1px' }}>
+          <span style={{
+            color: '#f39800',
+            fontSize: '9.5px',
+            fontWeight: '500',
+            letterSpacing: '4px',
+            fontFamily: "'PingFang HK', 'Heiti TC', 'Microsoft JhengHei', sans-serif",
+            marginTop: '3px'
+          }}>
             德生貴金屬
           </span>
         </div>
@@ -119,6 +137,7 @@ export const GlobalHeader = ({ isMobile, setDrawerVisible }) => {
         <div className="pc-nav-container">
           <Link to="/" className={`pc-nav-item ${currentPath === '/' ? 'active' : ''}`}>首頁</Link>
           <Link to="/about" className={`pc-nav-item ${currentPath === '/about' ? 'active' : ''}`}>關於</Link>
+          <Link to="/tradingrule" className={`pc-nav-item ${currentPath === '/tradingrule' ? 'active' : ''}`}>貴金屬合約交易</Link>
           <Link to="/appdown" className={`pc-nav-item ${currentPath === '/appdown' ? 'active' : ''}`}>電子交易平台</Link>
           <Link to="/contact" className={`pc-nav-item ${currentPath === '/contact' ? 'active' : ''}`}>聯系我們</Link>
         </div>

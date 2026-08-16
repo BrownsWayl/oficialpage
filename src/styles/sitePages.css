@@ -796,31 +796,6 @@
   animation: candlePulse 2s ease infinite;
 }
 
-/* 行情滚动条 */
-.site-market-ticker {
-  overflow: hidden;
-  background: rgba(239, 68, 68, 0.08);
-  border-top: 1px solid rgba(239, 68, 68, 0.15);
-  border-bottom: 1px solid rgba(239, 68, 68, 0.15);
-  padding: 10px 0;
-}
-
-.site-market-ticker-track {
-  display: flex;
-  gap: 48px;
-  animation: marqueeScroll 25s linear infinite;
-  white-space: nowrap;
-}
-
-.site-market-ticker-item {
-  font-size: 13px;
-  color: #d1d5db;
-  flex-shrink: 0;
-}
-
-.site-market-ticker-item .up { color: #22c55e; margin-left: 8px; }
-.site-market-ticker-item .down { color: #ef4444; margin-left: 8px; }
-
 /* 动画 keyframes */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -880,11 +855,6 @@
 @keyframes candlePulse {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
-}
-
-@keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* 移动端适配 */

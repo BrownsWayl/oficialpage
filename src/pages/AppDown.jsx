@@ -101,7 +101,7 @@ export default function AppDown() {
                   margin: '0 0 32px',
                 }}
               >
-                依托全球頂級金融技術和極速訂單清算引擎，全新上線 MetaTrader 5 (MT5) 客戶端。為您提供秒級行情、大師級圖表指標及100%銀行隔離信托保障。讓您不論在PC大屏還是掌上移動端，均能掌握全球交易先機。
+                依托全球頂級金融技術和極速訂單清算引擎，全新上線 MetaTrader 5 (MT5) 客戶端。為您提供秒級行情、大師級圖表指標及100%獨立安全隔離保障。讓您不論在PC大屏還是掌上移動端，均能掌握全球交易先機。
               </p>
 
               {/* 官方極速下載入口 */}
@@ -178,7 +178,7 @@ export default function AppDown() {
                       border: '1px solid rgba(243, 152, 0, 0.3)',
                     }}
                   >
-                    🔒 100% 資金獨立隔離托管
+                    🔒 100% 資金獨立安全隔離
                   </div>
                 </div>
               </FadeInSection>
@@ -195,7 +195,7 @@ export default function AppDown() {
             <h2 style={{ fontSize: '32px', fontWeight: '800', color: '#111827', margin: '0 0 12px', letterSpacing: '1px' }}>
               重塑交易標准 · 掌握全球廣度
             </h2>
-            <p style={{ fontSize: '16px', color: '#6b7280', margin: 0, maxWidth: '720px', margin: '0 auto', lineHeight: '1.6' }}>
+            <p style={{ fontSize: '16px', color: '#6b7280', maxWidth: '720px', margin: '0 auto', lineHeight: '1.6' }}>
               德生官方將領先的電子撮合架構、嚴格的風險控制體系和極致的技術完美結合。以下四大模塊充分展示了德生貴金屬在移動端和桌面端的頂級專業配置。
             </p>
             <div style={{ width: '60px', height: '4px', background: '#f39800', margin: '16px auto 0', borderRadius: '2px' }} />
@@ -345,12 +345,18 @@ export default function AppDown() {
                     overflow: 'hidden',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
                     border: '1px solid #e5e7eb',
+                    background: '#ffffff',
                   }}
                 >
                   <img
-                    src="/7.jpg"
+                    src="/7.png"
                     alt="德生合規資質與安全保障"
-                    style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      display: 'block',
+                      transition: 'transform 0.4s ease',
+                    }}
                     className="hover-scale-img"
                   />
                   <div
@@ -380,17 +386,17 @@ export default function AppDown() {
                     <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>合規資產保障</span>
                   </div>
                   <h3 style={{ fontSize: '26px', fontWeight: '700', color: '#111827', margin: '0 0 16px' }}>
-                    權威信譽合規：100% 客戶資金獨立托管
+                    權威信譽合規：100% 客戶資金獨立安全隔離
                   </h3>
                   <div style={{ fontSize: '15px', color: '#4b5563', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <p style={{ margin: 0 }}>
                       作為金融合規的堅定擁護者，<strong>德生金業</strong> 秉承嚴格的行業最高公約標准運作。我們最核心的生命線是保障每一位客戶的資金存放安全。
                     </p>
                     <p style={{ margin: 0 }}>
-                      平台所有客戶資金均存放在<strong>獨立的商業信托銀行隔離托管賬戶中</strong>，托管率達到 100%。德生的公司運營資本和客戶資產完全隔離，不受任何外部債務影響，提供絕對安全、公平和完備合規的良性投資。
+                      平台所有客戶資金均存放在<strong>獨立的安全隔離信托賬戶中</strong>，安全保障率達到 100%。德生的公司運營資本和客戶資產完全隔離，不受任何外部債務影響，提供絕對安全、公平和完備合規的良性投資。
                     </p>
                     <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <li>🏦 大型信托托管銀行清算隔離，資金只可劃撥於對應投資者本人</li>
+                      <li>🏦 獨立信托賬戶安全隔離，資金只可劃撥於對應投資者本人</li>
                       <li>📜 持有海關A類貴金屬進出口註冊以及完備的香港實體場所</li>
                       <li>🔍 定期接受多方權威機構獨立的合規性年度財務審計</li>
                     </ul>
@@ -446,17 +452,17 @@ export default function AppDown() {
                     <span style={{ color: '#f39800', fontSize: '14px', fontWeight: '700', letterSpacing: '1px' }}>頂級溫情服務</span>
                   </div>
                   <h3 style={{ fontSize: '26px', fontWeight: '700', color: '#111827', margin: '0 0 16px' }}>
-                    管家式專屬服務：7×24 小時一對一專業解答
+                    管家式專屬服務：全天候專業解答
                   </h3>
                   <div style={{ fontSize: '15px', color: '#4b5563', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <p style={{ margin: 0 }}>
                       我們深知，金融市場瞬息萬變，在任何時候獲得無縫解答是至關重要的。因此，德生為您配備了<strong>全天候多語言高級實戰客服專家</strong>。
                     </p>
                     <p style={{ margin: 0 }}>
-                      無論您是對 MT5 的指標如何調出有疑問，還是面臨深夜資金調度及出入金支持，抑或是需要進行大額量化 API 對接，均可以通過電話、郵件及極速在線客服獲取<strong>即時、暖心的一對一專業解決方案</strong>。
+                      無論您是對 MT5 的指標如何調出有疑問，還是面臨深夜資金調度及出入金支持，抑或是需要進行大額量化 API 對接，均可以通過電話、郵件及極速在線客服獲取<strong>即時、暖心專業解決方案</strong>。
                     </p>
                     <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <li>💬 專屬投資顧問 24 小時全天候多渠道隨時響應</li>
+                      <li>💬 專屬投資顧問 全天候多渠道隨時響應</li>
                       <li>🛠️ 提供詳盡的 PC / 手機端安裝包配置說明及新手輔導</li>
                       <li>📈 實時解析關鍵經濟指標釋放事件，協助規避交易風險</li>
                     </ul>
@@ -533,7 +539,7 @@ export default function AppDown() {
                         </div>
                         <div style={{ position: 'relative' }} className="qr-hover-container">
                           <Button type="primary" icon={<DownloadOutlined />} href={downloadNodes.ios[0].url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>官方下載</Button>
-                          
+
                           {/* QR Code Popover */}
                           <div className="qr-popover" style={{
                             position: 'absolute',
@@ -574,7 +580,7 @@ export default function AppDown() {
                         </div>
                         <div style={{ position: 'relative' }} className="qr-hover-container">
                           <Button type="primary" icon={<DownloadOutlined />} href={downloadNodes.android[0].url} target="_blank" rel="noopener noreferrer" style={{ background: '#f39800', border: 'none', color: '#000', fontWeight: 'bold' }}>本地下載</Button>
-                          
+
                           {/* QR Code Popover */}
                           <div className="qr-popover" style={{
                             position: 'absolute',
@@ -683,7 +689,7 @@ export default function AppDown() {
                   <div style={{ textAlign: 'left', background: '#F8FAFC', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
                     <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第二步：搜索選擇德生服務器</div>
                     <div style={{ color: '#4b5563', fontSize: '13px', lineHeight: '1.6' }}>
-                      打開剛安裝好的 MT5 客戶端軟件。在登入賬戶或添加交易商窗口的輸入框中，輸入服務器全名 「<strong>Deson Metals</strong>」 或輸入中文 「<strong>德生金業</strong>」 或 「<strong>德生貴金屬</strong>」，點擊搜索，並選中我們的對應服務器。
+                      打開剛安裝好的 MT5 客戶端軟件。在登入賬戶或添加交易商窗口的輸入框中，輸入服務器全名 「<strong>deson precious metals</strong>」 或輸入中文 「<strong>德生金業</strong>」 或 「<strong>德生貴金屬</strong>」，點擊搜索，並選中我們的對應服務器。
                     </div>
                   </div>
                 ),
@@ -693,7 +699,7 @@ export default function AppDown() {
                   <div style={{ textAlign: 'left', background: '#F8FAFC', padding: '20px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
                     <div style={{ color: '#f39800', fontWeight: 'bold', fontSize: '16px', marginBottom: '8px' }}>第三步：選擇輸入賬號密碼登入</div>
                     <div style={{ color: '#4b5563', fontSize: '13px', lineHeight: '1.6' }}>
-                      服務器選定後，在下方輸入您的德生專用 6 位數至尊交易賬號、密碼（區分大小寫），服務器類型選擇：真實賬號選擇 <strong>DesonMetals-Live</strong>，模擬訓練選擇 <strong>DesonMetals-Demo</strong>，點擊確定即可無縫連入頂級國際貴金屬交易海洋！
+                      服務器選定後，在下方輸入您的德生專用 6 位數至尊交易賬號、密碼（區分大小寫），服務器類型選擇：真實賬號選擇 <strong>deson precious metals</strong>，模擬訓練選擇 <strong>deson precious metals-Demo</strong>，點擊確定即可無縫連入頂級國際貴金屬交易海洋！
                     </div>
                   </div>
                 ),

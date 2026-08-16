@@ -35,7 +35,7 @@ export default function ContactPage() {
     // 模擬提交留言的網絡請求
     setTimeout(() => {
       setSubmitting(false);
-      message.success('您的留言已成功提交，德生客戶經理將在 1 個工作日內給予您答復！');
+      message.success('您的留言已成功提交，德生客戶經理將在 3 個工作日內給予您答復！');
       console.log('留言提交數據:', values);
       form.resetFields();
     }, 1200);

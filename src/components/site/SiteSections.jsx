@@ -81,32 +81,6 @@ export function AnimatedCounter({ end, suffix = '', prefix = '', duration = 2000
   );
 }
 
-export function MarketTicker() {
-  const items = [
-    { symbol: 'XAUUSD', price: '4408.21', change: '+2.39%', up: true },
-    { symbol: 'XAGUSD', price: '65.85', change: '+5.15%', up: true },
-    { symbol: 'EURUSD', price: '1.0842', change: '+0.0023', up: true },
-    { symbol: 'GBPUSD', price: '1.2631', change: '-0.0015', up: false },
-    { symbol: 'USDJPY', price: '149.82', change: '+0.35', up: true },
-    { symbol: 'XAUUSD', price: '4408.21', change: '+2.39%', up: true },
-    { symbol: 'XAGUSD', price: '65.85', change: '+5.15%', up: true },
-    { symbol: 'EURUSD', price: '1.0842', change: '+0.0023', up: true },
-  ];
-
-  return (
-    <div className="site-market-ticker">
-      <div className="site-market-ticker-track">
-        {[...items, ...items].map((item, i) => (
-          <span key={i} className="site-market-ticker-item">
-            {item.symbol} <strong>{item.price}</strong>
-            <span className={item.up ? 'up' : 'down'}>{item.change}</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function ChartAnimation({ color = '#22c55e' }) {
   return (
     <div className="site-chart-area">
