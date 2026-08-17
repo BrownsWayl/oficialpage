@@ -379,7 +379,7 @@ export default function ContactPage() {
               </FadeInSection>
             </Col>
 
-            {/* 右側：物理位置 + 香港永安廣場辦公大樓美圖 (6-2.jpg) */}
+            {/* 右側：物理位置 + 香港永安廣場辦公大樓美圖 (6-2.webp) */}
             <Col xs={24} md={12}>
               <FadeInSection>
                 <div
@@ -419,7 +419,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* 插入 6-2.jpg 並在底部添加精美的懸浮暗色信息 */}
+                  {/* 插入 6-2.webp 並在底部添加精美的懸浮暗色信息 */}
                   <div
                     style={{
                       borderRadius: '10px',
@@ -431,7 +431,7 @@ export default function ContactPage() {
                     className="hover-scale-img-container"
                   >
                     <img
-                      src="/6-2.jpg"
+                      src="/6-2.webp"
                       alt="德生貴金屬辦公大樓 - 香港尖東永安廣場"
                       style={{
                         width: '100%',

@@ -142,7 +142,7 @@ export function DesktopMockup() {
       </div>
       <div style={{ background: '#111827', width: '100%', height: 'auto', display: 'block', overflow: 'hidden' }}>
         <img 
-          src="/10.jpg" 
+          src="/10.webp" 
           alt="MetaTrader 5 (MT5)" 
           style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} 
         />

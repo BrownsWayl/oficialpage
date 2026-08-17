@@ -66,7 +66,7 @@ export default function AboutPage() {
     {
       year: '2025',
       title: '深耕亞太 & 會員資質',
-      desc: '合規化運營體系日臻健全，秉持香港黃金交易所(HKGX)等權威標准，客戶資金全面實現獨立安全隔離，安全保障率達 100%。',
+      desc: '合規化運營體系日臻健全，秉持香港金銀業貿易場等權威標准，客戶資金全面實現獨立銀行托管，托管率達 100%。',
     },
     {
       year: '2026',
@@ -128,7 +128,7 @@ export default function AboutPage() {
               lineHeight: '1.6',
             }}
           >
-            全球數百萬投資者信賴的貴金屬交易平台。依托香港作為世界金融樞紐的法律和行業合規規范，為全球投資者提供公開透明、安全隔離存放的現貨黃金、現貨白銀線上極速投資環境。
+            全球投資者信賴的貴金屬交易平台。依托香港作為世界金融樞紐的法律和行業合規規范，為全球投資者提供公開透明、安全隔離存放的現貨黃金、現貨白銀線上極速投資環境。
           </p>
         </div>
       </section>
@@ -141,7 +141,7 @@ export default function AboutPage() {
               <FadeInSection>
                 <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(0, 0, 0, 0.08)' }}>
                   <img
-                    src="/12.jpg"
+                    src="/12.webp"
                     alt="德生貴金屬黃金交易環境"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
@@ -204,7 +204,7 @@ export default function AboutPage() {
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
             <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>合規資質與行業證書</h2>
-            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>迪生貴金屬經過多重合規審計，持有官方認證牌照，為客戶提供100%合規與穩健的交易保障</p>
+            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>德生貴金屬黃金交易環境生貴金屬經過多重合規審計，持有官方認證牌照，為客戶提供100%合規與穩健的交易保障</p>
             <div style={{ width: '50px', height: '3px', background: '#f39800', margin: '12px auto 0' }} />
           </div>
 
@@ -227,7 +227,7 @@ export default function AboutPage() {
                 >
                   <div style={{ overflow: 'hidden', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f0f0f0' }}>
                     <img
-                      src="/cgse.jpg"
+                      src="/cgse.webp"
                       alt="榮譽資質"
                       style={{ width: '100%', height: 'auto', display: 'block' }}
                       className="hover-scale-img"
@@ -236,7 +236,7 @@ export default function AboutPage() {
                   <div>
                     <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>榮譽資質證書</h3>
                     <p style={{ fontSize: '14px', color: '#6b7280', margin: 0, lineHeight: '1.6' }}>
-                      迪生貴金屬榮獲行業頒發的「卓越貴金屬交易商」及「誠信金融服務商」等合規資質和榮譽，代表了業界對我們服務、風控及信譽的廣泛認可。
+                      德生貴金屬榮獲行業頒發的「卓越貴金屬交易商」及「誠信金融服務商」等合規資質和榮譽，代表了業界對我們服務、風控及信譽的廣泛認可。
                     </p>
                   </div>
                 </div>
@@ -261,7 +261,7 @@ export default function AboutPage() {
                 >
                   <div style={{ overflow: 'hidden', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f0f0f0' }}>
                     <img
-                      src="/customs.png"
+                      src="/customs.webp"
                       alt="海關A類貴金屬註冊證明"
                       style={{ width: '100%', height: 'auto', display: 'block' }}
                       className="hover-scale-img"
@@ -270,7 +270,7 @@ export default function AboutPage() {
                   <div>
                     <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>海關A類貴金屬註冊證明</h3>
                     <p style={{ fontSize: '14px', color: '#6b7280', margin: 0, lineHeight: '1.6' }}>
-                      迪生貴金屬持有海關A類貴金屬及金銀進出口註冊登記證明，保障線下現貨交割、進出口實物黃金交收以及線上電子合約交易在法律公理框架下的合法完備。
+                      德生貴金屬持有海關A類貴金屬及金銀進出口註冊登記證明，保障線下現貨交割、進出口實物黃金交收以及線上電子合約交易在法律公理框架下的合法完備。
                     </p>
                   </div>
                 </div>
@@ -365,7 +365,8 @@ export default function AboutPage() {
                   <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 12px' }}>核心價值觀</h3>
                   <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
                     <strong>至誠守信</strong>：絕無虛假報價，無隱性費用。<br />
-                    <strong>合規自律</strong>：自願接受超高標准監管，客戶資金獨立安全隔離。<br />
+                    <strong>合規自律</strong>：自願接受超高標准監管，客戶資金獨立托管。<br />
+                    <strong>客戶至上</strong>：全天候專人一對一高效解答。
                   </p>
                 </div>
               </FadeInSection>

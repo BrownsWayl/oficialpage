@@ -201,7 +201,7 @@ export default function AppDown() {
             <div style={{ width: '60px', height: '4px', background: '#f39800', margin: '16px auto 0', borderRadius: '2px' }} />
           </div>
 
-          {/* 特性 1: 隨時隨地，掌握極速行情 (使用 9.jpg) - 左右交替 */}
+          {/* 特性 1: 隨時隨地，掌握極速行情 (使用 9.webp) - 左右交替 */}
           <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
             <Col xs={24} md={12}>
               <FadeInSection>
@@ -215,7 +215,7 @@ export default function AppDown() {
                   }}
                 >
                   <img
-                    src="/9.jpg"
+                    src="/9.webp"
                     alt="德生貴金屬移動APP"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
@@ -268,7 +268,7 @@ export default function AppDown() {
             </Col>
           </Row>
 
-          {/* 特性 2: 電腦端 MT5，專業指標全解析 (使用 10.jpg) - 左右交替 (文字在左，圖片在右) */}
+          {/* 特性 2: 電腦端 MT5，專業指標全解析 (使用 10.webp) - 左右交替 (文字在左，圖片在右) */}
           <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
             <Col xs={24} md={{ span: 12, order: 2 }}>
               <FadeInSection>
@@ -282,7 +282,7 @@ export default function AppDown() {
                   }}
                 >
                   <img
-                    src="/10.jpg"
+                    src="/10.webp"
                     alt="德生電腦端MT5"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
@@ -334,7 +334,7 @@ export default function AppDown() {
             </Col>
           </Row>
 
-          {/* 特性 3: 權威正規平台，安全放心交易 (使用 7.jpg) - 左右交替 (圖片在左，文字在右) */}
+          {/* 特性 3: 權威正規平台，安全放心交易 (使用 7.webp) - 左右交替 (圖片在左，文字在右) */}
           <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
             <Col xs={24} md={12}>
               <FadeInSection>
@@ -349,7 +349,7 @@ export default function AppDown() {
                   }}
                 >
                   <img
-                    src="/7.png"
+                    src="/7.webp"
                     alt="德生合規資質與安全保障"
                     style={{
                       width: '100%',
@@ -406,7 +406,7 @@ export default function AppDown() {
             </Col>
           </Row>
 
-          {/* 特性 4: 7*24小時專屬，管家式金融支持 (使用 11.jpg) - 左右交替 (文字在左，圖片在右) */}
+          {/* 特性 4: 7*24小時專屬，管家式金融支持 (使用 11.webp) - 左右交替 (文字在左，圖片在右) */}
           <Row gutter={[48, 48]} align="middle">
             <Col xs={24} md={{ span: 12, order: 2 }}>
               <FadeInSection>
@@ -420,7 +420,7 @@ export default function AppDown() {
                   }}
                 >
                   <img
-                    src="/11.jpg"
+                    src="/11.webp"
                     alt="德生全天候VIP支持"
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
