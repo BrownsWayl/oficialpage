@@ -23,7 +23,7 @@ import {
 } from './components/site/SiteSections';
 import './styles/sitePages.css';
 
-// 國内外秒開 · 100% 真實現貨大盤實時數據看板 (標準 API 直連 · 2.5s 平滑 Tick)
+// 100% 真實新浪大盤實時數據看板 (標準後端代理 · 100% 真實行情 · 平滑 Tick)
 function LiveRealMarketQuotes() {
   const [loading, setLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState('');
@@ -43,11 +43,14 @@ function LiveRealMarketQuotes() {
 
       try {
         setLoading(true);
+        // 請求本地 Vite 代理或服務器 Nginx 代理的 /api/quotes（100% 新浪真實數據）
         const res = await fetch(`/api/quotes?_=${Date.now()}`);
         if (!res.ok) {
-          throw new Error(`HTTP 狀態碼: ${res.status}`);
+          throw new Error(`狀態碼: ${res.status}`);
         }
         const text = await res.text();
+
+        if (!isMounted) return;
 
         const updated = [];
 
@@ -298,10 +301,9 @@ function LiveRealMarketQuotes() {
         </div>
       </div>
 
-      {/* 報錯提示 */}
       {error && (
         <div style={{ padding: '16px', color: '#ef4444', textAlign: 'center', fontSize: '13px' }}>
-          ⚠️ 盤口直連受阻: {error}（請確認代理配置已生效）
+          ⚠️ 行情連接提示: {error}（請確認代理配置正常）
         </div>
       )}
 
@@ -327,7 +329,7 @@ function LiveRealMarketQuotes() {
       {/* 初始加載狀態 */}
       {quotes.length === 0 && !error && (
         <div style={{ padding: '32px', textAlign: 'center', color: '#9ca3af', fontSize: '13px' }}>
-          <SyncOutlined spin style={{ marginRight: '8px', color: '#f39800' }} /> 正在直連國際現貨實時盤口...
+          <SyncOutlined spin style={{ marginRight: '8px', color: '#f39800' }} /> 正在直連真實大盤實時行情...
         </div>
       )}
 
