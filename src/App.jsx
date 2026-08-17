@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Layout, Menu, Button, Space, Drawer, Grid, Card, ConfigProvider } from 'antd';
 import { GlobalOutlined, MenuOutlined } from '@ant-design/icons';
 
 import { getMenuItems } from './menuConfig';
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
 import HomeContent from './HomeContent';
 import { GlobalHeader } from './components/Header';
 import AboutPage from './pages/AboutPage';
@@ -14,12 +14,30 @@ import TradingRule from './pages/TradingRule';
 const { Header: AntdHeader, Content, Footer } = Layout;
 const { useBreakpoint } = Grid;
 
+// 頁面切換自動回滾至頂部組件（解決自定義滾動容器 Content 在單頁應用中路由切換不回滾頂部的問題）
+function ScrollToTop({ contentRef }) {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (contentRef.current) {
+      // 路由變化時，瞬間滾動自定義容器回最頂部
+      if (contentRef.current.scrollTo) {
+        contentRef.current.scrollTo(0, 0);
+      } else {
+        contentRef.current.scrollTop = 0;
+      }
+    }
+  }, [pathname, contentRef]);
+  return null;
+}
+
 export default function App() {
   const screens = useBreakpoint();
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const contentRef = useRef(null);
 
-  // 當屏幕小於 md (768px) 時判定為移動手機端
-  const isMobile = screens.md === false;
+  // 當屏幕小於 lg (992px) 時判定為移動/平板端，此時導航菜單會自動折疊為漢堡按鈕
+  // 這樣做能完美避免在 768px~992px 的中等屏幕下導航菜單因空間不足排版錯亂、折疊為垂直排版的問題
+  const isMobile = screens.lg === false;
 
   // --- 樣式配置中心 ---
   const layoutStyle = {
@@ -40,6 +58,7 @@ export default function App() {
       }}
     >
       <Router>
+        <ScrollToTop contentRef={contentRef} />
         <Layout style={{ ...layoutStyle, background: '#F5F7FA' }}>
           <GlobalHeader isMobile={isMobile} setDrawerVisible={setDrawerVisible} />
 
@@ -111,7 +130,7 @@ export default function App() {
               className="mobile-dark-menu"
             />
           </Drawer>
-          <Content style={{
+          <Content ref={contentRef} style={{
             display: 'flex',
             flexDirection: 'column',
             flex: 1,
