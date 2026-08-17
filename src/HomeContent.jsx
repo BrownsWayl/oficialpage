@@ -23,7 +23,7 @@ import {
 } from './components/site/SiteSections';
 import './styles/sitePages.css';
 
-// 國内外秒開 · 100% 真實現貨大盤實時數據直連看板 (嚴格對齊新浪官方 3 秒平滑 Tick 節奏)
+// 國内外秒開 · 100% 真實現貨大盤實時數據看板 (標準 API 直連 · 2.5s 平滑 Tick)
 function LiveRealMarketQuotes() {
   const [loading, setLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState('');
@@ -31,7 +31,6 @@ function LiveRealMarketQuotes() {
   const [quotes, setQuotes] = useState([]);
   const [error, setError] = useState(null);
 
-  // 記錄上一次真實數值，絕不空跳
   const prevQuotesRef = useRef([]);
 
   useEffect(() => {
@@ -212,7 +211,6 @@ function LiveRealMarketQuotes() {
           const flashes = {};
           let hasRealTickChange = false;
 
-          // 嚴格檢測價格是否有實質變動
           updated.forEach((newQ) => {
             const oldQ = prevQuotesRef.current.find((o) => o.symbol === newQ.symbol);
             if (oldQ) {
@@ -228,7 +226,6 @@ function LiveRealMarketQuotes() {
           prevQuotesRef.current = updated;
           setQuotes(updated);
 
-          // 只有真實價格變動才觸發平滑呼吸動效
           if (hasRealTickChange && Object.keys(flashes).length > 0) {
             setFlashSymbol(flashes);
             setTimeout(() => {
@@ -255,7 +252,6 @@ function LiveRealMarketQuotes() {
     };
 
     fetchRealData();
-    // 設置為 2500ms（2.5秒），完全對齊新浪官方網頁的真實數據節奏
     const timer = setInterval(fetchRealData, 2500);
 
     return () => {
