@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, memo, useState } from 'react';
-import { Card, Row, Col, Button, Tag, Radio } from 'antd';
+import React, { useState, useEffect, useRef } from 'react';
+import { Card, Row, Col, Button, Tag } from 'antd';
 import {
   SafetyCertificateOutlined,
   ThunderboltOutlined,
@@ -10,6 +10,9 @@ import {
   WindowsOutlined,
   AndroidOutlined,
   AppleOutlined,
+  CaretUpOutlined,
+  CaretDownOutlined,
+  SyncOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import {
@@ -20,115 +23,383 @@ import {
 } from './components/site/SiteSections';
 import './styles/sitePages.css';
 
-// 1. TradingView 官方頂部實時流動跑馬燈 (Ticker Tape)
-const TradingViewTickerTape = memo(function TradingViewTickerTape() {
-  const containerRef = useRef(null);
+// 國内外秒開 · 100% 真實現貨大盤實時數據直連看板 (嚴格對齊新浪官方 3 秒平滑 Tick 節奏)
+function LiveRealMarketQuotes() {
+  const [loading, setLoading] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState('');
+  const [flashSymbol, setFlashSymbol] = useState({});
+  const [quotes, setQuotes] = useState([]);
+  const [error, setError] = useState(null);
+
+  // 記錄上一次真實數值，絕不空跳
+  const prevQuotesRef = useRef([]);
 
   useEffect(() => {
-    const currentContainer = containerRef.current;
-    if (!currentContainer) return;
+    let isMounted = true;
+    let isFetching = false;
 
-    currentContainer.innerHTML = '';
+    const fetchRealData = async () => {
+      if (isFetching) return;
+      isFetching = true;
 
-    const widgetDiv = document.createElement('div');
-    widgetDiv.className = 'tradingview-widget-container__widget';
-    currentContainer.appendChild(widgetDiv);
+      try {
+        setLoading(true);
+        const res = await fetch(`/api/quotes?_=${Date.now()}`);
+        if (!res.ok) {
+          throw new Error(`HTTP 狀態碼: ${res.status}`);
+        }
+        const text = await res.text();
 
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-    script.async = true;
-    script.innerHTML = JSON.stringify({
-      symbols: [
-        { proName: 'OANDA:XAUUSD', title: '現貨黃金 (倫敦金)' },
-        { proName: 'OANDA:XAGUSD', title: '現貨白銀 (倫敦銀)' },
-        { proName: 'FX:EURUSD', title: '歐元 / 美元' },
-        { proName: 'FX:GBPUSD', title: '英鎊 / 美元' },
-        { proName: 'FX:USDJPY', title: '美元 / 日圓' },
-        { proName: 'CAPITALCOM:DXY', title: '美元指數 (DXY)' },
-      ],
-      showSymbolLogo: true,
-      isTransparent: true,
-      displayMode: 'adaptive',
-      colorTheme: 'dark',
-      locale: 'zh_TW',
-    });
+        const updated = [];
 
-    currentContainer.appendChild(script);
+        // 1. 現貨黃金 (hf_XAU)
+        const matchGold = text.match(/hq_str_hf_XAU="([^"]+)"/);
+        if (matchGold && matchGold[1]) {
+          const arr = matchGold[1].split(',');
+          const price = parseFloat(arr[0]) || 0;
+          const changeVal = parseFloat(arr[1]) || 0;
+          const prevClose = parseFloat(arr[7]) > 0 ? parseFloat(arr[7]) : (price - changeVal);
+          const percent = prevClose > 0 ? Number(((changeVal / prevClose) * 100).toFixed(2)) : 0;
+          const high = parseFloat(arr[4]) || price;
+          const low = parseFloat(arr[5]) || price;
+
+          if (price > 0) {
+            updated.push({
+              symbol: 'XAUUSD',
+              name: '現貨黃金 (倫敦金)',
+              price,
+              change: changeVal,
+              percent,
+              spread: 0.25,
+              high,
+              low,
+              decimals: 2,
+            });
+          }
+        }
+
+        // 2. 現貨白銀 (hf_XAG)
+        const matchSilver = text.match(/hq_str_hf_XAG="([^"]+)"/);
+        if (matchSilver && matchSilver[1]) {
+          const arr = matchSilver[1].split(',');
+          const price = parseFloat(arr[0]) || 0;
+          const changeVal = parseFloat(arr[1]) || 0;
+          const prevClose = parseFloat(arr[7]) > 0 ? parseFloat(arr[7]) : (price - changeVal);
+          const percent = prevClose > 0 ? Number(((changeVal / prevClose) * 100).toFixed(2)) : 0;
+          const high = parseFloat(arr[4]) || price;
+          const low = parseFloat(arr[5]) || price;
+
+          if (price > 0) {
+            updated.push({
+              symbol: 'XAGUSD',
+              name: '現貨白銀 (倫敦銀)',
+              price,
+              change: changeVal,
+              percent,
+              spread: 0.04,
+              high,
+              low,
+              decimals: 2,
+            });
+          }
+        }
+
+        // 3. 歐元美元 (fx_seurusd)
+        const matchEur = text.match(/hq_str_fx_seurusd="([^"]+)"/);
+        if (matchEur && matchEur[1]) {
+          const arr = matchEur[1].split(',');
+          const price = parseFloat(arr[1]) || 0;
+          const prevClose = parseFloat(arr[3]) > 0 ? parseFloat(arr[3]) : price;
+          const change = Number((price - prevClose).toFixed(4));
+          const percent = prevClose > 0 ? Number(((change / prevClose) * 100).toFixed(2)) : 0;
+          const high = parseFloat(arr[6]) || price;
+          const low = parseFloat(arr[7]) || price;
+
+          if (price > 0) {
+            updated.push({
+              symbol: 'EURUSD',
+              name: '歐元 / 美元',
+              price,
+              change,
+              percent,
+              spread: 0.12,
+              high,
+              low,
+              decimals: 4,
+            });
+          }
+        }
+
+        // 4. 英鎊美元 (fx_sgbpusd)
+        const matchGbp = text.match(/hq_str_fx_sgbpusd="([^"]+)"/);
+        if (matchGbp && matchGbp[1]) {
+          const arr = matchGbp[1].split(',');
+          const price = parseFloat(arr[1]) || 0;
+          const prevClose = parseFloat(arr[3]) > 0 ? parseFloat(arr[3]) : price;
+          const change = Number((price - prevClose).toFixed(4));
+          const percent = prevClose > 0 ? Number(((change / prevClose) * 100).toFixed(2)) : 0;
+          const high = parseFloat(arr[6]) || price;
+          const low = parseFloat(arr[7]) || price;
+
+          if (price > 0) {
+            updated.push({
+              symbol: 'GBPUSD',
+              name: '英鎊 / 美元',
+              price,
+              change,
+              percent,
+              spread: 0.15,
+              high,
+              low,
+              decimals: 4,
+            });
+          }
+        }
+
+        // 5. 美元日元 (fx_susdjpy)
+        const matchJpy = text.match(/hq_str_fx_susdjpy="([^"]+)"/);
+        if (matchJpy && matchJpy[1]) {
+          const arr = matchJpy[1].split(',');
+          const price = parseFloat(arr[1]) || 0;
+          const prevClose = parseFloat(arr[3]) > 0 ? parseFloat(arr[3]) : price;
+          const change = Number((price - prevClose).toFixed(2));
+          const percent = prevClose > 0 ? Number(((change / prevClose) * 100).toFixed(2)) : 0;
+          const high = parseFloat(arr[6]) || price;
+          const low = parseFloat(arr[7]) || price;
+
+          if (price > 0) {
+            updated.push({
+              symbol: 'USDJPY',
+              name: '美元 / 日圓',
+              price,
+              change,
+              percent,
+              spread: 0.18,
+              high,
+              low,
+              decimals: 2,
+            });
+          }
+        }
+
+        // 6. 美元指數 (DINIW)
+        const matchDxy = text.match(/hq_str_DINIW="([^"]+)"/);
+        if (matchDxy && matchDxy[1]) {
+          const arr = matchDxy[1].split(',');
+          const price = parseFloat(arr[1]) || 0;
+          const prevClose = parseFloat(arr[3]) > 0 ? parseFloat(arr[3]) : price;
+          const change = Number((price - prevClose).toFixed(2));
+          const percent = prevClose > 0 ? Number(((change / prevClose) * 100).toFixed(2)) : 0;
+          const high = parseFloat(arr[4]) || price;
+          const low = parseFloat(arr[5]) || price;
+
+          if (price > 0) {
+            updated.push({
+              symbol: 'USDX',
+              name: '美元指數 (DXY)',
+              price,
+              change,
+              percent,
+              spread: 0.08,
+              high,
+              low,
+              decimals: 2,
+            });
+          }
+        }
+
+        if (isMounted && updated.length > 0) {
+          const flashes = {};
+          let hasRealTickChange = false;
+
+          // 嚴格檢測價格是否有實質變動
+          updated.forEach((newQ) => {
+            const oldQ = prevQuotesRef.current.find((o) => o.symbol === newQ.symbol);
+            if (oldQ) {
+              if (oldQ.price !== newQ.price) {
+                flashes[newQ.symbol] = newQ.price > oldQ.price ? 'flash-up' : 'flash-down';
+                hasRealTickChange = true;
+              }
+            } else {
+              hasRealTickChange = true;
+            }
+          });
+
+          prevQuotesRef.current = updated;
+          setQuotes(updated);
+
+          // 只有真實價格變動才觸發平滑呼吸動效
+          if (hasRealTickChange && Object.keys(flashes).length > 0) {
+            setFlashSymbol(flashes);
+            setTimeout(() => {
+              if (isMounted) setFlashSymbol({});
+            }, 600);
+          }
+
+          setError(null);
+          const now = new Date();
+          setLastUpdated(
+            `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`
+          );
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message);
+        }
+      } finally {
+        isFetching = false;
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchRealData();
+    // 設置為 2500ms（2.5秒），完全對齊新浪官方網頁的真實數據節奏
+    const timer = setInterval(fetchRealData, 2500);
 
     return () => {
-      if (currentContainer) {
-        currentContainer.innerHTML = '';
-      }
+      isMounted = false;
+      clearInterval(timer);
     };
   }, []);
 
   return (
-    <div className="tradingview-widget-container" ref={containerRef} style={{ width: '100%' }}>
-      <div className="tradingview-widget-container__widget" />
+    <div style={{ width: '100%', color: '#ffffff', padding: '4px' }}>
+      {/* 頂部狀態指示 */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '6px 16px 14px',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          fontSize: '12px',
+          color: '#9ca3af',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span
+            style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: error ? '#ef4444' : '#22c55e',
+              display: 'inline-block',
+              boxShadow: error ? '0 0 8px #ef4444' : '0 0 8px #22c55e',
+            }}
+          />
+          <span style={{ color: '#fff', fontWeight: 'bold', letterSpacing: '0.5px' }}>
+            國際現貨做市商實時盤口 (Real Market Feed)
+          </span>
+          <Tag color="#f39800" style={{ color: '#000', fontWeight: 'bold', fontSize: '11px', margin: 0, borderRadius: '4px', border: 'none' }}>
+            SYNC LIVE
+          </Tag>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <SyncOutlined spin={loading} style={{ color: '#f39800' }} />
+          <span>最後同步: {lastUpdated || '數據拉取中...'}</span>
+        </div>
+      </div>
+
+      {/* 報錯提示 */}
+      {error && (
+        <div style={{ padding: '16px', color: '#ef4444', textAlign: 'center', fontSize: '13px' }}>
+          ⚠️ 盤口直連受阻: {error}（請確認 Vite 已重啟）
+        </div>
+      )}
+
+      {/* 表格標頭 */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '2fr 1.5fr 1.5fr 1.2fr 1.5fr',
+          padding: '14px 16px',
+          fontSize: '13px',
+          color: '#9ca3af',
+          fontWeight: 'bold',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+        }}
+      >
+        <div>合約品種</div>
+        <div style={{ textAlign: 'right' }}>最新現價 (Bid)</div>
+        <div style={{ textAlign: 'right' }}>漲跌幅 (24H)</div>
+        <div style={{ textAlign: 'right' }}>標準點差</div>
+        <div style={{ textAlign: 'right' }}>24H 最高 / 最低</div>
+      </div>
+
+      {/* 初始加載狀態 */}
+      {quotes.length === 0 && !error && (
+        <div style={{ padding: '32px', textAlign: 'center', color: '#9ca3af', fontSize: '13px' }}>
+          <SyncOutlined spin style={{ marginRight: '8px', color: '#f39800' }} /> 正在直連國際現貨實時盤口...
+        </div>
+      )}
+
+      {/* 數據列表 */}
+      {quotes.map((q) => {
+        const isUp = q.change >= 0;
+        const color = isUp ? '#22c55e' : '#ef4444';
+        const flashClass = flashSymbol[q.symbol] || '';
+
+        return (
+          <div
+            key={q.symbol}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '2fr 1.5fr 1.5fr 1.2fr 1.5fr',
+              padding: '16px 16px',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+              alignItems: 'center',
+              fontSize: '13px',
+              transition: 'background 0.3s ease',
+            }}
+          >
+            <div>
+              <div style={{ fontWeight: 'bold', color: '#ffffff', fontSize: '15px' }}>
+                {q.symbol}
+              </div>
+              <div style={{ fontSize: '11.5px', color: '#6b7280', marginTop: '2px' }}>{q.name}</div>
+            </div>
+
+            <div
+              className={flashClass}
+              style={{
+                textAlign: 'right',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                color: color,
+                transition: 'all 0.4s ease',
+              }}
+            >
+              {q.price.toFixed(q.decimals)}
+            </div>
+
+            <div style={{ textAlign: 'right', fontWeight: 'bold', color: color }}>
+              {isUp ? <CaretUpOutlined /> : <CaretDownOutlined />}
+              <span style={{ marginLeft: '4px' }}>
+                {isUp ? `+${q.percent}%` : `${q.percent}%`}
+              </span>
+            </div>
+
+            <div style={{ textAlign: 'right', color: '#f39800', fontWeight: 'bold', fontSize: '14px' }}>
+              {q.spread}
+            </div>
+
+            <div style={{ textAlign: 'right', fontSize: '12px', color: '#9ca3af' }}>
+              <span style={{ color: '#22c55e' }}>{q.high.toFixed(q.decimals)}</span> / <span style={{ color: '#ef4444' }}>{q.low.toFixed(q.decimals)}</span>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
-});
-
-// 2. TradingView 迷你單品種實時動態圖表 (Mini Chart)
-const TradingViewMiniChart = memo(function TradingViewMiniChart({ symbol, height = 320 }) {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const currentContainer = containerRef.current;
-    if (!currentContainer) return;
-
-    currentContainer.innerHTML = '';
-
-    const widgetDiv = document.createElement('div');
-    widgetDiv.className = 'tradingview-widget-container__widget';
-    currentContainer.appendChild(widgetDiv);
-
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
-    script.async = true;
-    script.innerHTML = JSON.stringify({
-      symbol: symbol,
-      width: '100%',
-      height: height,
-      locale: 'zh_TW',
-      dateRange: '1D',
-      colorTheme: 'dark',
-      isTransparent: true,
-      autosize: true,
-      largeChartUrl: '',
-      chartOnly: false,
-      noTimeScale: false,
-    });
-
-    currentContainer.appendChild(script);
-
-    return () => {
-      if (currentContainer) {
-        currentContainer.innerHTML = '';
-      }
-    };
-  }, [symbol, height]);
-
-  return (
-    <div
-      className="tradingview-widget-container"
-      ref={containerRef}
-      style={{ width: '100%', minHeight: `${height}px` }}
-    >
-      <div className="tradingview-widget-container__widget" />
-    </div>
-  );
-});
+}
 
 export default function HomeContent({ isMobile }) {
-  const [activeSymbol, setActiveSymbol] = useState('OANDA:XAUUSD');
-
   const advantages = [
     {
       id: 1,
-      image: '/3-1.png',
+      image: '/3-1.webp',
       icon: <SafetyCertificateOutlined style={{ color: '#f39800' }} />,
       title: '合規牌照與資金安全',
       subtitle: '權威監管 · 100% 獨立安全隔離',
@@ -137,7 +408,7 @@ export default function HomeContent({ isMobile }) {
     },
     {
       id: 2,
-      image: '/3-2.png',
+      image: '/3-2.webp',
       icon: <ThunderboltOutlined style={{ color: '#f39800' }} />,
       title: '高精尖 MTL 智能交易系統',
       subtitle: '深厚流動性 · 毫秒級極速成交',
@@ -146,7 +417,7 @@ export default function HomeContent({ isMobile }) {
     },
     {
       id: 3,
-      image: '/3-3.png',
+      image: '/3-3.webp',
       icon: <PercentageOutlined style={{ color: '#f39800' }} />,
       title: '點差直降與零隱藏傭金成本',
       subtitle: '點差極低 · 投資利潤摩擦大幅縮減',
@@ -155,12 +426,12 @@ export default function HomeContent({ isMobile }) {
     },
     {
       id: 4,
-      image: '/3-4.png',
+      image: '/3-4.webp',
       icon: <TeamOutlined style={{ color: '#f39800' }} />,
-      title: '專業顧問支持',
+      title: '一對一 24/7 專業顧問支持',
       subtitle: '多語言極速解答 · 全天候交易保障',
-      desc: '匯聚多年貴金屬國際風控與實戰經驗的專家級客服團隊。為您提供實時在線解答、交易技術協助、開戶流程輔助等，讓您的交易旅程始終穩健前行。',
-      highlights: ['多語言客服團隊全天在線', '專家風控指導與投顧支持', '專屬大客戶VIP服務'],
+      desc: '匯聚多年貴金屬國際風控與實戰經驗的專家級客服團隊。為您提供 24 小時在線解答、交易技術協助、開戶流程輔助等，讓您的交易旅程始終穩健前行。',
+      highlights: ['多語言客服團隊全天在線', '專家風控指導與投顧支持', '一對一專屬大客戶VIP服務'],
     },
   ];
 
@@ -355,8 +626,10 @@ export default function HomeContent({ isMobile }) {
                   }}
                 >
                   <img
-                    src="/1.png"
+                    src="/1.webp"
                     alt="倫敦金 / 倫敦銀 交易特點"
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: '100%',
                       height: 'auto',
@@ -450,6 +723,8 @@ export default function HomeContent({ isMobile }) {
                           <img
                             src={adv.image}
                             alt={adv.title}
+                            loading="lazy"
+                            decoding="async"
                             style={{
                               width: '100%',
                               height: 'auto',
@@ -511,10 +786,9 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【5. 原版精確還原：規範透明的實時交易行情】================= */}
+      {/* =================【5. 規範透明的實時交易行情】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
-          {/* 原版標題與副標題 */}
           <FadeInSection>
             <h2 className="site-section-title" style={{ color: '#090e17', textAlign: 'center' }}>
               規範透明的實時交易行情
@@ -524,66 +798,20 @@ export default function HomeContent({ isMobile }) {
             </p>
           </FadeInSection>
 
-          {/* 核心行情面板 (原版圓角黑框) */}
+          {/* 核心行情面板 (原版圓角黑底大盤) */}
           <FadeInSection>
             <div
               style={{
                 background: '#0a0f19',
                 borderRadius: '20px',
-                padding: isMobile ? '16px 12px' : '24px 28px',
+                padding: isMobile ? '12px 8px' : '20px 24px',
                 boxShadow: '0 16px 40px rgba(0, 0, 0, 0.4)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 margin: '0 auto',
                 maxWidth: '960px',
               }}
             >
-              {/* 品種切換按鈕 */}
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingBottom: '14px',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                  marginBottom: '16px',
-                  flexWrap: 'wrap',
-                  gap: '12px',
-                }}
-              >
-                <span style={{ color: '#ffffff', fontWeight: 'bold', fontSize: '14px' }}>
-                  國際大盤直連行情
-                </span>
-
-                <Radio.Group
-                  value={activeSymbol}
-                  onChange={(e) => setActiveSymbol(e.target.value)}
-                  size="small"
-                  buttonStyle="solid"
-                >
-                  <Radio.Button value="OANDA:XAUUSD">現貨黃金</Radio.Button>
-                  <Radio.Button value="OANDA:XAGUSD">現貨白銀</Radio.Button>
-                  <Radio.Button value="FX:EURUSD">歐元美元</Radio.Button>
-                  <Radio.Button value="FX:GBPUSD">英鎊美元</Radio.Button>
-                </Radio.Group>
-              </div>
-
-              {/* 頂部實時流動跑馬燈 */}
-              <div style={{ marginBottom: '16px', borderRadius: '8px', overflow: 'hidden' }}>
-                <TradingViewTickerTape />
-              </div>
-
-              {/* 單品種動態迷你圖表 */}
-              <div
-                style={{
-                  background: '#060a12',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  padding: '10px',
-                  border: '1px solid rgba(255, 255, 255, 0.04)',
-                }}
-              >
-                <TradingViewMiniChart symbol={activeSymbol} height={320} />
-              </div>
+              <LiveRealMarketQuotes />
             </div>
           </FadeInSection>
 
@@ -843,7 +1071,22 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
+      {/* =================【內聯全部 CSS 樣式與平滑呼吸動畫】================= */}
       <style>{`
+        @keyframes flashUp {
+          0% { transform: scale(1.04); text-shadow: 0 0 6px rgba(34, 197, 94, 0.7); }
+          100% { transform: scale(1); text-shadow: none; }
+        }
+        @keyframes flashDown {
+          0% { transform: scale(1.04); text-shadow: 0 0 6px rgba(239, 68, 68, 0.7); }
+          100% { transform: scale(1); text-shadow: none; }
+        }
+        .flash-up {
+          animation: flashUp 0.6s ease-out !important;
+        }
+        .flash-down {
+          animation: flashDown 0.6s ease-out !important;
+        }
         @keyframes float {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
