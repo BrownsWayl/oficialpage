@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Button, Tag } from 'antd';
+import React, { useEffect, useRef, memo, useState } from 'react';
+import { Card, Row, Col, Button, Tag, Radio } from 'antd';
 import {
   SafetyCertificateOutlined,
   ThunderboltOutlined,
@@ -10,8 +10,6 @@ import {
   WindowsOutlined,
   AndroidOutlined,
   AppleOutlined,
-  CaretUpOutlined,
-  CaretDownOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import {
@@ -22,117 +20,111 @@ import {
 } from './components/site/SiteSections';
 import './styles/sitePages.css';
 
-// 原生金融實時報價看板 (純前端 React 驅動，0 第三方 Iframe，100% 絕對穩定、無任何跨域或安全攔截)
-function NativeMarketQuotes() {
-  const [quotes, setQuotes] = useState([
-    { symbol: 'XAUUSD', name: '現貨黃金 (倫敦金)', price: 2426.50, change: 14.80, percent: 0.61, spread: 0.25, high: 2432.10, low: 2408.30 },
-    { symbol: 'XAGUSD', name: '現貨白銀 (倫敦銀)', price: 28.35, change: -0.18, percent: -0.63, spread: 0.04, high: 28.70, low: 28.15 },
-    { symbol: 'EURUSD', name: '歐元 / 美元', price: 1.0924, change: 0.0015, percent: 0.14, spread: 0.12, high: 1.0945, low: 1.0902 },
-    { symbol: 'GBPUSD', name: '英鎊 / 美元', price: 1.2980, change: -0.0022, percent: -0.17, spread: 0.15, high: 1.3015, low: 1.2960 },
-    { symbol: 'USDJPY', name: '美元 / 日圓', price: 148.65, change: 0.42, percent: 0.28, spread: 0.18, high: 149.10, low: 148.12 },
-    { symbol: 'USDX', name: '美元指數 (DXY)', price: 102.85, change: 0.15, percent: 0.15, spread: 0.08, high: 103.10, low: 102.60 },
-  ]);
+// 1. TradingView 官方頂部實時流動跑馬燈 (Ticker Tape)
+const TradingViewTickerTape = memo(function TradingViewTickerTape() {
+  const containerRef = useRef(null);
 
-  // 模擬國際盤實時心跳跳動 (每 2 秒微幅隨行就市跳動，呈現真實活躍盤口效果)
   useEffect(() => {
-    const timer = setInterval(() => {
-      setQuotes((prev) =>
-        prev.map((item) => {
-          const isGold = item.symbol === 'XAUUSD';
-          const isSilver = item.symbol === 'XAGUSD';
-          const step = isGold ? 0.2 : isSilver ? 0.02 : 0.0005;
-          const delta = (Math.random() - 0.49) * step;
-          const newPrice = Number((item.price + delta).toFixed(isGold || isSilver ? 2 : 4));
-          const newChange = Number((item.change + delta).toFixed(2));
-          const newPercent = Number(((newChange / (newPrice - newChange)) * 100).toFixed(2));
+    const currentContainer = containerRef.current;
+    if (!currentContainer) return;
 
-          return {
-            ...item,
-            price: newPrice,
-            change: newChange,
-            percent: newPercent,
-          };
-        })
-      );
-    }, 2000);
+    currentContainer.innerHTML = '';
 
-    return () => clearInterval(timer);
+    const widgetDiv = document.createElement('div');
+    widgetDiv.className = 'tradingview-widget-container__widget';
+    currentContainer.appendChild(widgetDiv);
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbols: [
+        { proName: 'OANDA:XAUUSD', title: '現貨黃金 (倫敦金)' },
+        { proName: 'OANDA:XAGUSD', title: '現貨白銀 (倫敦銀)' },
+        { proName: 'FX:EURUSD', title: '歐元 / 美元' },
+        { proName: 'FX:GBPUSD', title: '英鎊 / 美元' },
+        { proName: 'FX:USDJPY', title: '美元 / 日圓' },
+        { proName: 'CAPITALCOM:DXY', title: '美元指數 (DXY)' },
+      ],
+      showSymbolLogo: true,
+      isTransparent: true,
+      displayMode: 'adaptive',
+      colorTheme: 'dark',
+      locale: 'zh_TW',
+    });
+
+    currentContainer.appendChild(script);
+
+    return () => {
+      if (currentContainer) {
+        currentContainer.innerHTML = '';
+      }
+    };
   }, []);
 
   return (
-    <div style={{ width: '100%', color: '#ffffff', padding: '4px' }}>
-      {/* 行情表格標頭 */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '2fr 1.5fr 1.5fr 1.2fr 1.5fr',
-          padding: '12px 16px',
-          background: 'rgba(255, 255, 255, 0.03)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          fontSize: '12px',
-          color: '#9ca3af',
-          fontWeight: 'bold',
-        }}
-      >
-        <div>合約品種</div>
-        <div style={{ textAlign: 'right' }}>最新現價 (Bid)</div>
-        <div style={{ textAlign: 'right' }}>漲跌幅 (24H)</div>
-        <div style={{ textAlign: 'right' }}>標準點差</div>
-        <div style={{ textAlign: 'right' }}>24H 最高 / 最低</div>
-      </div>
-
-      {/* 行情數據列表 */}
-      {quotes.map((q) => {
-        const isUp = q.change >= 0;
-        const color = isUp ? '#22c55e' : '#ef4444';
-
-        return (
-          <div
-            key={q.symbol}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '2fr 1.5fr 1.5fr 1.2fr 1.5fr',
-              padding: '14px 16px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
-              alignItems: 'center',
-              fontSize: '13px',
-              transition: 'background 0.2s',
-            }}
-          >
-            <div>
-              <div style={{ fontWeight: 'bold', color: '#ffffff', fontSize: '14px' }}>
-                {q.symbol}
-              </div>
-              <div style={{ fontSize: '11px', color: '#6b7280' }}>{q.name}</div>
-            </div>
-
-            <div style={{ textAlign: 'right', fontWeight: 'bold', fontSize: '15px', color: color }}>
-              {q.price.toFixed(q.symbol.includes('USD') && !q.symbol.includes('X') ? 4 : 2)}
-            </div>
-
-            <div style={{ textAlign: 'right', fontWeight: 'bold', color: color }}>
-              {isUp ? <CaretUpOutlined /> : <CaretDownOutlined />}
-              <span style={{ marginLeft: '2px' }}>
-                {isUp ? `+${q.percent}%` : `${q.percent}%`}
-              </span>
-            </div>
-
-            <div style={{ textAlign: 'right', color: '#f39800', fontWeight: 'bold' }}>
-              {q.spread}
-            </div>
-
-            <div style={{ textAlign: 'right', fontSize: '11px', color: '#9ca3af' }}>
-              <span style={{ color: '#22c55e' }}>{q.high}</span> / <span style={{ color: '#ef4444' }}>{q.low}</span>
-            </div>
-          </div>
-        );
-      })}
+    <div className="tradingview-widget-container" ref={containerRef} style={{ width: '100%' }}>
+      <div className="tradingview-widget-container__widget" />
     </div>
   );
-}
+});
+
+// 2. TradingView 迷你單品種實時動態圖表 (Mini Chart)
+const TradingViewMiniChart = memo(function TradingViewMiniChart({ symbol, height = 320 }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const currentContainer = containerRef.current;
+    if (!currentContainer) return;
+
+    currentContainer.innerHTML = '';
+
+    const widgetDiv = document.createElement('div');
+    widgetDiv.className = 'tradingview-widget-container__widget';
+    currentContainer.appendChild(widgetDiv);
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbol: symbol,
+      width: '100%',
+      height: height,
+      locale: 'zh_TW',
+      dateRange: '1D',
+      colorTheme: 'dark',
+      isTransparent: true,
+      autosize: true,
+      largeChartUrl: '',
+      chartOnly: false,
+      noTimeScale: false,
+    });
+
+    currentContainer.appendChild(script);
+
+    return () => {
+      if (currentContainer) {
+        currentContainer.innerHTML = '';
+      }
+    };
+  }, [symbol, height]);
+
+  return (
+    <div
+      className="tradingview-widget-container"
+      ref={containerRef}
+      style={{ width: '100%', minHeight: `${height}px` }}
+    >
+      <div className="tradingview-widget-container__widget" />
+    </div>
+  );
+});
 
 export default function HomeContent({ isMobile }) {
-  // 1. 公司四大核心優勢
+  const [activeSymbol, setActiveSymbol] = useState('OANDA:XAUUSD');
+
   const advantages = [
     {
       id: 1,
@@ -165,14 +157,13 @@ export default function HomeContent({ isMobile }) {
       id: 4,
       image: '/3-4.png',
       icon: <TeamOutlined style={{ color: '#f39800' }} />,
-      title: '一對一 24/7 專業顧問支持',
+      title: '專業顧問支持',
       subtitle: '多語言極速解答 · 全天候交易保障',
-      desc: '匯聚多年貴金屬國際風控與實戰經驗的專家級客服團隊。為您提供 24 小時在線解答、交易技術協助、開戶流程輔助等，讓您的交易旅程始終穩健前行。',
-      highlights: ['多語言客服團隊全天在線', '專家風控指導與投顧支持', '一對一專屬大客戶VIP服務'],
+      desc: '匯聚多年貴金屬國際風控與實戰經驗的專家級客服團隊。為您提供實時在線解答、交易技術協助、開戶流程輔助等，讓您的交易旅程始終穩健前行。',
+      highlights: ['多語言客服團隊全天在線', '專家風控指導與投顧支持', '專屬大客戶VIP服務'],
     },
   ];
 
-  // 3. 開戶三步法
   const steps = [
     {
       title: '1. 提交資料極速註冊',
@@ -255,7 +246,6 @@ export default function HomeContent({ isMobile }) {
               直連國際頂級 MetaTrader 5 交易系統，提供極速 0.05 秒訂單成交體驗與 100% 獨立安全隔離，以極低點差成本與全天候貼心咨詢，傾力打造無可匹敵的安全投資環境。
             </p>
 
-            {/* 首屏行動按鍵 */}
             <div
               style={{
                 display: 'flex',
@@ -304,7 +294,6 @@ export default function HomeContent({ isMobile }) {
               </Link>
             </div>
 
-            {/* 首屏四大計數器 */}
             <Row gutter={[16, 16]} style={{ maxWidth: '720px', margin: '0 auto' }}>
               {[
                 { label: '服務全球用戶', end: 100000, suffix: '人+', prefix: '' },
@@ -336,7 +325,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【3. 獨立大圖版塊：產品指南】================= */}
+      {/* =================【3. 產品指南】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
@@ -522,41 +511,87 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【5. 原生金融實時報價大盤】================= */}
+      {/* =================【5. 原版精確還原：規範透明的實時交易行情】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
+          {/* 原版標題與副標題 */}
           <FadeInSection>
-            <h2 className="site-section-title" style={{ color: '#090e17' }}>
-              規范透明的實時交易行情
+            <h2 className="site-section-title" style={{ color: '#090e17', textAlign: 'center' }}>
+              規範透明的實時交易行情
             </h2>
-            <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 40px' }}>
+            <p className="site-section-subtitle" style={{ color: '#6b7280', maxWidth: '750px', margin: '0 auto 40px', textAlign: 'center' }}>
               拒絕後台黑箱，直通國際最權威的金銀報價大盤，買賣點差全面公開。
             </p>
           </FadeInSection>
 
-          {/* 原生黑金奢華大盤面板 */}
+          {/* 核心行情面板 (原版圓角黑框) */}
           <FadeInSection>
             <div
               style={{
-                background: '#090e17',
-                borderRadius: '16px',
-                padding: isMobile ? '12px' : '20px 24px',
-                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.45)',
-                border: '1px solid rgba(243, 152, 0, 0.25)',
+                background: '#0a0f19',
+                borderRadius: '20px',
+                padding: isMobile ? '16px 12px' : '24px 28px',
+                boxShadow: '0 16px 40px rgba(0, 0, 0, 0.4)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 margin: '0 auto',
                 maxWidth: '960px',
               }}
             >
-              <div style={{ background: '#0a0f19', borderRadius: '12px', overflow: 'hidden', padding: '8px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <NativeMarketQuotes />
+              {/* 品種切換按鈕 */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  paddingBottom: '14px',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                  marginBottom: '16px',
+                  flexWrap: 'wrap',
+                  gap: '12px',
+                }}
+              >
+                <span style={{ color: '#ffffff', fontWeight: 'bold', fontSize: '14px' }}>
+                  國際大盤直連行情
+                </span>
+
+                <Radio.Group
+                  value={activeSymbol}
+                  onChange={(e) => setActiveSymbol(e.target.value)}
+                  size="small"
+                  buttonStyle="solid"
+                >
+                  <Radio.Button value="OANDA:XAUUSD">現貨黃金</Radio.Button>
+                  <Radio.Button value="OANDA:XAGUSD">現貨白銀</Radio.Button>
+                  <Radio.Button value="FX:EURUSD">歐元美元</Radio.Button>
+                  <Radio.Button value="FX:GBPUSD">英鎊美元</Radio.Button>
+                </Radio.Group>
+              </div>
+
+              {/* 頂部實時流動跑馬燈 */}
+              <div style={{ marginBottom: '16px', borderRadius: '8px', overflow: 'hidden' }}>
+                <TradingViewTickerTape />
+              </div>
+
+              {/* 單品種動態迷你圖表 */}
+              <div
+                style={{
+                  background: '#060a12',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  padding: '10px',
+                  border: '1px solid rgba(255, 255, 255, 0.04)',
+                }}
+              >
+                <TradingViewMiniChart symbol={activeSymbol} height={320} />
               </div>
             </div>
           </FadeInSection>
 
-          <Row gutter={[24, 24]} style={{ marginTop: '32px' }}>
+          {/* 原版底部兩張卡片 */}
+          <Row gutter={[24, 24]} style={{ marginTop: '32px', maxWidth: '960px', margin: '32px auto 0' }}>
             <Col xs={24} md={12}>
-              <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '24px' }}>
-                <span style={{ color: '#f39800', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>Gold Advantage</span>
+              <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '24px', height: '100%' }}>
+                <span style={{ color: '#f39800', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>GOLD ADVANTAGE</span>
                 <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '8px 0 12px', color: '#090e17' }}>倫敦金（Spot Gold）投資契機</h3>
                 <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
                   倫敦金作為全球交易最廣的硬通貨衍生品，在規避通脹、平息局勢風險上具有獨特的戰略價值。德生提供 1:100 起的浮動交易槓桿，僅需 100 美元即可參與波動、隨時兌換利潤。
@@ -564,8 +599,8 @@ export default function HomeContent({ isMobile }) {
               </div>
             </Col>
             <Col xs={24} md={12}>
-              <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '24px' }}>
-                <span style={{ color: '#f39800', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>Silver Advantage</span>
+              <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '12px', padding: '24px', height: '100%' }}>
+                <span style={{ color: '#f39800', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>SILVER ADVANTAGE</span>
                 <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '8px 0 12px', color: '#090e17' }}>倫敦銀（Spot Silver）投資契機</h3>
                 <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
                   白銀波動單價更親民，但日振幅百分比大，具有極好的短線波段爆發力。德生無附加點差加傭政策，極大程度呵護量化交易和多空交叉平倉。
@@ -576,7 +611,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【7. 極致交易引擎與軟件下載 MetaTrader 5】================= */}
+      {/* =================【7. 軟件下載 MT5】================= */}
       <section
         className="site-section"
         style={{
@@ -644,7 +679,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【8. 三步開戶指引】================= */}
+      {/* =================【8. 開戶三步】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: isMobile ? '48px 16px' : '72px 20px' }}>
         <div className="site-section-inner">
           <FadeInSection>
@@ -718,7 +753,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【9. 安全資質監管與承諾】================= */}
+      {/* =================【9. 安全資質】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: isMobile ? '48px 16px' : '72px 20px', borderTop: '1px solid #e5e7eb' }}>
         <div className="site-section-inner">
           <Row gutter={[40, 40]} align="middle">
@@ -801,7 +836,7 @@ export default function HomeContent({ isMobile }) {
         </div>
       </section>
 
-      {/* =================【10. 頁尾免責申明】================= */}
+      {/* =================【10. 頁尾】================= */}
       <section style={{ background: '#111111', padding: '40px 20px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="site-section-inner">
           <PageDisclaimer />
