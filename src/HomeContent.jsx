@@ -301,7 +301,7 @@ function LiveRealMarketQuotes() {
       {/* 報錯提示 */}
       {error && (
         <div style={{ padding: '16px', color: '#ef4444', textAlign: 'center', fontSize: '13px' }}>
-          ⚠️ 盤口直連受阻: {error}（請確認 Vite 已重啟）
+          ⚠️ 盤口直連受阻: {error}（請確認代理配置已生效）
         </div>
       )}
 
