@@ -56,7 +56,7 @@ export default function TradingRule() {
 
   const rulesData = [
     { key: '1', ruleName: '合約單位（手）', goldVal: '100 盎司', silverVal: '5000 盎司' },
-    { key: '2', ruleName: '最低點差起手', goldVal: '0.24 美元 (約 24 美元/手起)', silverVal: '0.04 美元 (約 200 美元/手起)', highlight: true },
+    { key: '2', ruleName: '點差計算', goldVal: '24 美元/手起', silverVal: '4 美元/手起', highlight: true },
     { key: '3', ruleName: '單手交易保證金', goldVal: '1500 美元', silverVal: '1500 美元' },
     { key: '4', ruleName: '單筆最小波幅', goldVal: '0.01 美元', silverVal: '0.01 美元' },
     { key: '5', ruleName: 'MT5單筆交易量限制', goldVal: '標準帳戶：最小 0.01 手，最大 20 手', silverVal: '標準帳戶：最小 0.01 手，最大 20 手' },
@@ -69,7 +69,7 @@ export default function TradingRule() {
 
   // 優勢網格數據
   const whyUsData = [
-    { icon: <SafetyCertificateOutlined style={{ color: '#f39800', fontSize: '24px' }} />, title: 'NDD無交易員模式', desc: '德生嚴格遵循NDD無交易員模式，直連國際頂級流動性提供商，保障市場成交的絕對公平與透明。' },
+    { icon: <SafetyCertificateOutlined style={{ color: '#f39800', fontSize: '24px' }} />, title: '直連國際市場', desc: '德生直連國際頂級流動性提供商，保障市場成交的絕對公平與透明。' },
     { icon: <ThunderboltOutlined style={{ color: '#f39800', fontSize: '24px' }} />, title: '0.05秒毫秒級成交', desc: '依託頂尖服務器網絡與流動性專線，在行情劇烈波動時亦能實現 0.05 秒內快速撮合成交。' },
     { icon: <DollarOutlined style={{ color: '#f39800', fontSize: '24px' }} />, title: '0額外佣金費率', desc: '我們承諾除點差以外不加收任何額外的平台交易佣金，幫助投資者將交易持倉成本降到最低。' },
     { icon: <DashboardOutlined style={{ color: '#f39800', fontSize: '24px' }} />, title: '1:100起靈活槓桿', desc: '提供極具競爭力的貴金屬合約保證金比例，以高資金利用效率靈活放大投資機會與回報。' },

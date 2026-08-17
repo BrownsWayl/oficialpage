@@ -41,7 +41,7 @@ const getInitialPrices = () => {
     const current = item.base;
     const change = current - openPrice;
     const changePercent = (change / openPrice) * 100;
-    
+
     initialPrices[item.symbol] = {
       symbol: item.symbol,
       name: item.name,
@@ -140,7 +140,7 @@ function LiveRealMarketQuotes() {
         // 3) 更新外匯匯率 (EURUSD, GBPUSD, USDJPY)
         if (forexRes && forexRes.rates) {
           const rates = forexRes.rates;
-          
+
           const updatePair = (symbol, rate) => {
             const oldItem = next[symbol];
             if (oldItem) {
@@ -217,7 +217,7 @@ function LiveRealMarketQuotes() {
         const fluctuation = (Math.random() * 0.004 - 0.002) / 100;
         const diff = item.last * fluctuation;
         const nextLast = item.last + diff;
-        
+
         next[randSym] = {
           ...item,
           last: nextLast,
@@ -290,7 +290,7 @@ function LiveRealMarketQuotes() {
               if (!item) return null;
               const flash = flashes[config.symbol];
               const isPositive = item.change >= 0;
-              
+
               let flashBg = 'rgba(255, 255, 255, 0.02)';
               let priceColor = '#ffffff';
               if (flash === 'up') {
@@ -382,7 +382,7 @@ function LiveRealMarketQuotes() {
                   if (!item) return null;
                   const flash = flashes[config.symbol];
                   const isPositive = item.change >= 0;
-                  
+
                   let flashBg = 'transparent';
                   let priceColor = '#ffffff';
                   if (flash === 'up') {
@@ -538,7 +538,7 @@ export default function HomeContent({ isMobile }) {
                 display: 'inline-block',
               }}
             >
-              🏆 香港黃金交易所(HKGX)
+              🏆 香港黃金交易所(HKGX)会员单位
             </Tag>
             <h1
               className="site-hero-title"
@@ -616,12 +616,12 @@ export default function HomeContent({ isMobile }) {
 
             <Row gutter={[16, 16]} style={{ maxWidth: '720px', margin: '0 auto' }}>
               {[
-                { label: '服務全球用戶', end: 100000, suffix: '人+', prefix: '' },
+                { label: '服務全球用戶', end: 10000, suffix: '人+', prefix: '' },
                 { label: '平均訂單延遲', end: 0, suffix: '秒', prefix: '0.05' },
                 { label: '平台隱藏交易費', end: 0, suffix: '元', prefix: '0' },
                 { label: '專業風控團隊', end: 100, suffix: '%', prefix: '' },
               ].map((s, idx) => (
-                <Col xs={12} sm={6} key={idx}>
+                <Col xs={12} sm={6} key={idx}>·
                   <div
                     style={{
                       background: 'rgba(255, 255, 255, 0.03)',
@@ -679,7 +679,7 @@ export default function HomeContent({ isMobile }) {
                 <span style={{ color: '#f39800', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase' }}>GOLD ADVANTAGE</span>
                 <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '8px 0 12px', color: '#090e17' }}>倫敦金（Spot Gold）投資契機</h3>
                 <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
-                  倫敦金作為全球交易最廣的硬通貨衍生品，在規避通脹、平息局勢風險上具有獨特的戰略價值。德生提供 1:100 起的浮動交易槓桿，僅需 100 美元即可參與波動、隨時兌換利潤。
+                  倫敦金作為全球交易最廣的硬通貨衍生品，在規避通脹、平息局勢風險上具有獨特的戰略價值。平台提供即時國際市場報價與專業分析工具，助您精準掌握全球行情走勢與市場動態。
                 </p>
               </div>
             </Col>
@@ -767,7 +767,7 @@ export default function HomeContent({ isMobile }) {
                         立即開戶體驗
                       </Button>
                     </Link>
-                    <Link to="/about">
+                    <Link to="/tradingrule">
                       <Button size="large" style={{ borderRadius: '8px', fontWeight: 'bold', fontSize: '14px' }}>
                         產品機制詳釋
                       </Button>
