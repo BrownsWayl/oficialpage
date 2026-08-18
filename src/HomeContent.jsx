@@ -445,7 +445,7 @@ export default function HomeContent({ isMobile }) {
       icon: <PercentageOutlined style={{ color: '#f39800' }} />,
       title: '點差直降與零隱藏傭金成本',
       subtitle: '點差極低 · 投資利潤摩擦大幅縮減',
-      desc: '直接從多方流動性提供商獲取即時最深報價，黃金最低點差 0.5 ，白銀最低 0.04 。德生不設任何隱藏收費或額外交易傭金，真正將高轉化、低交易成本讓利於每一位投資者。',
+      desc: '直接從多方流動性提供商獲取即時最深報價，黃金最低點差 0.24 ，白銀最低 0.04 。德生不設任何隱藏收費或額外交易傭金，真正將高轉化、低交易成本讓利於每一位投資者。',
       highlights: ['零附加手續費與出入款費用', '提供豐厚新客贈金交易支持'],
     },
     {
@@ -464,13 +464,15 @@ export default function HomeContent({ isMobile }) {
       title: '1. 提交資料極速註冊',
       desc: '在線輸入您的手機號碼、郵箱，1分鐘內即可自動生成專屬實盤或模擬賬號。',
       action: '立即註冊',
-      link: '/register',
+      link: 'https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh',
+      isExternal: true,
     },
     {
       title: '2. 安全注資免手續費',
       desc: '支持網銀、快捷錢包等多種合規安全通道，100%資金安全隔離，秒級到賬。',
       action: '前往注資',
-      link: '/login',
+      link: 'https://client.desonmetals.net/index/auth/login.html',
+      isExternal: true,
     },
     {
       title: '3. 連入MT5開啟盈利',
@@ -549,7 +551,7 @@ export default function HomeContent({ isMobile }) {
                 marginBottom: '48px',
               }}
             >
-              <Link to="/register">
+              <a  href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh" target='_blank' rel='noopener noreferrer'>
                 <Button
                   type="primary"
                   size="large"
@@ -567,7 +569,7 @@ export default function HomeContent({ isMobile }) {
                 >
                   立即開立交易賬號 <ArrowRightOutlined />
                 </Button>
-              </Link>
+              </a>
               <Link to="/appdown">
                 <Button
                   ghost
@@ -736,11 +738,11 @@ export default function HomeContent({ isMobile }) {
                   </div>
 
                   <div style={{ display: 'flex', gap: '16px' }}>
-                    <Link to="/register">
+                    <a href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh" target='_blank' rel='noopener noreferrer'>
                       <Button type="primary" size="large" style={{ background: '#090e17', borderColor: '#090e17', borderRadius: '8px', fontWeight: 'bold', fontSize: '14px' }}>
                         立即開戶體驗
                       </Button>
-                    </Link>
+                    </a>
                     <Link to="/tradingrule">
                       <Button size="large" style={{ borderRadius: '8px', fontWeight: 'bold', fontSize: '14px' }}>
                         產品機制詳釋
@@ -941,63 +943,85 @@ export default function HomeContent({ isMobile }) {
           </FadeInSection>
 
           <Row gutter={[24, 24]}>
-            {steps.map((s, i) => (
-              <Col xs={24} md={8} key={s.title}>
-                <FadeInSection>
-                  <div
-                    style={{
-                      background: '#F8FAFC',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '16px',
-                      padding: '36px 24px',
-                      textAlign: 'center',
-                      position: 'relative',
-                      height: '100%',
-                    }}
-                    className="site-step-card-custom"
-                  >
-                    <div
-                      style={{
-                        width: '44px',
-                        height: '44px',
-                        borderRadius: '50%',
-                        background: '#f39800',
-                        color: '#000000',
-                        fontWeight: '800',
-                        fontSize: '18px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 20px',
-                        boxShadow: '0 4px 10px rgba(243, 152, 0, 0.2)',
-                      }}
-                    >
-                      {i + 1}
-                    </div>
+         {steps.map((s, i) => (
+  <Col xs={24} md={8} key={s.title}>
+    <FadeInSection>
+      <div
+        style={{
+          background: '#F8FAFC',
+          border: '1px solid #e2e8f0',
+          borderRadius: '16px',
+          padding: '36px 24px',
+          textAlign: 'center',
+          position: 'relative',
+          height: '100%',
+        }}
+        className="site-step-card-custom"
+      >
+        <div
+          style={{
+            width: '44px',
+            height: '44px',
+            borderRadius: '50%',
+            background: '#f39800',
+            color: '#000000',
+            fontWeight: '800',
+            fontSize: '18px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 20px',
+            boxShadow: '0 4px 10px rgba(243, 152, 0, 0.2)',
+          }}
+        >
+          {i + 1}
+        </div>
 
-                    <h3 style={{ fontSize: '17px', fontWeight: 'bold', color: '#090e17', marginBottom: '12px' }}>{s.title}</h3>
-                    <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', marginBottom: '24px', minHeight: '60px' }}>{s.desc}</p>
+        <h3 style={{ fontSize: '17px', fontWeight: 'bold', color: '#090e17', marginBottom: '12px' }}>{s.title}</h3>
+        <p style={{ fontSize: '13px', color: '#6b7280', lineHeight: '1.6', marginBottom: '24px', minHeight: '60px' }}>{s.desc}</p>
 
-                    <Link to={s.link}>
-                      <Button
-                        style={{
-                          borderRadius: '20px',
-                          height: '40px',
-                          padding: '0 24px',
-                          fontWeight: 'bold',
-                          borderColor: '#f39800',
-                          color: '#f39800',
-                          background: 'transparent',
-                        }}
-                        className="step-btn-hover"
-                      >
-                        {s.action}
-                      </Button>
-                    </Link>
-                  </div>
-                </FadeInSection>
-              </Col>
-            ))}
+        {/* --- 修改从这里开始 --- */}
+        {s.link && s.link.startsWith('http') ? (
+          <a href={s.link} target="_blank" rel="noopener noreferrer">
+            <Button
+              style={{
+                borderRadius: '20px',
+                height: '40px',
+                padding: '0 24px',
+                fontWeight: 'bold',
+                borderColor: '#f39800',
+                color: '#f39800',
+                background: 'transparent',
+              }}
+              className="step-btn-hover"
+            >
+              {s.action}
+            </Button>
+          </a>
+        ) : (
+          <Link to={s.link}>
+            <Button
+              style={{
+                borderRadius: '20px',
+                height: '40px',
+                padding: '0 24px',
+                fontWeight: 'bold',
+                borderColor: '#f39800',
+                color: '#f39800',
+                background: 'transparent',
+              }}
+              className="step-btn-hover"
+            >
+              {s.action}
+            </Button>
+          </Link>
+        )}
+        {/* --- 修改到这里结束 --- */}
+        
+      </div>
+    </FadeInSection>
+  </Col>
+))}
           </Row>
         </div>
       </section>

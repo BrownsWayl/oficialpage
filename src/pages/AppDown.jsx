@@ -326,7 +326,7 @@ export default function AppDown() {
                     <ul style={{ paddingLeft: '20px', margin: '8px 0 0', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                       <li>💻 完美支持 Windows 7/10/11 多分屏與高分辨率畫線分析</li>
                       <li>🎨 高度自由定制指標，極速載入歷史分鐘級數據</li>
-                      <li>⚙️ 獨家支持智能自動化量化交易與量化策略精准歷史回測</li>
+                      <li>⚙️ 獨家支持智能自動化量化交易與量化策略精准歷史回测</li>
                     </ul>
                   </div>
                 </div>
@@ -345,17 +345,18 @@ export default function AppDown() {
                     overflow: 'hidden',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
                     border: '1px solid #e5e7eb',
-                    background: '#ffffff',
+                 
                   }}
                 >
                   <img
-                    src="/7.webp"
+                    src="/7.png"
                     alt="德生合規資質與安全保障"
                     style={{
                       width: '100%',
                       height: 'auto',
                       display: 'block',
                       transition: 'transform 0.4s ease',
+                 
                     }}
                     className="hover-scale-img"
                   />
@@ -407,7 +408,7 @@ export default function AppDown() {
           </Row>
 
           {/* 特性 4: 7*24小時專屬，管家式金融支持 (使用 11.webp) - 左右交替 (文字在左，圖片在右) */}
-          <Row gutter={[48, 48]} align="middle">
+          <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
             <Col xs={24} md={{ span: 12, order: 2 }}>
               <FadeInSection>
                 <div
