@@ -243,7 +243,7 @@ export default function TradingRule() {
                 >
                   立即開立實盤賬戶 <ArrowRightOutlined />
                 </Button>
-              <a>
+              </a>
               <Link to="/appdown">
                 <Button
                   ghost
