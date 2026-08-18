@@ -25,7 +25,7 @@ import './styles/sitePages.css';
 
 // 國際現貨及外匯實時大盤看板配置
 const INSTRUMENTS_CONFIG = [
-  { symbol: 'XAUUSD', name: '現貨黃金', desc: '倫敦金 Spot Gold', base: 2450.55, spread: 0.24, digits: 2, unit: '盎司' },
+  { symbol: 'XAUUSD', name: '現貨黃金', desc: '倫敦金 Spot Gold', base: 2450.55, spread: 0.5, digits: 2, unit: '盎司' },
   { symbol: 'XAGUSD', name: '現貨白銀', desc: '倫敦銀 Spot Silver', base: 28.32, spread: 0.04, digits: 2, unit: '盎司' },
   { symbol: 'EURUSD', name: '歐元/美元', desc: 'EUR/USD Forex', base: 1.09520, spread: 0.00015, digits: 5, unit: '合約' },
   { symbol: 'GBPUSD', name: '英鎊/美元', desc: 'GBP/USD Forex', base: 1.28210, spread: 0.00018, digits: 5, unit: '合約' },
@@ -289,7 +289,6 @@ function LiveRealMarketQuotes() {
               const item = prices[config.symbol];
               if (!item) return null;
               const flash = flashes[config.symbol];
-              const isPositive = item.change >= 0;
 
               let flashBg = 'rgba(255, 255, 255, 0.02)';
               let priceColor = '#ffffff';
@@ -317,18 +316,6 @@ function LiveRealMarketQuotes() {
                       <span style={{ fontSize: '15px', fontWeight: 'bold', color: '#ffffff' }}>{item.name}</span>
                       <span style={{ fontSize: '11px', color: '#6b7280', marginLeft: '6px' }}>{item.symbol}</span>
                     </div>
-                    <span
-                      style={{
-                        fontSize: '12px',
-                        fontWeight: 'bold',
-                        color: isPositive ? '#22c55e' : '#ef4444',
-                        background: isPositive ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                        padding: '2px 8px',
-                        borderRadius: '4px',
-                      }}
-                    >
-                      {isPositive ? '+' : ''}{item.changePercent.toFixed(2)}%
-                    </span>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px', textAlign: 'center' }}>
@@ -352,10 +339,8 @@ function LiveRealMarketQuotes() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#4b5563', marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: '8px' }}>
-                    <span>最高: {item.high.toFixed(item.digits)}</span>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', fontSize: '11px', color: '#4b5563', marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: '8px' }}>
                     <span style={{ color: '#f39800' }}>點差: {item.spread.toFixed(item.digits === 5 ? 5 : item.digits)}</span>
-                    <span>最低: {item.low.toFixed(item.digits)}</span>
                   </div>
                 </div>
               );
@@ -372,8 +357,6 @@ function LiveRealMarketQuotes() {
                   <th style={{ padding: '12px 16px', fontWeight: 'normal', textAlign: 'right', color: '#22c55e' }}>買入價 (Bid)</th>
                   <th style={{ padding: '12px 16px', fontWeight: 'normal', textAlign: 'right', color: '#ef4444' }}>賣出價 (Ask)</th>
                   <th style={{ padding: '12px 16px', fontWeight: 'normal', textAlign: 'right' }}>點差 (Spread)</th>
-                  <th style={{ padding: '12px 16px', fontWeight: 'normal', textAlign: 'right' }}>24H 漲跌</th>
-                  <th style={{ padding: '12px 16px', fontWeight: 'normal', textAlign: 'right' }}>24H 最高 / 最低</th>
                 </tr>
               </thead>
               <tbody>
@@ -381,7 +364,6 @@ function LiveRealMarketQuotes() {
                   const item = prices[config.symbol];
                   if (!item) return null;
                   const flash = flashes[config.symbol];
-                  const isPositive = item.change >= 0;
 
                   let flashBg = 'transparent';
                   let priceColor = '#ffffff';
@@ -425,14 +407,6 @@ function LiveRealMarketQuotes() {
                       <td style={{ padding: '16px', textAlign: 'right', color: '#f39800', fontWeight: '500' }}>
                         {item.spread.toFixed(item.digits === 5 ? 5 : item.digits)}
                       </td>
-                      <td style={{ padding: '16px', textAlign: 'right', fontWeight: '500', color: isPositive ? '#22c55e' : '#ef4444' }}>
-                        <div>{isPositive ? '+' : ''}{item.change.toFixed(item.digits)}</div>
-                        <div style={{ fontSize: '11px', marginTop: '2px' }}>{isPositive ? '+' : ''}{item.changePercent.toFixed(2)}%</div>
-                      </td>
-                      <td style={{ padding: '16px', textAlign: 'right', fontSize: '12px', color: '#9ca3af' }}>
-                        <div style={{ color: '#22c55e' }}>H: {item.high.toFixed(item.digits)}</div>
-                        <div style={{ color: '#ef4444', marginTop: '2px' }}>L: {item.low.toFixed(item.digits)}</div>
-                      </td>
                     </tr>
                   );
                 })}
@@ -471,14 +445,14 @@ export default function HomeContent({ isMobile }) {
       icon: <PercentageOutlined style={{ color: '#f39800' }} />,
       title: '點差直降與零隱藏傭金成本',
       subtitle: '點差極低 · 投資利潤摩擦大幅縮減',
-      desc: '直接從多方流動性提供商獲取即時最深報價，黃金最低點差 0.24 起，白銀最低 0.04 起。德生不設任何隱藏收費或額外交易傭金，真正將高轉化、低交易成本讓利於每一位投資者。',
+      desc: '直接從多方流動性提供商獲取即時最深報價，黃金最低點差 0.5 ，白銀最低 0.04 。德生不設任何隱藏收費或額外交易傭金，真正將高轉化、低交易成本讓利於每一位投資者。',
       highlights: ['零附加手續費與出入款費用', '提供豐厚新客贈金交易支持'],
     },
     {
       id: 4,
       image: '/3-4.webp',
       icon: <TeamOutlined style={{ color: '#f39800' }} />,
-      title: '一對一 24/7 專業顧問支持',
+      title: ' 全天候專業顧問支持',
       subtitle: '多語言極速解答 · 全天候交易保障',
       desc: '匯聚多年貴金屬國際風控與實戰經驗的專家級客服團隊。為您提供 24 小時在線解答、交易技術協助、開戶流程輔助等，讓您的交易旅程始終穩健前行。',
       highlights: ['多語言客服團隊全天在線', '專家風控指導與投顧支持', '一對一專屬大客戶VIP服務'],
@@ -621,7 +595,7 @@ export default function HomeContent({ isMobile }) {
                 { label: '平台隱藏交易費', end: 0, suffix: '元', prefix: '0' },
                 { label: '專業風控團隊', end: 100, suffix: '%', prefix: '' },
               ].map((s, idx) => (
-                <Col xs={12} sm={6} key={idx}>·
+                <Col xs={12} sm={6} key={idx}>
                   <div
                     style={{
                       background: 'rgba(255, 255, 255, 0.03)',

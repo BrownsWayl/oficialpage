@@ -5,7 +5,6 @@ import {
   ThunderboltOutlined,
   GlobalOutlined,
   TeamOutlined,
-  TrophyOutlined,
   AimOutlined,
   EyeOutlined,
   HeartOutlined,
@@ -26,7 +25,7 @@ export default function AboutPage() {
 
   // 1. 公司核心數據
   const stats = [
-    { label: '累計服務全球客戶', value: '1,000,000', suffix: '+' },
+    { label: '累計服務全球客戶', value: '10,000', suffix: '+' },
     { label: '訂單極速執行時間', value: '0.05', suffix: '秒' },
     { label: '全天候專業客服支持', value: '24/7', suffix: '' },
     { label: '資金安全隔離存放', value: '100', suffix: '%' },
@@ -61,7 +60,7 @@ export default function AboutPage() {
     {
       year: '2024',
       title: '品牌成立 & 技術騰飛',
-      desc: '德生金業有限公司德生貴金屬 / Deson Metals）正式在香港成立。推出自研智能風控管理系統，全面對接國際頂級 MetaTrader 5 (MT5) 交易系統。',
+      desc: '德生金業有限公司（德生貴金屬 / Deson Metals）正式在香港成立。推出自研智能風控管理系統，全面對接國際頂級 MetaTrader 5 (MT5) 交易系統。',
     },
     {
       year: '2025',
@@ -133,7 +132,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【2. 公司簡介（雙列布局仿 jrjr）】================= */}
+      {/* =================【2. 公司簡介】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Row gutter={[40, 40]} align="middle">
@@ -146,7 +145,6 @@ export default function AboutPage() {
                     style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.4s ease' }}
                     className="hover-scale-img"
                   />
-                  {/* 圖片上的尊貴水印卡片 */}
                   <div
                     style={{
                       position: 'absolute',
@@ -199,16 +197,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【3. 權威證書與行業資質（榮譽資質 + 海關證明）】================= */}
+      {/* =================【3. 權威證書與行業資質 (還原大圖排版)】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '64px 20px', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
             <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>合規資質與行業證書</h2>
-            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>德生貴金屬黃金交易環境生貴金屬經過多重合規審計，持有官方認證牌照，為客戶提供100%合規與穩健的交易保障</p>
+            <p style={{ fontSize: '15px', color: '#6b7280', margin: 0 }}>德生貴金屬經過多重合規審計，持有官方認可資質，為客戶提供合規與穩健的交易保障</p>
             <div style={{ width: '50px', height: '3px', background: '#f39800', margin: '12px auto 0' }} />
           </div>
 
           <Row gutter={[32, 32]} justify="center">
+            {/* 1. 榮譽資質證書 */}
             <Col xs={24} md={12}>
               <FadeInSection>
                 <div
@@ -228,7 +227,7 @@ export default function AboutPage() {
                   <div style={{ overflow: 'hidden', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f0f0f0' }}>
                     <img
                       src="/cgse.webp"
-                      alt="榮譽資質"
+                      alt="榮譽資質證書"
                       style={{ width: '100%', height: 'auto', display: 'block' }}
                       className="hover-scale-img"
                     />
@@ -243,6 +242,7 @@ export default function AboutPage() {
               </FadeInSection>
             </Col>
 
+            {/* 2. 海關A類貴金屬註冊證明 */}
             <Col xs={24} md={12}>
               <FadeInSection>
                 <div
@@ -276,11 +276,81 @@ export default function AboutPage() {
                 </div>
               </FadeInSection>
             </Col>
+
+            {/* 3. 香港黃金交易所行員資質 */}
+            <Col xs={24} md={12}>
+              <FadeInSection>
+                <div
+                  style={{
+                    background: '#ffffff',
+                    padding: '28px',
+                    borderRadius: '12px',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)',
+                    border: '1px solid #e5e7eb',
+                    textAlign: 'center',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <div style={{ overflow: 'hidden', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f0f0f0' }}>
+                    <img
+                      src="/222.jpg"
+                      alt="香港黃金交易所行員證書"
+                      style={{ width: '100%', height: 'auto', display: 'block' }}
+                      className="hover-scale-img"
+                    />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>香港黃金交易所行員資質</h3>
+                    <p style={{ fontSize: '14px', color: '#6b7280', margin: 0, lineHeight: '1.6' }}>
+                      德生金業為香港黃金交易所（HKGX）認可的正式行員。我們接受嚴格的財務與運營審查，致力於為全球投資者提供公平、透明、高標準的貴金屬電子交易環境，全方位保障客戶的每一筆資金與權益。
+                    </p>
+                  </div>
+                </div>
+              </FadeInSection>
+            </Col>
+
+            {/* 4. 交易所參與者合約權限 */}
+            <Col xs={24} md={12}>
+              <FadeInSection>
+                <div
+                  style={{
+                    background: '#ffffff',
+                    padding: '28px',
+                    borderRadius: '12px',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)',
+                    border: '1px solid #e5e7eb',
+                    textAlign: 'center',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <div style={{ overflow: 'hidden', borderRadius: '8px', marginBottom: '20px', border: '1px solid #f0f0f0' }}>
+                    <img
+                      src="/333.jpg"
+                      alt="交易所參與者交易資質證書"
+                      style={{ width: '100%', height: 'auto', display: 'block' }}
+                      className="hover-scale-img"
+                    />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>交易所參與者合約權限</h3>
+                    <p style={{ fontSize: '14px', color: '#6b7280', margin: 0, lineHeight: '1.6' }}>
+                      本平台獲准提供包括倫敦金（現貨黃金）、倫敦銀（現貨白銀）等多項核心貴金屬合約的交易服務。合規的交易權限確保客戶的每一筆投資都受到行業標準的嚴格約束與保護。
+                    </p>
+                  </div>
+                </div>
+              </FadeInSection>
+            </Col>
           </Row>
         </div>
       </section>
 
-      {/* =================【4. 品牌使命與願景（仿 jrjr 卡片化）】================= */}
+      {/* =================【4. 品牌使命與願景】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
@@ -366,7 +436,6 @@ export default function AboutPage() {
                   <p style={{ fontSize: '14px', color: '#6b7280', lineHeight: '1.6', margin: 0 }}>
                     <strong>至誠守信</strong>：絕無虛假報價，無隱性費用。<br />
                     <strong>合規自律</strong>：自願接受超高標准監管，客戶資金獨立托管。<br />
-                    <strong>客戶至上</strong>：全天候專人一對一高效解答。
                   </p>
                 </div>
               </FadeInSection>
@@ -375,7 +444,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【4. 數據看板】================= */}
+      {/* =================【5. 數據看板】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: '56px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Row gutter={[24, 24]}>
@@ -394,7 +463,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【5. 四大優勢（仿 jrjr 優勢排版）】================= */}
+      {/* =================【6. 四大優勢】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
@@ -434,7 +503,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【6. 發展裡程碑時間軸（仿 jrjr 精美軸線）】================= */}
+      {/* =================【7. 發展裡程碑時間軸】================= */}
       <section className="site-section" style={{ background: '#ffffff', padding: '64px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
@@ -464,7 +533,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【7. 聯系方式卡片】================= */}
+      {/* =================【8. 聯系方式卡片】================= */}
       <section className="site-section" style={{ background: '#F5F7FA', padding: '60px 20px' }}>
         <div className="site-section-inner" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <Row gutter={[24, 24]}>
@@ -499,7 +568,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* =================【8. 風險披露條款】================= */}
+      {/* =================【9. 風險披露條款】================= */}
       <PageDisclaimer />
     </div>
   );

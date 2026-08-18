@@ -56,11 +56,11 @@ export default function TradingRule() {
 
   const rulesData = [
     { key: '1', ruleName: '合約單位（手）', goldVal: '100 盎司', silverVal: '5000 盎司' },
-    { key: '2', ruleName: '點差計算', goldVal: '24 美元/手起', silverVal: '4 美元/手起', highlight: true },
+    { key: '2', ruleName: '點差計算', goldVal: '最低 50 美元', silverVal: '最低 4 美元', highlight: true },
     { key: '3', ruleName: '單手交易保證金', goldVal: '1500 美元', silverVal: '1500 美元' },
     { key: '4', ruleName: '單筆最小波幅', goldVal: '0.01 美元', silverVal: '0.01 美元' },
     { key: '5', ruleName: 'MT5單筆交易量限制', goldVal: '標準帳戶：最小 0.01 手，最大 20 手', silverVal: '標準帳戶：最小 0.01 手，最大 20 手' },
-    { key: '6', ruleName: '過夜利率 (買入 / 賣出)', goldVal: '買入 1.25%（年利率）\n賣出 0.75%（年利率）\n買賣均須支付利息', silverVal: '買入 1.25%（年利率）\n賣出 0.75%（年利率）\n買賣均須支付利息' },
+    { key: '6', ruleName: '過夜利率 (買入 / 賣出)', goldVal: '買入 1.25%（年利率）\n賣出 0.75%（年利率）\n買賣均須支付利息 \n 周五三倍利息', silverVal: '買入 1.25%（年利率）\n賣出 0.75%（年利率）\n買賣均須支付利息 \n 周三三倍利息',highlight: true },
     { key: '7', ruleName: '掛單距離限制', goldVal: '至少距離市價 200 點', silverVal: '至少距離市價 200 點' },
     { key: '8', ruleName: '夏令時交易時間 (北京時間)', goldVal: '週一 06:05 至週六 04:50\n(法定節假日及國際休市除外)', silverVal: '週一 06:05 至週六 04:50\n(法定節假日及國際休市除外)' },
     { key: '9', ruleName: '冬令時交易時間 (北京時間)', goldVal: '週一 07:05 至週六 05:50\n(法定節假日及國際休市除外)', silverVal: '週一 07:05 至週六 05:50\n(法定節假日及國際休市除外)' },
