@@ -151,6 +151,8 @@ export default function App() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<div>登入</div>} />
                 <Route path="/register" element={<div>註冊</div>} />
+
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </div>
           </Content>
