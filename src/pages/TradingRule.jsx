@@ -56,7 +56,7 @@ export default function TradingRule() {
 
   const rulesData = [
     { key: '1', ruleName: '合約單位（手）', goldVal: '100 盎司', silverVal: '5000 盎司' },
-    { key: '2', ruleName: '點差計算', goldVal: '最低 24 美元', silverVal: '最低 4 美元', highlight: true },
+    { key: '2', ruleName: '點差計算', goldVal: '最低 24 美元', silverVal: '4 美元', highlight: true },
     { key: '3', ruleName: '單手交易保證金', goldVal: '1500 美元', silverVal: '1500 美元' },
     { key: '4', ruleName: '單筆最小波幅', goldVal: '0.01 美元', silverVal: '0.01 美元' },
     { key: '5', ruleName: 'MT5單筆交易量限制', goldVal: '標準帳戶：最小 0.01 手，最大 20 手', silverVal: '標準帳戶：最小 0.01 手，最大 20 手' },
