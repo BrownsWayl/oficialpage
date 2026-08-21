@@ -159,7 +159,7 @@ export default function App() {
 
           {/* =================【4. 統一底部】================= */}
           <Footer style={{ textAlign: 'center', background: '#1A1A1A', color: '#cccccc', height: '48px', padding: 0, lineHeight: '48px', flexShrink: 0 }}>
-            DESON DETALS ©2026
+            DESON METALS ©2026
           </Footer>
 
         </Layout>
