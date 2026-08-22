@@ -35,19 +35,19 @@ export const GlobalHeader = ({ isMobile, setDrawerVisible }) => {
         .pc-nav-container {
           display: flex;
           flex: 1;
-          padding: 0 40px;
-          gap: 48px; 
+          padding: 0 32px; 
+          gap: 16px;       
           height: 100%;
           align-items: center;
-          justify-content: center; 
+          justify-content: flex-start; 
         }
         
         /* 🌟 导航默认状态：极致纯白、中黑字重、开启抗锯齿 */
         .pc-nav-item {
           color: #ffffff !important; 
-          font-size: 16px !important; /* 字体加大一点点 */
-          font-weight: 500 !important; /* 加粗到500，让白色更扎实更亮 */
-          -webkit-font-smoothing: antialiased; /* 针对深色底的字体平滑优化 */
+          font-size: 16px !important; 
+          font-weight: 500 !important; 
+          -webkit-font-smoothing: antialiased; 
           -moz-osx-font-smoothing: grayscale;
           transition: all 0.3s ease !important;
           position: relative;
@@ -57,6 +57,7 @@ export const GlobalHeader = ({ isMobile, setDrawerVisible }) => {
           align-items: center;
           text-decoration: none !important;
           letter-spacing: 0.5px;
+          white-space: nowrap; 
         }
         
         /* 🌟 悬浮 (Hover) 状态：文字变品牌金 */

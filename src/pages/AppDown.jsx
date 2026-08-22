@@ -34,15 +34,15 @@ export default function AppDown() {
   // 1. 軟件下載節點信息 (已完全同步至 desonmetals.net 官方最新下載節點)
   const downloadNodes = {
     pc: [
-      { name: '官方安全下載節點 A (高配物理節點)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'https://download.terminal.free/cdn/web/deson.precious.metals/mt5/desonpreciousmetals5setup.exe' },
-      { name: '高速備份下載節點 B (多線CDN節點)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'https://download.terminal.free/cdn/web/deson.precious.metals/mt5/desonpreciousmetals5setup.exe' },
+      { name: '官方安全下載節點 A (高配物理節點)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'desonpreciousmetals5setup.exe' },
+      { name: '高速備份下載節點 B (多線CDN節點)', version: 'v5.0.44', size: '3.4 MB', type: 'Windows EXE', url: 'desonpreciousmetals5setup.exe' },
     ],
     ios: [
       { name: 'App Store 官方下載', version: 'v4.9.53', size: '24.1 MB', type: 'iOS', url: 'https://download.terminal.free/cdn/mobile/mt5/ios?server=DesonPreciousMetals-Trade' },
     ],
     android: [
-      { name: '官方 APK 安裝包', version: 'v4.9.53', size: '32.8 MB', type: 'Android APK', url: 'https://www.desonmetals.net/download/metatrader5.apk' },
-      { name: 'Google Play 官方下載', version: 'v4.9.53', size: '32.8 MB', type: 'Android', url: 'https://www.desonmetals.net/download/metatrader5.apk' },
+      { name: '官方 APK 安裝包', version: 'v4.9.53', size: '32.8 MB', type: 'Android APK', url: 'metatrader5.apk' },
+      { name: 'Google Play 官方下載', version: 'v4.9.53', size: '32.8 MB', type: 'Android', url: 'metatrader5.apk' },
     ]
   };
 
@@ -125,7 +125,7 @@ export default function AppDown() {
                     免去應用商店繁瑣查找。直接選擇您的終端設備，點擊下方按鈕即可立即建立官方安全、原裝的高速下載任務。
                   </div>
                   <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                    <a href="https://download.terminal.free/cdn/web/deson.precious.metals/mt5/desonpreciousmetals5setup.exe" target="_blank" rel="noopener noreferrer" className="site-btn-primary" style={{ height: '38px', padding: '0 18px', fontSize: '13px', background: '#f39800', color: '#000', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
+                    <a href="/desonpreciousmetals5setup.exe" target="_blank" rel="noopener noreferrer" className="site-btn-primary" style={{ height: '38px', padding: '0 18px', fontSize: '13px', background: '#f39800', color: '#000', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
                       <WindowsOutlined style={{ marginRight: '6px' }} /> PC 電腦端下載
                     </a>
                     <a href="#download-tabs" className="site-btn-outline" style={{ height: '38px', padding: '0 18px', fontSize: '13px', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', display: 'inline-flex', alignItems: 'center', borderRadius: '4px' }}>
@@ -558,7 +558,7 @@ export default function AppDown() {
                             height: '140px',
                             boxSizing: 'border-box'
                           }}>
-                            <img src="https://desonmetals.net/images/IOS.png" alt="iOS QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                            <img src="ios.png" alt="iOS QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                             {/* Popover Arrow */}
                             <div style={{
                               position: 'absolute',
@@ -599,7 +599,7 @@ export default function AppDown() {
                             height: '140px',
                             boxSizing: 'border-box'
                           }}>
-                            <img src="https://desonmetals.net/images/Android.png" alt="Android QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                            <img src="android.png" alt="Android QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                             {/* Popover Arrow */}
                             <div style={{
                               position: 'absolute',
