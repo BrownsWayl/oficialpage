@@ -558,7 +558,7 @@ export default function AppDown() {
                             height: '140px',
                             boxSizing: 'border-box'
                           }}>
-                            <img src="ios.png" alt="iOS QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                            <img src="/ios.png" alt="iOS QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                             {/* Popover Arrow */}
                             <div style={{
                               position: 'absolute',
@@ -599,7 +599,7 @@ export default function AppDown() {
                             height: '140px',
                             boxSizing: 'border-box'
                           }}>
-                            <img src="android.png" alt="Android QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                            <img src="/android.png" alt="Android QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                             {/* Popover Arrow */}
                             <div style={{
                               position: 'absolute',
