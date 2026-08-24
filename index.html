@@ -7,7 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>德生貴金屬</title>
 </head>
-
+<script>
+    (function (d, t) {
+        let g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = "https://msg.btmsgskx.wang/sdk/bytetrack.umd.min.js";
+        s.parentNode.insertBefore(g, s);
+        g.onload = function () {
+            new bytetrack({
+                appId: "QwhrFg7v",
+                host:"https://msg.btmsgskx.wang",
+            })
+        }
+     })(document, "script");
+</script>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
