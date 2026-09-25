@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Form, Input, Button, message, Row, Col, Card, Grid } from 'antd';
 import {
-  CustomerServiceOutlined,
   MailOutlined,
   EnvironmentOutlined,
   ClockCircleOutlined,
@@ -231,7 +230,7 @@ export default function ContactPage() {
                       <span style={{ fontSize: '17px', fontWeight: '700', color: '#111827' }}>官方合規資質</span>
                     </div>
                     <p style={{ fontSize: '14px', color: '#111827', margin: '0 0 6px', fontWeight: '700' }}>
-                      德生貴金屬有限公司
+                      德生貴金業有限公司
                     </p>
                     <p style={{ fontSize: '13px', color: '#6b7280', margin: 0, lineHeight: '1.5' }}>
                       香港註冊編號：77592183<br />

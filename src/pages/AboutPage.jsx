@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, Row, Col, Timeline, Space, Tag } from 'antd';
+
+import {  Row, Col, Timeline } from 'antd';
 import {
   SafetyCertificateOutlined,
   ThunderboltOutlined,
@@ -184,7 +184,7 @@ export default function AboutPage() {
                       德生金業有限公司（簡稱「<strong>德生貴金屬</strong>」 / 「<strong>Deson Metals</strong>」）總部位於國際三大金融中心之一的香港。我們是一家由資深金融風控、國際極速訂單結算技術及貴金屬現貨交收專家聯合打造的頂級電子交易商。
                     </p>
                     <p style={{ margin: 0 }}>
-                      自成立起，公司始終秉持「<strong>至誠經營、合規風控、安全合規</strong>」的發展方針。平台重點提供現貨黃金（倫敦金）、現貨白銀（倫敦銀）電子化合約交易，嚴格根據香港完善的金融法律規范及相關行業貿易場公約運作。我們以極度透明的實時報價和全方位的槓桿交易工具，助力全球零售投資者與專業機構靈活管理資產。
+                      自成立起，公司始終秉持「<strong>至誠經營、合規風控、安全合規</strong>」的發展方針。平台重點提供現貨黃金（倫敦金）、現貨白銀（倫敦銀）電子化合約交易，嚴格根據香港完善的金融法律規范及香港黃金交易所公約運作。我們以極度透明的實時報價和全方位的槓桿交易工具，助力全球零售投資者與專業機構靈活管理資產。
                     </p>
                     <p style={{ margin: 0 }}>
                       我們全天候采用備受好評的 <strong>MetaTrader 5 (MT5)</strong> 旗艦系統。通過強大的硬件數據中心和低延時網關，直連國際一線清算行，大幅壓縮點差，確保在行情波動劇烈的非農等重要財經時間，客戶訂單均能實現極速穩定成交。
@@ -235,7 +235,7 @@ export default function AboutPage() {
                   <div>
                     <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#111827', margin: '0 0 8px' }}>榮譽資質證書</h3>
                     <p style={{ fontSize: '14px', color: '#6b7280', margin: 0, lineHeight: '1.6' }}>
-                      德生貴金屬榮獲行業頒發的「卓越貴金屬交易商」及「誠信金融服務商」等合規資質和榮譽，代表了業界對我們服務、風控及信譽的廣泛認可。
+                      德生貴金屬榮獲行業頒發的合規資質和榮譽，代表了業界對我們服務、風控及信譽的廣泛認可。
                     </p>
                   </div>
                 </div>
