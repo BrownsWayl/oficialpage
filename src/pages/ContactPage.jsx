@@ -230,7 +230,7 @@ export default function ContactPage() {
                       <span style={{ fontSize: '17px', fontWeight: '700', color: '#111827' }}>官方合規資質</span>
                     </div>
                     <p style={{ fontSize: '14px', color: '#111827', margin: '0 0 6px', fontWeight: '700' }}>
-                      德生貴金業有限公司
+                      德生金業有限公司
                     </p>
                     <p style={{ fontSize: '13px', color: '#6b7280', margin: 0, lineHeight: '1.5' }}>
                       香港註冊編號：77592183<br />
@@ -238,7 +238,7 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div style={{ fontSize: '12px', color: '#9ca3af', borderTop: '1px solid #f3f4f6', paddingTop: '8px', marginTop: '12px' }}>
-                    通過香港法定標准註冊審計
+                    完成香港商業注冊登記
                   </div>
                 </Card>
               </FadeInSection>

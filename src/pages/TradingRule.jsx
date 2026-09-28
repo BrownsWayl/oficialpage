@@ -99,7 +99,7 @@ export default function TradingRule() {
             貴金屬合約交易細則
           </h1>
           <p style={{ fontSize: '15px', color: '#9ca3af', maxWidth: '680px', margin: '0 auto', lineHeight: '1.6' }}>
-            德生貴金屬秉承規范、透明、合規的發展理念，在此向所有投資者公示現貨黃金（倫敦金）及現貨白銀（倫敦銀）交易合約細則，確保每一筆委託交易公平公正。
+            德生金業秉承規范、透明、合規的發展理念，在此向所有投資者公示現貨黃金（倫敦金）及現貨白銀（倫敦銀）交易合約細則，確保每一筆委託交易公平公正。
           </p>
         </div>
       </section>
@@ -151,7 +151,7 @@ export default function TradingRule() {
           <FadeInSection>
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
               <h2 style={{ fontSize: '28px', fontWeight: 'bold', color: '#090e17', margin: '0 0 8px' }}>
-                為什麼選擇德生貴金屬交易？
+                為什麼選擇德生金業交易？
               </h2>
               <p style={{ color: '#6b7280', fontSize: '14px', maxWidth: '600px', margin: '0 auto' }}>
                 秉持國際高標準合規運營體系，為您提供無可挑剔的專業貴金屬電子合約交易服務。
