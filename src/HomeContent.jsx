@@ -464,7 +464,7 @@ export default function HomeContent({ isMobile }) {
       title: '1. 提交資料極速註冊',
       desc: '在線輸入您的手機號碼、郵箱，1分鐘內即可自動生成專屬實盤或模擬賬號。',
       action: '立即註冊',
-      link: 'https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh',
+      link: 'https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=Xw7l3I%402&r=&langs=zh',
       isExternal: true,
     },
     {
@@ -551,7 +551,7 @@ export default function HomeContent({ isMobile }) {
                 marginBottom: '48px',
               }}
             >
-              <a  href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh" target='_blank' rel='noopener noreferrer'>
+              <a  href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=Xw7l3I%402&r=&langs=zh" target='_blank' rel='noopener noreferrer'>
                 <Button
                   type="primary"
                   size="large"
@@ -738,7 +738,7 @@ export default function HomeContent({ isMobile }) {
                   </div>
 
                   <div style={{ display: 'flex', gap: '16px' }}>
-                    <a href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh" target='_blank' rel='noopener noreferrer'>
+                    <a href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=Xw7l3I%402&r=&langs=zh" target='_blank' rel='noopener noreferrer'>
                       <Button type="primary" size="large" style={{ background: '#090e17', borderColor: '#090e17', borderRadius: '8px', fontWeight: 'bold', fontSize: '14px' }}>
                         立即開戶體驗
                       </Button>

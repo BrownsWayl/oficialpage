@@ -107,7 +107,7 @@ export default function App() {
                   </a>
 
                   <a
-                    href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh"
+                    href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=Xw7l3I%402&r=&langs=zh"
                     onClick={() => setDrawerVisible(false)}
                     style={{
                       flex: 1, height: '40px', lineHeight: '40px', textAlign: 'center',

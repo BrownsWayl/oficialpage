@@ -220,7 +220,7 @@ export const GlobalHeader = ({ isMobile, setDrawerVisible }) => {
 
           {!isMobile && (
             <a
-              href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=R*Zx9wj@&r=&langs=zh"
+              href="https://client.desonmetals.net/index/Auth/register.html?link_type=2&mt_server=51&superior_code=1Z4L&link_code=Xw7l3I%402&r=&langs=zh"
               target="_blank"
               rel="noopener noreferrer"
               className="register-btn-custom"
